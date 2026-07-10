@@ -495,19 +495,16 @@
   </div>
 </section>
 
-<!-- ============================ 03 → 04 · STICKY SEQUENCE ============================
-     Senna pins and STAYS (z-0). Standard text scrolls up over it. Then the lease
-     photo (z-20) climbs up from below, covering the held Senna, and pins. Then
-     the finance copy slides in from the left over the pinned lease photo. -->
-<section id="finance" class="relative bg-ink">
-  <!-- LAYER 1 — Senna, pinned; stays put and gets covered by the lease photo -->
+<!-- ============================ 03 · THE STANDARD — Senna pinned, text over, then Senna fades to the ground ============================ -->
+<section id="senna-sec" class="relative bg-ink">
   <div class="sticky top-0 z-0 h-screen w-full overflow-hidden" style="border-radius:0">
     <img class="img-cover" src="public/showcase/mclaren-senna/14.webp" alt="Matte-black McLaren Senna" />
     <div class="absolute inset-0 bg-black/30"></div>
     <div class="absolute inset-0" style="background:radial-gradient(64% 84% at 50% 42%, rgba(12,13,15,.72) 0%, rgba(12,13,15,.32) 52%, rgba(12,13,15,0) 82%)"></div>
     <div class="pointer-events-none absolute inset-x-0 top-0 h-28" style="background:linear-gradient(to bottom,#0c0d0f,rgba(12,13,15,0))"></div>
+    <!-- ink veil: JS raises its opacity as you scroll on, dissolving the Senna into the ground -->
+    <div id="senna-fade" class="pointer-events-none absolute inset-0 bg-ink" style="opacity:0"></div>
   </div>
-  <!-- Standard text scrolls up over the held Senna -->
   <div class="relative z-10 -mt-[100vh]">
     <div class="mx-auto flex min-h-screen max-w-[1400px] items-center justify-center px-6 md:px-10">
       <div class="mx-auto flex max-w-[42rem] flex-col items-center text-center" data-step>
@@ -520,43 +517,41 @@
         </p>
       </div>
     </div>
-    <div class="h-[70vh]"></div>   <!-- Senna holds after the text has left -->
+    <div class="h-[85vh]"></div>
   </div>
+</section>
 
-  <!-- LAYER 2 — lease photo climbs up over the Senna, then pins -->
-  <div class="sticky top-0 z-20 h-screen w-full overflow-hidden" style="border-radius:0">
-    <img class="img-cover" src="public/showcase/f50-laferrari/newlease.jpg" alt="Ferrari LaFerrari and F50 on an open road" style="object-position:50% 46%" />
-    <!-- left scrim so the copy stays legible over the bright sky -->
-    <div class="absolute inset-0" style="background:linear-gradient(90deg, rgba(12,13,15,.94) 0%, rgba(12,13,15,.7) 34%, rgba(12,13,15,.15) 62%, rgba(12,13,15,0) 82%)"></div>
-    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-28" style="background:linear-gradient(to top,#0c0d0f,rgba(12,13,15,0))"></div>
-  </div>
-  <!-- Finance copy slides in from the left over the pinned lease photo -->
-  <div class="relative z-30 -mt-[100vh]">
-    <div class="flex min-h-screen items-center">
-      <div class="mx-auto w-full max-w-[1400px] px-6 md:px-10">
-        <div class="max-w-[44rem]" data-step>
-          <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">04 / Private Finance</span>
-          <h2 class="mt-6 font-display text-4xl font-500 italic leading-[1.02] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">Lease or Finance,<br>In-House.</h2>
-          <p class="mt-6 max-w-[46ch] text-[1.05rem] leading-relaxed text-txt/85 [text-shadow:0_1px_12px_rgba(0,0,0,.6)]">
-            Every car in the showroom can be driven home your way. Through our
-            partner MotorCar Lease, we structure seamless lease and finance terms
-            across all makes and models — a white-glove process, tailored to
-            exactly what you need.
-          </p>
-          <a href="#" class="group mt-10 inline-flex items-center gap-3 border border-hg/50 bg-black/20 px-8 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink">
-            Explore financing <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
-          </a>
-          <div class="mt-10 flex items-center gap-4">
-            <span class="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-txt/60">In partnership with</span>
-            <span class="h-5 w-px bg-white/25"></span>
-            <a href="https://motorcarlease.com" target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-70">
-              <img src="public/motorcarlease.svg" alt="MotorCar Lease" class="h-5 w-auto md:h-6" style="filter:invert(1)" />
-            </a>
-          </div>
-        </div>
+<!-- ============================ 04 · PRIVATE FINANCE — split, contained side photo (no bleed) ============================ -->
+<section id="finance" class="relative bg-ink py-24 md:py-32">
+  <div class="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 px-6 md:px-10 lg:grid-cols-2 lg:gap-16">
+    <!-- left copy — ladders up -->
+    <div data-stair>
+      <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">04 / Private Finance</span>
+      <h2 class="mt-6 font-display text-4xl font-500 italic leading-[1.02] text-txt md:text-5xl">Lease or Finance,<br>In-House.</h2>
+      <p class="mt-6 max-w-[48ch] text-[1.05rem] leading-relaxed text-mut">
+        Every car in the showroom can be driven home your way. Through our
+        partner MotorCar Lease, we structure seamless lease and finance terms
+        across all makes and models — a white-glove process, tailored to exactly
+        what you need.
+      </p>
+      <a href="#" class="group mt-10 inline-flex items-center gap-3 border border-hg/40 px-8 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt transition-colors hover:border-hg hover:bg-hg hover:text-ink">
+        Explore financing <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+      </a>
+      <div class="mt-10 flex items-center gap-4">
+        <span class="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-faint">In partnership with</span>
+        <span class="h-5 w-px bg-line"></span>
+        <a href="https://motorcarlease.com" target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-70">
+          <img src="public/motorcarlease.svg" alt="MotorCar Lease" class="h-5 w-auto md:h-6" style="filter:invert(1)" />
+        </a>
       </div>
     </div>
-    <div class="h-[25vh]"></div>
+
+    <!-- right — contained side photo (the way it was), no bleed -->
+    <figure class="relative" data-rise>
+      <div class="aspect-[4/3] overflow-hidden">
+        <img class="img-cover lift" src="public/showcase/f50-laferrari/newlease.jpg" alt="Ferrari LaFerrari and F50 on an open road" style="object-position:50% 48%" />
+      </div>
+    </figure>
   </div>
 </section>
 
@@ -837,6 +832,26 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
     update();
+  }
+
+  // The Standard — dissolve the pinned Senna into the ground colour as you scroll
+  // past its text (fades an ink veil in over the last stretch of the section).
+  const sennaSec = document.getElementById("senna-sec");
+  const sennaFade = document.getElementById("senna-fade");
+  if (sennaSec && sennaFade && !reduce) {
+    let sTick = false;
+    const sUpd = () => {
+      const total = sennaSec.offsetHeight - window.innerHeight;
+      const scrolled = Math.min(total, Math.max(0, -sennaSec.getBoundingClientRect().top));
+      const prog = total > 0 ? scrolled / total : 0;
+      const fade = Math.min(1, Math.max(0, (prog - 0.55) / 0.35)); // clear while text passes, ink by ~0.9
+      sennaFade.style.opacity = fade.toFixed(3);
+      sTick = false;
+    };
+    const sOn = () => { if (!sTick) { sTick = true; requestAnimationFrame(sUpd); } };
+    window.addEventListener("scroll", sOn, { passive: true });
+    window.addEventListener("resize", sOn, { passive: true });
+    sUpd();
   }
 
   // Featured: right arrow scrolls through cars; in-photo arrows page that car's
