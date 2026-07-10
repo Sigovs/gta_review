@@ -505,7 +505,7 @@
 
 <!-- ============================ 04 · PRIVATE FINANCE (split + steps) ============================ -->
 <section id="finance" class="relative overflow-hidden bg-ink py-24 md:py-32">
-  <div class="grid grid-cols-1 items-stretch gap-14 lg:grid-cols-2 lg:gap-0">
+  <div class="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-0">
     <!-- left: headline + copy, aligned to the content column -->
     <div class="pad-left flex flex-col justify-center pr-6 md:pr-10 lg:pr-16" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">04 / Private Finance</span>
@@ -531,9 +531,12 @@
       </div>
     </div>
 
-    <!-- right: the original In-House band photo, bleeding off the right edge -->
-    <figure class="relative min-h-[52vh] overflow-hidden lg:min-h-0" style="border-radius:0" data-rise>
-      <img class="img-cover lift" src="public/showcase/f50-laferrari/02.webp" alt="Ferrari F50 and LaFerrari nose to nose" style="object-position:50% 56%" />
+    <!-- right: the original In-House band photo — shorter, bleeding off the right
+         edge, fading into the ground top + bottom -->
+    <figure class="relative min-h-[44vh] overflow-hidden lg:min-h-0 lg:h-[60vh]" style="border-radius:0" data-rise>
+      <img class="img-cover lift" src="public/showcase/f50-laferrari/02.webp" alt="Ferrari F50 and LaFerrari nose to nose" style="object-position:50% 50%" />
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-24 md:h-32" style="background:linear-gradient(to bottom, #0c0d0f 0%, rgba(12,13,15,0) 100%)"></div>
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 md:h-32" style="background:linear-gradient(to top, #0c0d0f 0%, rgba(12,13,15,0) 100%)"></div>
     </figure>
   </div>
 </section>
