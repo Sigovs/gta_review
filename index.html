@@ -115,6 +115,10 @@
   @media (min-width:768px){ .edge-rail{padding-left:2.5rem;} }
   @media (min-width:1440px){ .edge-rail{padding-left:calc((100vw - 1400px)/2 + 2.5rem);} }
 
+  /* Dark-mode Google Map — invert + hue-rotate keeps water/roads readable while
+     matching the dark-luxury ground. */
+  .map-dark{filter:invert(0.9) hue-rotate(180deg) brightness(0.95) contrast(0.9) saturate(0.8);}
+
   /* In-photo gallery arrows */
   .gnav{position:absolute;top:50%;transform:translateY(-50%);z-index:10;display:flex;
     height:44px;width:44px;align-items:center;justify-content:center;border-radius:9999px;
@@ -581,7 +585,10 @@
         </div>
       </div>
       <div class="mt-10 aspect-[16/9] w-full overflow-hidden border border-line bg-panel">
-        <div class="flex h-full w-full items-center justify-center font-mono text-[0.7rem] uppercase tracking-[0.2em] text-faint">[ Map ]</div>
+        <iframe title="GTA Motorcars showroom — 2050 North University Dr, Sunrise, FL"
+          class="map-dark h-full w-full" style="border:0" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=2050%20North%20University%20Dr%2C%20Sunrise%2C%20FL%2033322&output=embed"></iframe>
       </div>
     </div>
   </div>
