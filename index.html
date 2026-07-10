@@ -91,6 +91,18 @@
   [data-cards].in>*:nth-child(5){transition-delay:.40s}
   [data-cards].in>*:nth-child(6){transition-delay:.50s}
 
+  /* Staircase pull-up — elements rise from below one after another (used by the
+     Finance section so its parts ladder up after the photo leads). */
+  [data-stair]>*{opacity:0;transform:translateY(48px);filter:blur(8px);
+    transition:opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1), filter .85s ease;}
+  [data-stair].in>*{opacity:1;transform:none;filter:blur(0);}
+  [data-stair].in>*:nth-child(1){transition-delay:.20s}
+  [data-stair].in>*:nth-child(2){transition-delay:.34s}
+  [data-stair].in>*:nth-child(3){transition-delay:.48s}
+  [data-stair].in>*:nth-child(4){transition-delay:.62s}
+  [data-stair].in>*:nth-child(5){transition-delay:.76s}
+  [data-stair].in>*:nth-child(6){transition-delay:.90s}
+
   .img-cover{width:100%;height:100%;object-fit:cover;display:block;}
 
   /* Parallax layer — oversized so it can travel without exposing the edges.
@@ -151,7 +163,7 @@
 
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
-    [data-rise],[data-step]>*,[data-cards]>*{opacity:1!important;transform:none!important;filter:none!important;transition:none!important;}
+    [data-rise],[data-step]>*,[data-cards]>*,[data-stair]>*{opacity:1!important;transform:none!important;filter:none!important;transition:none!important;}
     .parallax{filter:none!important;}
     #feat-nextcar{animation:none!important;}
     .lift{transition:none;}
@@ -515,7 +527,7 @@
 <section id="finance" class="relative overflow-hidden bg-ink py-24 md:py-32">
   <div class="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-0">
     <!-- left: headline + copy, aligned to the content column -->
-    <div class="pad-left flex flex-col justify-center pr-6 md:pr-10 lg:pr-16" data-step>
+    <div class="pad-left flex flex-col justify-center pr-6 md:pr-10 lg:pr-16" data-stair>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">04 / Private Finance</span>
       <h2 class="mt-6 font-display text-4xl font-500 italic leading-[1.02] text-txt md:text-5xl">Lease or Finance,<br>In-House.</h2>
       <p class="mt-6 max-w-[48ch] text-[1.05rem] leading-relaxed text-mut">
@@ -797,7 +809,7 @@
       if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
     });
   }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
-  document.querySelectorAll("[data-rise],[data-step],[data-cards],[data-parallax]").forEach((el) => io.observe(el));
+  document.querySelectorAll("[data-rise],[data-step],[data-cards],[data-parallax],[data-stair]").forEach((el) => io.observe(el));
 
   // Strong parallax on the full-bleed image breaks. The .parallax layer is 150%
   // tall (top:-25%), so it can travel ~25% of the section height each way; we
