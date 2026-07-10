@@ -217,18 +217,8 @@
 
   <div class="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10">
     <!-- kicker header ABOVE the photo -->
-    <div class="mb-8 flex items-center justify-between" data-step>
+    <div class="mb-8" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">01 / Featured Acquisition</span>
-      <!-- car pagination: prev / counter / next -->
-      <div class="flex items-center gap-3">
-        <button id="feat-prevcar" type="button" aria-label="Previous car" class="flex h-8 w-8 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:text-hg">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
-        </button>
-        <span id="feat-idx" class="font-mono text-[0.74rem] tracking-[0.14em] text-[#bb3b44]">01 / 03</span>
-        <button id="feat-nextcar-top" type="button" aria-label="Next car" class="flex h-8 w-8 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:text-hg">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
-        </button>
-      </div>
     </div>
 
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-end lg:gap-0">
@@ -236,6 +226,7 @@
       <figure class="group relative lg:col-span-8" data-rise>
         <div class="relative aspect-[16/10] overflow-hidden">
           <img id="feat-img" class="img-cover transition-opacity duration-300" src="public/inventory/2023-porsche-911-gt3-rs-weissach.webp" alt="Featured car" />
+          <span id="feat-idx" class="absolute right-4 top-4 z-10 font-mono text-[0.9rem] tracking-[0.16em] text-[#bb3b44] drop-shadow-[0_1px_6px_rgba(0,0,0,.8)]">01 / 03</span>
           <!-- gallery arrows inside the photo -->
           <button id="feat-gprev" type="button" aria-label="Previous photo" class="gnav left-3">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg>
@@ -294,9 +285,9 @@
     <!-- 02 · auto-scrolling collection carousel — edge to edge, cards lift on hover -->
     <div class="collection-marquee relative left-1/2 mt-14 w-screen -translate-x-1/2 overflow-hidden md:mt-16">
       <div id="collection-track" class="collection-track flex w-max gap-8 px-6 md:px-10">
-        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
-            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+            <div class="relative aspect-[16/9] overflow-hidden bg-panel">
               <img class="img-cover lift" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="2022 Ferrari 488 Pista" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
@@ -306,9 +297,9 @@
               <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$549,000</span><span class="text-faint">·</span><span>3,812 mi</span></div></div>
           </a>
         </article>
-        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
-            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+            <div class="relative aspect-[16/9] overflow-hidden bg-panel">
               <img class="img-cover lift" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="2023 McLaren 765LT Spider" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
@@ -318,9 +309,9 @@
               <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$489,000</span><span class="text-faint">·</span><span>2,104 mi</span></div></div>
           </a>
         </article>
-        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
-            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+            <div class="relative aspect-[16/9] overflow-hidden bg-panel">
               <img class="img-cover lift" src="public/inventory/2024-lamborghini-revuelto.webp" alt="2024 Lamborghini Revuelto" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
@@ -330,9 +321,9 @@
               <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$879,000</span><span class="text-faint">·</span><span>612 mi</span></div></div>
           </a>
         </article>
-        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
-            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+            <div class="relative aspect-[16/9] overflow-hidden bg-panel">
               <img class="img-cover lift" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="2024 Ferrari SF90 Stradale" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
@@ -342,9 +333,9 @@
               <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$729,000</span><span class="text-faint">·</span><span>980 mi</span></div></div>
           </a>
         </article>
-        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
-            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+            <div class="relative aspect-[16/9] overflow-hidden bg-panel">
               <img class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="2022 Lamborghini Huracán STO" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
@@ -354,9 +345,9 @@
               <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$429,000</span><span class="text-faint">·</span><span>4,501 mi</span></div></div>
           </a>
         </article>
-        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
-            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+            <div class="relative aspect-[16/9] overflow-hidden bg-panel">
               <img class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="2023 Ferrari 296 GTB" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
@@ -366,9 +357,9 @@
               <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$449,000</span><span class="text-faint">·</span><span>3,300 mi</span></div></div>
           </a>
         </article>
-        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
-            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+            <div class="relative aspect-[16/9] overflow-hidden bg-panel">
               <img class="img-cover lift" src="public/inventory/2024-mclaren-750s-spider.webp" alt="2024 McLaren 750S Spider" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
@@ -378,9 +369,9 @@
               <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$379,000</span><span class="text-faint">·</span><span>1,875 mi</span></div></div>
           </a>
         </article>
-        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
-            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+            <div class="relative aspect-[16/9] overflow-hidden bg-panel">
               <img class="img-cover lift" src="public/inventory/2022-porsche-911-turbo-s-cabriolet.webp" alt="2022 Porsche 911 Turbo S" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
@@ -533,10 +524,8 @@
 
     <!-- right: the original In-House band photo — shorter, bleeding off the right
          edge, fading into the ground top + bottom -->
-    <figure class="relative min-h-[44vh] overflow-hidden lg:min-h-0 lg:h-[60vh]" style="border-radius:0" data-rise>
-      <img class="img-cover lift" src="public/showcase/f50-laferrari/02.webp" alt="Ferrari F50 and LaFerrari nose to nose" style="object-position:50% 50%" />
-      <div class="pointer-events-none absolute inset-x-0 top-0 h-24 md:h-32" style="background:linear-gradient(to bottom, #0c0d0f 0%, rgba(12,13,15,0) 100%)"></div>
-      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 md:h-32" style="background:linear-gradient(to top, #0c0d0f 0%, rgba(12,13,15,0) 100%)"></div>
+    <figure class="relative min-h-[56vh] overflow-hidden lg:min-h-0 lg:h-[94vh]" style="border-radius:0" data-rise>
+      <img class="img-cover lift" src="public/showcase/f50-laferrari/02.webp" alt="Ferrari F50 and LaFerrari nose to nose" style="object-position:50% 52%" />
     </figure>
   </div>
 </section>
@@ -853,8 +842,6 @@
       setTimeout(() => { feImg.src = g[photoI]; feImg.style.opacity = "1"; }, 170);
       $id("feat-count").textContent = (photoI + 1) + " / " + g.length;
     };
-    $id("feat-nextcar-top").addEventListener("click", () => { carI = (carI + 1) % FEATURED.length; renderCar(); });
-    $id("feat-prevcar").addEventListener("click", () => { carI = (carI - 1 + FEATURED.length) % FEATURED.length; renderCar(); });
     $id("feat-gnext").addEventListener("click", () => { const g = FEATURED[carI].gallery; photoI = (photoI + 1) % g.length; renderPhoto(); });
     $id("feat-gprev").addEventListener("click", () => { const g = FEATURED[carI].gallery; photoI = (photoI - 1 + g.length) % g.length; renderPhoto(); });
     renderCar();
