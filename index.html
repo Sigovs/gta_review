@@ -219,7 +219,16 @@
     <!-- kicker header ABOVE the photo -->
     <div class="mb-8 flex items-center justify-between" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">01 / Featured Acquisition</span>
-      <span id="feat-idx" class="font-mono text-[0.68rem] tracking-[0.12em] text-faint">01 / 03</span>
+      <!-- car pagination: prev / counter / next -->
+      <div class="flex items-center gap-3">
+        <button id="feat-prevcar" type="button" aria-label="Previous car" class="flex h-8 w-8 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:text-hg">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <span id="feat-idx" class="font-mono text-[0.74rem] tracking-[0.14em] text-[#bb3b44]">01 / 03</span>
+        <button id="feat-nextcar-top" type="button" aria-label="Next car" class="flex h-8 w-8 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:text-hg">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-end lg:gap-0">
@@ -267,11 +276,6 @@
     </div>
   </div>
 
-  <!-- single right-side control — scroll to the next featured car -->
-  <button id="feat-nextcar" type="button" aria-label="Next featured car"
-    class="group absolute right-2 top-1/2 z-20 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-panel/70 text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink md:flex lg:right-4">
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-  </button>
 </section>
 
 <!-- ============================ 03 · CURATED INVENTORY (checkerboard zigzag) ============================ -->
@@ -846,7 +850,8 @@
       setTimeout(() => { feImg.src = g[photoI]; feImg.style.opacity = "1"; }, 170);
       $id("feat-count").textContent = (photoI + 1) + " / " + g.length;
     };
-    $id("feat-nextcar").addEventListener("click", () => { carI = (carI + 1) % FEATURED.length; renderCar(); });
+    $id("feat-nextcar-top").addEventListener("click", () => { carI = (carI + 1) % FEATURED.length; renderCar(); });
+    $id("feat-prevcar").addEventListener("click", () => { carI = (carI - 1 + FEATURED.length) % FEATURED.length; renderCar(); });
     $id("feat-gnext").addEventListener("click", () => { const g = FEATURED[carI].gallery; photoI = (photoI + 1) % g.length; renderPhoto(); });
     $id("feat-gprev").addEventListener("click", () => { const g = FEATURED[carI].gallery; photoI = (photoI - 1 + g.length) % g.length; renderPhoto(); });
     renderCar();
