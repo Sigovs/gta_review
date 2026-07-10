@@ -221,7 +221,7 @@
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">01 / Featured Acquisition</span>
     </div>
 
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-end lg:gap-0">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-0">
       <!-- big photo, 8 cols, with in-photo gallery -->
       <figure class="group relative lg:col-span-8" data-rise>
         <div class="relative aspect-[16/10] overflow-hidden">
@@ -242,8 +242,9 @@
       </figure>
 
       <!-- vertical spec column, 4 cols, stepped in from side -->
-      <div class="lg:col-span-4 lg:pl-12" data-step>
-        <span id="feat-idx" class="mb-4 block font-mono text-[0.9rem] tracking-[0.16em] text-[#bb3b44]">01 / 03</span>
+      <div class="flex flex-col lg:col-span-4 lg:h-full lg:self-stretch lg:pl-12" data-step>
+        <span id="feat-idx" class="block font-mono text-[0.9rem] tracking-[0.16em] text-[#bb3b44]">01 / 03</span>
+        <div class="mt-10 lg:mt-auto">
         <h2 id="feat-name" class="font-display text-3xl font-500 leading-tight text-txt md:text-4xl">2023 Porsche 911&nbsp;GT3&nbsp;RS</h2>
         <p id="feat-trim" class="mt-2 font-sans text-sm text-mut">Weissach Package</p>
 
@@ -263,10 +264,16 @@
           View this car
           <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
         </a>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- pulsing right-side control — next featured car -->
+  <button id="feat-nextcar" type="button" aria-label="Next featured car"
+    class="group absolute right-2 top-1/2 z-20 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-panel/70 text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink md:flex lg:right-4">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </button>
 </section>
 
 <!-- ============================ 03 · CURATED INVENTORY (checkerboard zigzag) ============================ -->
@@ -842,6 +849,7 @@
       setTimeout(() => { feImg.src = g[photoI]; feImg.style.opacity = "1"; }, 170);
       $id("feat-count").textContent = (photoI + 1) + " / " + g.length;
     };
+    $id("feat-nextcar").addEventListener("click", () => { carI = (carI + 1) % FEATURED.length; renderCar(); });
     $id("feat-gnext").addEventListener("click", () => { const g = FEATURED[carI].gallery; photoI = (photoI + 1) % g.length; renderPhoto(); });
     $id("feat-gprev").addEventListener("click", () => { const g = FEATURED[carI].gallery; photoI = (photoI - 1 + g.length) % g.length; renderPhoto(); });
     renderCar();
