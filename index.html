@@ -115,6 +115,19 @@
   @media (min-width:768px){ .edge-rail{padding-left:2.5rem;} }
   @media (min-width:1440px){ .edge-rail{padding-left:calc((100vw - 1400px)/2 + 2.5rem);} }
 
+  /* Auto-scrolling collection carousel */
+  @keyframes collectionmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .collection-track{animation:collectionmarquee 70s linear infinite;}
+  .collection-marquee:hover .collection-track{animation-play-state:paused;}
+  .collection-card{transition:transform .45s cubic-bezier(.16,1,.3,1);}
+  .collection-card:hover{transform:translateY(-10px);}
+  @media (prefers-reduced-motion:reduce){ .collection-track{animation:none;} }
+
+  /* Left-aligned to the 1400 content column (used by the right-bleed split) */
+  .pad-left{padding-left:1.5rem;}
+  @media (min-width:768px){ .pad-left{padding-left:2.5rem;} }
+  @media (min-width:1440px){ .pad-left{padding-left:calc((100vw - 1400px)/2 + 2.5rem);} }
+
   /* Dark-mode Google Map — invert + hue-rotate keeps water/roads readable while
      matching the dark-luxury ground. */
   .map-dark{filter:invert(0.9) hue-rotate(180deg) brightness(0.95) contrast(0.9) saturate(0.8);}
@@ -186,11 +199,10 @@
   <div class="absolute inset-0 z-10 flex items-center">
     <div class="mx-auto w-full max-w-[1400px] px-6 md:px-10" data-step>
       <span class="mb-6 block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">GTA / Collection 01</span>
-      <img src="public/logo.svg" alt="GTA Motorcars" class="mb-8 h-14 w-auto md:h-20" style="filter:invert(1)" />
       <h1 class="max-w-[16ch] font-display text-[2.4rem] font-500 italic leading-[1.02] text-txt md:text-[3.6rem]">
         A private floor of cars worth&nbsp;keeping.
       </h1>
-      <a href="#collection" class="group mt-9 inline-flex items-center gap-3 border-b border-hg/50 pb-1 font-mono text-[0.75rem] uppercase tracking-[0.22em] text-txt transition-colors hover:border-hg hover:text-hg">
+      <a href="#collection" class="group mt-9 inline-flex w-fit items-center gap-3 bg-hg px-8 py-4 font-mono text-[0.72rem] font-700 uppercase tracking-[0.2em] text-ink shadow-lg shadow-black/30 transition-colors duration-300 hover:bg-hg2">
         Enter the collection
         <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
       </a>
@@ -277,6 +289,110 @@
       </a>
     </div>
 
+    <!-- 02 · auto-scrolling collection carousel — edge to edge, cards lift on hover -->
+    <div class="collection-marquee relative left-1/2 mt-14 w-screen -translate-x-1/2 overflow-hidden md:mt-16">
+      <div id="collection-track" class="collection-track flex w-max gap-8 px-6 md:px-10">
+        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+          <a href="#" class="group block">
+            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+              <img class="img-cover lift" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="2022 Ferrari 488 Pista" />
+              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              </div>
+            </div>
+            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2022 Ferrari 488 Pista</h3>
+              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$549,000</span><span class="text-faint">·</span><span>3,812 mi</span></div></div>
+          </a>
+        </article>
+        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+          <a href="#" class="group block">
+            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+              <img class="img-cover lift" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="2023 McLaren 765LT Spider" />
+              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              </div>
+            </div>
+            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2023 McLaren 765LT Spider</h3>
+              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$489,000</span><span class="text-faint">·</span><span>2,104 mi</span></div></div>
+          </a>
+        </article>
+        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+          <a href="#" class="group block">
+            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+              <img class="img-cover lift" src="public/inventory/2024-lamborghini-revuelto.webp" alt="2024 Lamborghini Revuelto" />
+              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              </div>
+            </div>
+            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2024 Lamborghini Revuelto</h3>
+              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$879,000</span><span class="text-faint">·</span><span>612 mi</span></div></div>
+          </a>
+        </article>
+        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+          <a href="#" class="group block">
+            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+              <img class="img-cover lift" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="2024 Ferrari SF90 Stradale" />
+              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              </div>
+            </div>
+            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2024 Ferrari SF90 Stradale</h3>
+              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$729,000</span><span class="text-faint">·</span><span>980 mi</span></div></div>
+          </a>
+        </article>
+        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+          <a href="#" class="group block">
+            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+              <img class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="2022 Lamborghini Huracán STO" />
+              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              </div>
+            </div>
+            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2022 Lamborghini Huracán STO</h3>
+              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$429,000</span><span class="text-faint">·</span><span>4,501 mi</span></div></div>
+          </a>
+        </article>
+        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+          <a href="#" class="group block">
+            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+              <img class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="2023 Ferrari 296 GTB" />
+              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              </div>
+            </div>
+            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2023 Ferrari 296 GTB</h3>
+              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$449,000</span><span class="text-faint">·</span><span>3,300 mi</span></div></div>
+          </a>
+        </article>
+        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+          <a href="#" class="group block">
+            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+              <img class="img-cover lift" src="public/inventory/2024-mclaren-750s-spider.webp" alt="2024 McLaren 750S Spider" />
+              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              </div>
+            </div>
+            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2024 McLaren 750S Spider</h3>
+              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$379,000</span><span class="text-faint">·</span><span>1,875 mi</span></div></div>
+          </a>
+        </article>
+        <article class="collection-card w-[300px] shrink-0 md:w-[380px]">
+          <a href="#" class="group block">
+            <div class="relative aspect-[16/11] overflow-hidden bg-panel">
+              <img class="img-cover lift" src="public/inventory/2022-porsche-911-turbo-s-cabriolet.webp" alt="2022 Porsche 911 Turbo S" />
+              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              </div>
+            </div>
+            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2022 Porsche 911 Turbo S</h3>
+              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$249,000</span><span class="text-faint">·</span><span>8,245 mi</span></div></div>
+          </a>
+        </article>
+      </div>
+    </div>
+
+    <!-- archived original zigzag + 3-across layout (kept for revert) -->
+    <template id="collection-archived">
     <!-- zigzag catalogue: photo + data-plate alternate sides, row by row -->
     <div class="space-y-6 md:space-y-0" data-cards>
       <!-- pair 1 : photo left / plate right -->
@@ -353,6 +469,7 @@
         </div>
       </a>
     </div>
+    </template>
   </div>
 </section>
 
@@ -376,30 +493,17 @@
 
 <!-- ============================ 04 · PRIVATE FINANCE (split + steps) ============================ -->
 <section id="finance" class="relative overflow-hidden bg-ink py-24 md:py-32">
-  <div class="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 px-6 md:px-10 lg:grid-cols-2 lg:items-center lg:gap-20">
-    <!-- left: headline + steps -->
-    <div data-step>
+  <div class="grid grid-cols-1 items-stretch gap-14 lg:grid-cols-2 lg:gap-0">
+    <!-- left: headline + copy, aligned to the content column -->
+    <div class="pad-left flex flex-col justify-center pr-6 md:pr-10 lg:pr-16" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">04 / Private Finance</span>
       <h2 class="mt-6 font-display text-4xl font-500 italic leading-[1.02] text-txt md:text-5xl">Lease or Finance,<br>In-House.</h2>
-      <p class="mt-6 max-w-[42ch] text-[1.02rem] leading-relaxed text-mut">
-        Every car on the floor can be leased or financed in-house through our
-        partner MotorCar Lease — structured across all makes and models.
+      <p class="mt-6 max-w-[48ch] text-[1.05rem] leading-relaxed text-mut">
+        Every car in the showroom can be driven home your way. Through our
+        partner MotorCar Lease, we structure seamless lease and finance terms
+        across all makes and models — a white-glove process, tailored to exactly
+        what you need.
       </p>
-
-      <ol class="mt-12 space-y-8">
-        <li class="flex items-baseline gap-6 pt-6">
-          <span class="font-display text-4xl font-500 text-faint">01</span>
-          <div><h3 class="font-display text-xl text-txt">Apply</h3><p class="mt-1 text-sm text-mut">One short private application — no obligation.</p></div>
-        </li>
-        <li class="flex items-baseline gap-6 pt-6">
-          <span class="font-display text-4xl font-500 text-faint">02</span>
-          <div><h3 class="font-display text-xl text-txt">Review</h3><p class="mt-1 text-sm text-mut">Terms structured to the car and to you.</p></div>
-        </li>
-        <li class="flex items-baseline gap-6 pt-6">
-          <span class="font-display text-4xl font-500 text-faint">03</span>
-          <div><h3 class="font-display text-xl text-txt">Drive</h3><p class="mt-1 text-sm text-mut">Keys in hand — white-glove from signing.</p></div>
-        </li>
-      </ol>
 
       <a href="#" class="group mt-12 inline-flex items-center gap-3 border border-hg/40 px-8 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt transition-colors hover:border-hg hover:bg-hg hover:text-ink">
         Explore financing <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
@@ -415,11 +519,9 @@
       </div>
     </div>
 
-    <!-- right: one cropped detail -->
-    <figure class="relative overflow-hidden" data-rise>
-      <div class="aspect-[4/5] overflow-hidden">
-        <img class="img-cover lift" src="public/showcase/porsche-carrera-gt/12.webp" alt="Interior detail" />
-      </div>
+    <!-- right: the original In-House band photo, bleeding off the right edge -->
+    <figure class="relative min-h-[52vh] overflow-hidden lg:min-h-0" style="border-radius:0" data-rise>
+      <img class="img-cover lift" src="public/showcase/f50-laferrari/02.webp" alt="Ferrari F50 and LaFerrari nose to nose" style="object-position:50% 56%" />
     </figure>
   </div>
 </section>
@@ -604,15 +706,15 @@
     <!-- group brand marks — the identity row lifted from the original layout -->
     <div class="grid grid-cols-1 items-center gap-12 sm:grid-cols-3 sm:gap-8">
       <a href="#" class="group flex flex-col items-center gap-5 text-center">
-        <img src="public/logo-usa-trim.png" alt="GTA Motorcars USA" class="h-10 w-auto object-contain md:h-11" style="filter:invert(1)" />
+        <div class="flex h-12 items-center md:h-14"><img src="public/logo-usa-trim.png" alt="GTA Motorcars USA" class="h-10 w-auto object-contain md:h-11" style="filter:invert(1)" /></div>
         <span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-mut transition-colors group-hover:text-hg">Fort Lauderdale, USA</span>
       </a>
       <a href="https://www.gtamotorcars.com" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-5 text-center">
-        <img src="public/gta-motorcars-inc-trim.png" alt="GTA Motorcars Inc." class="h-10 w-auto object-contain md:h-11" style="filter:invert(1)" />
+        <div class="flex h-12 items-center md:h-14"><img src="public/gta-motorcars-inc-trim.png" alt="GTA Motorcars Inc." class="h-10 w-auto object-contain md:h-11" style="filter:invert(1)" /></div>
         <span class="inline-flex items-center gap-1.5 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-mut transition-colors group-hover:text-hg">Toronto, Canada <span aria-hidden>&#8599;</span></span>
       </a>
       <a href="https://motorcarlease.com" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-5 text-center">
-        <img src="public/motorcarlease.svg" alt="MotorCar Lease" class="h-6 w-auto object-contain md:h-7" style="filter:invert(1)" />
+        <div class="flex h-12 items-center md:h-14"><img src="public/motorcarlease.svg" alt="MotorCar Lease" class="h-6 w-auto object-contain md:h-7" style="filter:invert(1)" /></div>
         <span class="inline-flex items-center gap-1.5 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-mut transition-colors group-hover:text-hg">Financing &amp; leasing partner <span aria-hidden>&#8599;</span></span>
       </a>
     </div>
@@ -750,6 +852,10 @@
     if (p) p.addEventListener("click", () => rail.scrollBy({ left: -step(), behavior: "smooth" }));
     if (n) n.addEventListener("click", () => rail.scrollBy({ left: step(), behavior: "smooth" }));
   }
+
+  // Collection carousel — duplicate the track once so the -50% marquee loops seamlessly.
+  const cTrack = document.getElementById("collection-track");
+  if (cTrack) cTrack.innerHTML += cTrack.innerHTML;
 </script>
 </body>
 </html>
