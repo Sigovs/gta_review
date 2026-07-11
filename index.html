@@ -69,7 +69,7 @@
   .ct-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;
     transform-origin:center;backface-visibility:hidden;cursor:pointer;-webkit-user-drag:none;
     box-shadow:0 34px 70px -24px rgba(0,0,0,.75);
-    transition:transform .85s cubic-bezier(.16,1,.3,1), opacity .85s cubic-bezier(.16,1,.3,1);}
+    transition:transform .8s cubic-bezier(.4,2,.3,1), opacity .8s ease;}
   .ct-word{display:inline-block;margin-right:.26em;opacity:0;filter:blur(8px);transform:translateY(9px);
     transition:opacity .5s ease, filter .5s ease, transform .5s cubic-bezier(.16,1,.3,1);}
   .ct-word.ct-on{opacity:1;filter:blur(0);transform:none;}
@@ -735,25 +735,25 @@
       </a>
     </div>
 
-    <!-- right — circular testimonials widget -->
+    <!-- right — circular testimonials: dramatic fanned stack (their layout, our style) -->
     <div class="lg:col-span-7" data-rise>
-      <div class="flex flex-col items-stretch gap-10 sm:flex-row sm:items-center sm:gap-12">
-        <!-- rotating image stack -->
-        <div id="ct-stack" class="ct-stack relative aspect-[4/3] w-full shrink-0 sm:w-[46%]"></div>
-        <!-- quote / attribution / controls -->
-        <div class="flex min-w-0 flex-1 flex-col">
-          <span aria-hidden class="font-display text-5xl leading-none text-hg/40">&ldquo;</span>
-          <blockquote id="ct-quote" class="mt-1 font-display text-xl leading-[1.5] text-txt md:text-[1.55rem]"></blockquote>
-          <div class="mt-7">
-            <div id="ct-name" class="font-display text-lg text-hg"></div>
-            <div id="ct-desig" class="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-mut"></div>
+      <!-- rotating image stack: active centre, neighbours fan up-and-out -->
+      <div id="ct-stack" class="ct-stack relative mx-auto h-[18rem] w-full max-w-[36rem] sm:h-[22rem] md:h-[25rem]"></div>
+      <!-- quote / attribution / controls -->
+      <div class="mt-14 md:mt-16">
+        <span aria-hidden class="block font-display text-6xl leading-[0.6] text-hg/35">&ldquo;</span>
+        <blockquote id="ct-quote" class="mt-3 font-display text-xl leading-[1.55] text-txt md:text-[1.7rem]"></blockquote>
+        <div class="mt-9 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <div id="ct-name" class="font-display text-xl text-hg"></div>
+            <div id="ct-desig" class="mt-1.5 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-mut"></div>
           </div>
-          <div class="mt-9 flex items-center gap-3">
-            <button id="ct-prev" type="button" aria-label="Previous testimonial" class="flex h-11 w-11 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:text-hg">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+          <div class="flex items-center gap-3">
+            <button id="ct-prev" type="button" aria-label="Previous testimonial" class="flex h-12 w-12 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:bg-hg hover:text-ink">
+              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
             </button>
-            <button id="ct-next" type="button" aria-label="Next testimonial" class="flex h-11 w-11 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:text-hg">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+            <button id="ct-next" type="button" aria-label="Next testimonial" class="flex h-12 w-12 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:bg-hg hover:text-ink">
+              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
             </button>
           </div>
         </div>
@@ -1141,18 +1141,23 @@
     });
     const n = DATA.length;
     let active = 0, wordTimers = [];
+    // gap grows with the stack width (ported from the original component's calculateGap)
+    const gapFor = (w) => Math.min(Math.max(w * 0.15, 34), 88);
     const layout = () => {
+      const gap = gapFor(ctStack.offsetWidth || 480);
+      const stick = gap * 0.8;
       imgs.forEach((im, i) => {
         const isActive = i === active;
         const isLeft = (active - 1 + n) % n === i;
         const isRight = (active + 1) % n === i;
-        let z = 1, op = 0, tf = "translateX(0) scale(.78) rotateY(0deg)";
-        if (isActive)      { z = 4; op = 1;   tf = "translateX(0) translateY(0) scale(1) rotateY(0deg)"; }
-        else if (isLeft)   { z = 3; op = .55; tf = "translateX(-15%) translateY(-6%) scale(.86) rotateY(13deg)"; }
-        else if (isRight)  { z = 3; op = .55; tf = "translateX(15%) translateY(-6%) scale(.86) rotateY(-13deg)"; }
+        let z = 1, op = 0, tf = "translateX(0) translateY(0) scale(.8) rotateY(0deg)";
+        if (isActive)      { z = 3; op = 1; tf = "translateX(0px) translateY(0px) scale(1) rotateY(0deg)"; }
+        else if (isLeft)   { z = 2; op = 1; tf = `translateX(-${gap}px) translateY(-${stick}px) scale(.85) rotateY(15deg)`; }
+        else if (isRight)  { z = 2; op = 1; tf = `translateX(${gap}px) translateY(-${stick}px) scale(.85) rotateY(-15deg)`; }
         im.style.zIndex = z; im.style.opacity = op; im.style.transform = tf;
       });
     };
+    window.addEventListener("resize", layout, { passive: true });
     const renderText = () => {
       const d = DATA[active];
       nEl.textContent = d.name; dEl.textContent = d.desig;
