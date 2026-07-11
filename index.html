@@ -73,6 +73,9 @@
   [data-rise]{opacity:0;transform:translateY(150px) scale(1.04);filter:blur(14px);
     transition:opacity 1.7s cubic-bezier(.16,1,.3,1), transform 1.7s cubic-bezier(.16,1,.3,1), filter 1.7s cubic-bezier(.16,1,.3,1);}
   [data-rise].in{opacity:1;transform:none;filter:blur(0);}
+  /* Lease photo — a longer, slower rise from the bottom than the other photos */
+  [data-rise].lease-rise:not(.in){transform:translateY(240px) scale(1.05);}
+  [data-rise].lease-rise{transition-duration:2.6s;}
 
   /* Scroll-driven slide-in (Lookbook photos): JS maps each photo's own viewport
      position to its transform, so slow scroll = slow slide and none of them pair up. */
@@ -637,8 +640,10 @@
 
       <!-- right — full-height lease photo: pins to the top, bleeds off the right edge -->
       <div class="relative">
-        <div class="sticky top-0 h-screen w-full overflow-hidden" style="border-radius:0">
-          <img class="img-cover" src="public/showcase/f50-laferrari/newlease.webp" alt="Ferrari LaFerrari and F50 on an open road" loading="lazy" decoding="async" data-rise style="object-position:50% 52%" />
+        <div id="lease-sticky" class="sticky top-0 h-screen w-full overflow-hidden" style="border-radius:0">
+          <img class="img-cover lease-rise" src="public/showcase/f50-laferrari/newlease.webp" alt="Ferrari LaFerrari and F50 on an open road" loading="lazy" decoding="async" data-rise style="object-position:50% 52%" />
+          <!-- darkens only once the photo unsticks and starts riding up -->
+          <div id="lease-fade" class="pointer-events-none absolute inset-0 bg-ink" style="opacity:0"></div>
         </div>
       </div>
     </div>
@@ -1048,6 +1053,24 @@
       window.addEventListener("resize", lbOn, { passive: true });
       lbUpd();
     }
+  }
+
+  // Lease photo (Private Finance) — stays clear while pinned; the instant it
+  // unsticks and rides up (its top goes negative) it begins to darken.
+  const leaseSticky = document.getElementById("lease-sticky");
+  const leaseFade = document.getElementById("lease-fade");
+  if (leaseSticky && leaseFade && !reduce) {
+    let leTick = false;
+    const leUpd = () => {
+      const top = leaseSticky.getBoundingClientRect().top;
+      const fade = top >= 0 ? 0 : Math.min(0.85, (-top) / (window.innerHeight * 0.6));
+      leaseFade.style.opacity = fade.toFixed(3);
+      leTick = false;
+    };
+    const leOn = () => { if (!leTick) { leTick = true; requestAnimationFrame(leUpd); } };
+    window.addEventListener("scroll", leOn, { passive: true });
+    window.addEventListener("resize", leOn, { passive: true });
+    leUpd();
   }
 
   // Featured: right arrow scrolls through cars; in-photo arrows page that car's
