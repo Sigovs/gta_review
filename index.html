@@ -74,6 +74,11 @@
     transition:opacity 1.7s cubic-bezier(.16,1,.3,1), transform 1.7s cubic-bezier(.16,1,.3,1), filter 1.7s cubic-bezier(.16,1,.3,1);}
   [data-rise].in{opacity:1;transform:none;filter:blur(0);}
 
+  /* Scroll-driven slide-in (Lookbook photos): JS maps each photo's own viewport
+     position to its transform, so slow scroll = slow slide and none of them pair up. */
+  [data-lbrise]{opacity:0;transform:translateY(160px) scale(1.04);filter:blur(14px);
+    transition:transform .18s linear, opacity .18s linear, filter .18s linear;will-change:transform,opacity,filter;}
+
   /* Text steps in from the side, staggered like a staircase — surfacing from blur */
   [data-step]>*{opacity:0;transform:translateX(-38px);filter:blur(10px);
     transition:opacity .9s ease, transform .9s cubic-bezier(.16,1,.3,1), filter .9s ease;}
@@ -782,8 +787,8 @@
 
   <!-- 08 · Lookbook — climbs up over the darkened Carrera GT, keeping its magazine layout (ghost 08 rises with it) -->
   <div class="relative z-20">
-    <section id="lookbook" class="relative overflow-hidden bg-ink py-24 md:py-32">
-      <span class="ghost-num pointer-events-none absolute -top-8 left-2 text-[14rem] md:left-10 md:text-[22rem]">08</span>
+    <section id="lookbook" class="relative bg-transparent py-24 md:py-32">
+      <span class="ghost-num pointer-events-none absolute -top-4 left-2 text-[14rem] md:left-10 md:text-[22rem]">08</span>
       <div class="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10">
         <div class="mb-14" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">08 / Selected Work</span>
@@ -793,22 +798,22 @@
     <!-- offset magazine spread: big landscape left, two stacked frames right,
          nudged down for the deliberate off-grid magazine rhythm -->
     <div class="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-start md:gap-8">
-      <!-- each frame rises on its own as it scrolls into view (independent, not a group) -->
+      <!-- each frame is slid in by scroll position (scroll-driven): slow scroll = slow slide, and each moves on its own so they never pair up -->
       <!-- lead: the F50 + LaFerrari nose-to-nose (restored from the original set) -->
-      <figure class="group md:col-span-7" data-rise>
+      <figure class="group md:col-span-7" data-lbrise>
         <div class="aspect-[16/10] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/f50-laferrari/02.webp" alt="Ferrari F50 and LaFerrari"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">01 / Ferrari F50 &amp; LaFerrari</figcaption>
       </figure>
-      <figure class="group md:col-span-5 md:mt-16" data-rise>
+      <figure class="group md:col-span-5 md:mt-16" data-lbrise>
         <div class="aspect-[4/3] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/ferrari-f50/05.webp" alt="Ferrari F50"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">02 / Ferrari F50</figcaption>
       </figure>
       <!-- bottom pair — centred and set close together -->
-      <figure class="group md:col-span-5 md:col-start-2" data-rise>
+      <figure class="group md:col-span-5 md:col-start-2" data-lbrise>
         <div class="aspect-[4/5] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/porsche-carrera-gt/01.webp" alt="Carrera GT"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">03 / Porsche Carrera GT</figcaption>
       </figure>
-      <figure class="group md:col-span-5 md:col-start-7 md:mt-8" data-rise>
+      <figure class="group md:col-span-5 md:col-start-7 md:mt-8" data-lbrise>
         <div class="aspect-[16/10] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift object-[68%_center]" src="public/showcase/mclaren-senna/05.webp" alt="McLaren Senna"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">04 / McLaren Senna</figcaption>
       </figure>
@@ -1002,7 +1007,7 @@
       const total = cgtSec.offsetHeight - window.innerHeight;
       const scrolled = Math.min(total, Math.max(0, -cgtSec.getBoundingClientRect().top));
       const prog = total > 0 ? scrolled / total : 0;
-      const fade = Math.min(1, Math.max(0, (prog - 0.06) / 0.34)); // darkens slowly as the Lookbook climbs in
+      const fade = Math.min(0.86, Math.max(0, (prog - 0.06) / 0.34)); // darkens slowly, but stays short of full so the car ghosts through the transparent Lookbook
       cgtFade.style.opacity = fade.toFixed(3);
       cTick = false;
     };
@@ -1010,6 +1015,39 @@
     window.addEventListener("scroll", cOn, { passive: true });
     window.addEventListener("resize", cOn, { passive: true });
     cUpd();
+  }
+
+  // Lookbook photos — scroll-driven slide-in. Each photo maps its OWN top edge
+  // (from the bottom of the viewport up to a settle line) to its transform, so a
+  // slow scroll slides it slowly and each frame moves independently (never in pairs).
+  const lbEls = Array.from(document.querySelectorAll("[data-lbrise]"));
+  if (lbEls.length) {
+    if (reduce) {
+      lbEls.forEach((el) => { el.style.opacity = "1"; el.style.transform = "none"; el.style.filter = "none"; });
+    } else {
+      let lbTick = false;
+      const STAG = 150; // px of extra scroll each successive frame waits for → strict one-by-one, never paired
+      const lbUpd = () => {
+        const vh = window.innerHeight;
+        lbEls.forEach((el, idx) => {
+          const top = el.getBoundingClientRect().top;
+          // p: 0 when the frame's top sits at the viewport bottom, 1 once it has
+          // risen to ~45% up the screen — that travel is what the scroll drives.
+          // The idx offset staggers each frame so they cascade in order, not in pairs.
+          let p = (vh - top - idx * STAG) / (vh * 0.55);
+          p = Math.min(1, Math.max(0, p));
+          const e = 1 - Math.pow(1 - p, 3); // ease-out
+          el.style.opacity = e.toFixed(3);
+          el.style.transform = `translateY(${((1 - e) * 160).toFixed(1)}px) scale(${(1 + (1 - e) * 0.04).toFixed(4)})`;
+          el.style.filter = `blur(${((1 - e) * 14).toFixed(2)}px)`;
+        });
+        lbTick = false;
+      };
+      const lbOn = () => { if (!lbTick) { lbTick = true; requestAnimationFrame(lbUpd); } };
+      window.addEventListener("scroll", lbOn, { passive: true });
+      window.addEventListener("resize", lbOn, { passive: true });
+      lbUpd();
+    }
   }
 
   // Featured: right arrow scrolls through cars; in-photo arrows page that car's
