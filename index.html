@@ -522,38 +522,42 @@
     <div class="h-[35vh]"></div>
   </div>
 
-  <!-- 04 · Finance — transparent layer that climbs up over the darkened Senna.
-       Tall photo (right) leads; the copy (left) ladders in a beat later. -->
+  <!-- 04 · Finance — image and copy move independently. The full-height lease
+       photo pins (sticky) on the right; the copy scrolls past it on the left. -->
   <div class="relative z-20">
-    <div class="grid min-h-screen grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-0">
-      <!-- left copy — follows the photo -->
-      <div class="pad-left pr-6 md:pr-10 lg:pr-16" data-stair>
-        <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">04 / Private Finance</span>
-        <h2 class="mt-6 font-display text-4xl font-500 italic leading-[1.02] text-txt drop-shadow-[0_2px_20px_rgba(0,0,0,.6)] md:text-5xl">Lease or Finance,<br>In-House.</h2>
-        <p class="mt-6 max-w-[48ch] text-[1.05rem] leading-relaxed text-txt/80 [text-shadow:0_1px_10px_rgba(0,0,0,.5)]">
-          Every car in the showroom can be driven home your way. Through our
-          partner MotorCar Lease, we structure seamless lease and finance terms
-          across all makes and models — a white-glove process, tailored to exactly
-          what you need.
-        </p>
-        <a href="#" class="group mt-10 inline-flex items-center gap-3 border border-hg/40 bg-black/20 px-8 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink">
-          Explore financing <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
-        </a>
-        <div class="mt-10 flex items-center gap-4">
-          <span class="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-txt/55">In partnership with</span>
-          <span class="h-5 w-px bg-white/25"></span>
-          <a href="https://motorcarlease.com" target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-70">
-            <img src="public/motorcarlease.svg" alt="MotorCar Lease" class="h-5 w-auto md:h-6" style="filter:invert(1)" />
+    <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-0">
+      <!-- left copy — scrolls separately; extra room below lets the photo stay pinned -->
+      <div class="pad-left pr-6 md:pr-10 lg:pr-16">
+        <div class="flex min-h-screen flex-col justify-center" data-stair>
+          <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">04 / Private Finance</span>
+          <h2 class="mt-6 font-display text-4xl font-500 italic leading-[1.02] text-txt drop-shadow-[0_2px_20px_rgba(0,0,0,.6)] md:text-5xl">Lease or Finance,<br>In-House.</h2>
+          <p class="mt-6 max-w-[48ch] text-[1.05rem] leading-relaxed text-txt/80 [text-shadow:0_1px_10px_rgba(0,0,0,.5)]">
+            Every car in the showroom can be driven home your way. Through our
+            partner MotorCar Lease, we structure seamless lease and finance terms
+            across all makes and models — a white-glove process, tailored to exactly
+            what you need.
+          </p>
+          <a href="#" class="group mt-10 inline-flex items-center gap-3 border border-hg/40 bg-black/20 px-8 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink">
+            Explore financing <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
           </a>
+          <div class="mt-10 flex items-center gap-4">
+            <span class="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-txt/55">In partnership with</span>
+            <span class="h-5 w-px bg-white/25"></span>
+            <a href="https://motorcarlease.com" target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-70">
+              <img src="public/motorcarlease.svg" alt="MotorCar Lease" class="h-5 w-auto md:h-6" style="filter:invert(1)" />
+            </a>
+          </div>
         </div>
+        <div class="hidden h-[60vh] lg:block"></div>
       </div>
 
-      <!-- right — tall lease photo, bleeds fully off the right edge, leads the reveal -->
-      <figure class="relative min-h-[52vh] overflow-hidden lg:min-h-0 lg:h-[85vh]" style="border-radius:0" data-rise>
-        <img class="img-cover lift" src="public/showcase/f50-laferrari/newlease.jpg" alt="Ferrari LaFerrari and F50 on an open road" style="object-position:50% 52%" />
-      </figure>
+      <!-- right — full-height lease photo: pins to the top, bleeds off the right edge -->
+      <div class="relative">
+        <div class="sticky top-0 h-screen w-full overflow-hidden" style="border-radius:0">
+          <img class="img-cover" src="public/showcase/f50-laferrari/newlease.jpg" alt="Ferrari LaFerrari and F50 on an open road" style="object-position:50% 52%" />
+        </div>
+      </div>
     </div>
-    <div class="h-[16vh]"></div>
   </div>
 </section>
 
