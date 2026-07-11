@@ -161,12 +161,22 @@
   .lift{transition:transform 1.4s cubic-bezier(.16,1,.3,1);}
   .group:hover .lift{transform:scale(1.05);}
 
-  /* Header — frosts into a solid dark bar once you scroll off the hero */
+  /* Header — bold at the top, folds into a compact frosted bar on scroll */
   #site-header{transition:background .3s ease, backdrop-filter .3s ease, border-color .3s ease;border-bottom:1px solid transparent;}
-  #site-header.frosted{background:rgba(12,13,15,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom-color:#26282d;}
+  #site-header.frosted{background:rgba(12,13,15,.85);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom-color:#26282d;}
   #site-header .top-scrim{transition:opacity .3s ease;}
   #site-header.frosted .top-scrim{opacity:0;}
-  #site-header.frosted .hbar{padding-top:.9rem;padding-bottom:.9rem;}
+  #site-header.frosted .hbar{padding-top:.85rem;padding-bottom:.85rem;}
+  #site-header.frosted .hlogo{height:2rem;}
+  @media (min-width:768px){ #site-header.frosted .hlogo{height:2.25rem;} }
+  #site-header.frosted .phone-num{display:none;}
+  /* centre nav shows at the top on desktop; collapses to the hamburger on scroll / mobile */
+  .hnav{display:none;}
+  .hburger{display:flex;}
+  @media (min-width:1024px){
+    #site-header:not(.frosted) .hnav{display:flex;}
+    #site-header:not(.frosted) .hburger{display:none;}
+  }
 
   /* Drag hint — a cursor-following bubble over the collection carousel */
   #drag-hint{position:fixed;left:0;top:0;z-index:70;pointer-events:none;display:flex;align-items:center;
@@ -196,22 +206,61 @@
 
 <!-- ============================ HEADER ============================ -->
 <header id="site-header" class="fixed inset-x-0 top-0 z-50">
-  <div class="top-scrim pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent"></div>
-  <div class="hbar relative mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 transition-[padding] duration-300 md:px-10">
-    <a href="#" class="flex items-center">
-      <img src="public/logo.svg" alt="GTA Motorcars" class="h-8 w-auto md:h-9" style="filter:invert(1)" />
+  <div class="top-scrim pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/60 to-transparent"></div>
+  <div class="hbar relative mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-8 transition-all duration-300 md:px-10">
+    <!-- logo — big at the top, shrinks on scroll -->
+    <a href="#" aria-label="GTA Motorcars — home" class="flex shrink-0 items-center">
+      <img loading="lazy" decoding="async" src="public/logo.svg" alt="GTA Motorcars" class="hlogo h-11 w-auto transition-all duration-300 md:h-14" style="filter:invert(1)" />
     </a>
-    <nav class="hidden items-center gap-9 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-txt/90 md:flex">
+    <!-- centre nav (desktop, top state) -->
+    <nav class="hnav absolute left-1/2 -translate-x-1/2 items-center gap-9 text-[0.72rem] font-medium uppercase tracking-[0.2em] text-txt/90">
       <a href="#collection" class="transition-colors hover:text-hg">Collection</a>
       <a href="#featured" class="transition-colors hover:text-hg">Featured</a>
       <a href="#finance" class="transition-colors hover:text-hg">Private Finance</a>
       <a href="#lookbook" class="transition-colors hover:text-hg">Lookbook</a>
       <a href="#visit" class="transition-colors hover:text-hg">Visit</a>
     </nav>
-    <a href="#visit" class="hidden font-mono text-[0.72rem] tracking-[0.05em] text-txt/90 transition-colors hover:text-hg md:block">+1 (954) 000&#8288;-&#8288;0000</a>
-    <button class="font-mono text-[0.72rem] uppercase tracking-[0.15em] text-txt md:hidden">Menu</button>
+    <!-- right cluster: location · phone · hamburger -->
+    <div class="flex shrink-0 items-center gap-4 md:gap-6">
+      <span class="hidden items-center gap-2 font-mono text-[0.72rem] tracking-[0.06em] text-txt/85 sm:flex">
+        <svg class="h-4 w-4 text-hg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        Fort Lauderdale, FL
+      </span>
+      <span class="hidden h-4 w-px bg-white/20 md:block"></span>
+      <a href="tel:+19540000000" class="flex items-center gap-2 font-mono text-[0.72rem] tracking-[0.05em] text-txt/90 transition-colors hover:text-hg" aria-label="Call the showroom">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+        <span class="phone-num hidden md:inline">+1 (954) 000&#8288;-&#8288;0000</span>
+      </a>
+      <button id="nav-toggle" type="button" class="hburger h-9 w-9 items-center justify-center text-txt transition-colors hover:text-hg" aria-label="Open menu" aria-expanded="false">
+        <svg class="ic-menu h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="ic-close hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
   </div>
 </header>
+
+<!-- slide-down nav menu (hamburger — scroll / mobile) -->
+<div id="nav-menu" class="fixed inset-x-0 top-0 z-40 hidden bg-ink/95 backdrop-blur-md">
+  <div class="mx-auto max-w-[1400px] px-6 pb-14 pt-32 md:px-10">
+    <nav class="flex flex-col">
+      <a href="#collection" class="border-b border-line py-4 font-display text-3xl italic text-txt transition-colors hover:text-hg md:text-4xl">Collection</a>
+      <a href="#featured" class="border-b border-line py-4 font-display text-3xl italic text-txt transition-colors hover:text-hg md:text-4xl">Featured</a>
+      <a href="#finance" class="border-b border-line py-4 font-display text-3xl italic text-txt transition-colors hover:text-hg md:text-4xl">Private Finance</a>
+      <a href="#lookbook" class="border-b border-line py-4 font-display text-3xl italic text-txt transition-colors hover:text-hg md:text-4xl">Lookbook</a>
+      <a href="#visit" class="py-4 font-display text-3xl italic text-txt transition-colors hover:text-hg md:text-4xl">Visit</a>
+    </nav>
+    <div class="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 font-mono text-[0.78rem] tracking-[0.04em] text-txt/85">
+      <span class="flex items-center gap-2">
+        <svg class="h-4 w-4 text-hg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        Fort Lauderdale, FL
+      </span>
+      <a href="tel:+19540000000" class="flex items-center gap-2 transition-colors hover:text-hg">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+        +1 (954) 000-0000
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- ============================ 01 · ASYMMETRIC HERO ============================ -->
 <section class="blend relative h-[100svh] min-h-[680px] w-full overflow-hidden bg-ink">
@@ -257,7 +306,7 @@
       <!-- big photo, 8 cols, with in-photo gallery -->
       <figure class="group relative lg:col-span-8" data-rise>
         <div class="relative aspect-[16/10] overflow-hidden">
-          <img id="feat-img" class="img-cover transition-opacity duration-300" src="public/inventory/2023-porsche-911-gt3-rs-weissach.webp" alt="Featured car" />
+          <img loading="lazy" decoding="async" id="feat-img" class="img-cover transition-opacity duration-300" src="public/inventory/2023-porsche-911-gt3-rs-weissach.webp" alt="Featured car" />
           <!-- gallery arrows inside the photo -->
           <button id="feat-gprev" type="button" aria-label="Previous photo" class="gnav left-3">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg>
@@ -327,7 +376,7 @@
         <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
             <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img class="img-cover lift" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="2022 Ferrari 488 Pista" />
+              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="2022 Ferrari 488 Pista" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
               </div>
@@ -339,7 +388,7 @@
         <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
             <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img class="img-cover lift" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="2023 McLaren 765LT Spider" />
+              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="2023 McLaren 765LT Spider" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
               </div>
@@ -351,7 +400,7 @@
         <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
             <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img class="img-cover lift" src="public/inventory/2024-lamborghini-revuelto.webp" alt="2024 Lamborghini Revuelto" />
+              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-lamborghini-revuelto.webp" alt="2024 Lamborghini Revuelto" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
               </div>
@@ -363,7 +412,7 @@
         <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
             <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img class="img-cover lift" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="2024 Ferrari SF90 Stradale" />
+              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="2024 Ferrari SF90 Stradale" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
               </div>
@@ -375,7 +424,7 @@
         <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
             <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="2022 Lamborghini Huracán STO" />
+              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="2022 Lamborghini Huracán STO" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
               </div>
@@ -387,7 +436,7 @@
         <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
             <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="2023 Ferrari 296 GTB" />
+              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="2023 Ferrari 296 GTB" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
               </div>
@@ -399,7 +448,7 @@
         <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
             <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img class="img-cover lift" src="public/inventory/2024-mclaren-750s-spider.webp" alt="2024 McLaren 750S Spider" />
+              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-mclaren-750s-spider.webp" alt="2024 McLaren 750S Spider" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
               </div>
@@ -411,7 +460,7 @@
         <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
           <a href="#" class="group block">
             <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img class="img-cover lift" src="public/inventory/2022-porsche-911-turbo-s-cabriolet.webp" alt="2022 Porsche 911 Turbo S" />
+              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-turbo-s-cabriolet.webp" alt="2022 Porsche 911 Turbo S" />
               <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
               </div>
@@ -440,7 +489,7 @@
       <!-- pair 1 : photo left / plate right -->
       <article class="group grid grid-cols-1 md:grid-cols-2 md:h-[26rem]">
         <a href="#" class="relative block aspect-[16/10] overflow-hidden bg-panel md:aspect-auto">
-          <img class="img-cover lift" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="2022 Ferrari 488 Pista" />
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="2022 Ferrari 488 Pista" />
         </a>
         <div class="flex flex-col justify-between bg-panel p-7 md:p-10">
           <div class="flex items-start justify-between">
@@ -466,13 +515,13 @@
           </div>
         </div>
         <a href="#" class="relative order-1 block aspect-[16/10] overflow-hidden bg-panel md:order-2 md:aspect-auto">
-          <img class="img-cover lift" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="2023 McLaren 765LT Spider" />
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="2023 McLaren 765LT Spider" />
         </a>
       </article>
       <!-- pair 3 : photo left / plate right -->
       <article class="group grid grid-cols-1 md:grid-cols-2 md:h-[26rem]">
         <a href="#" class="relative block aspect-[16/10] overflow-hidden bg-panel md:aspect-auto">
-          <img class="img-cover lift" src="public/inventory/2024-lamborghini-revuelto.webp" alt="2024 Lamborghini Revuelto" />
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-lamborghini-revuelto.webp" alt="2024 Lamborghini Revuelto" />
         </a>
         <div class="flex flex-col justify-between bg-panel2 p-7 md:p-10">
           <div class="flex items-start justify-between">
@@ -490,21 +539,21 @@
     <!-- calmer 3-across remainder -->
     <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3 md:mt-8" data-cards>
       <a href="#" class="group block">
-        <div class="aspect-[16/11] overflow-hidden bg-panel"><img class="img-cover lift" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="Ferrari SF90"></div>
+        <div class="aspect-[16/11] overflow-hidden bg-panel"><img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="Ferrari SF90"></div>
         <div class="flex items-baseline justify-between pt-4">
           <h4 class="font-display text-lg text-txt transition-colors group-hover:text-hg">Ferrari SF90 Stradale</h4>
           <span class="font-mono text-xs text-mut">$729,000</span>
         </div>
       </a>
       <a href="#" class="group block">
-        <div class="aspect-[16/11] overflow-hidden bg-panel"><img class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="Huracán STO"></div>
+        <div class="aspect-[16/11] overflow-hidden bg-panel"><img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="Huracán STO"></div>
         <div class="flex items-baseline justify-between pt-4">
           <h4 class="font-display text-lg text-txt transition-colors group-hover:text-hg">Lamborghini Huracán STO</h4>
           <span class="font-mono text-xs text-mut">$429,000</span>
         </div>
       </a>
       <a href="#" class="group block">
-        <div class="aspect-[16/11] overflow-hidden bg-panel"><img class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="Ferrari 296 GTB"></div>
+        <div class="aspect-[16/11] overflow-hidden bg-panel"><img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="Ferrari 296 GTB"></div>
         <div class="flex items-baseline justify-between pt-4">
           <h4 class="font-display text-lg text-txt transition-colors group-hover:text-hg">Ferrari 296 GTB</h4>
           <span class="font-mono text-xs text-mut">$449,000</span>
@@ -519,7 +568,7 @@
 <section id="finance" class="relative bg-ink">
   <!-- Senna — pinned; JS dissolves it into the ground as you scroll on -->
   <div class="sticky top-0 z-0 h-screen w-full overflow-hidden" style="border-radius:0">
-    <img class="img-cover" src="public/showcase/mclaren-senna/14.webp" alt="Matte-black McLaren Senna" />
+    <img loading="lazy" decoding="async" class="img-cover" src="public/showcase/mclaren-senna/14.webp" alt="Matte-black McLaren Senna" />
     <div class="absolute inset-0 bg-black/30"></div>
     <div class="absolute inset-0" style="background:radial-gradient(64% 84% at 50% 42%, rgba(12,13,15,.72) 0%, rgba(12,13,15,.32) 52%, rgba(12,13,15,0) 82%)"></div>
     <div class="pointer-events-none absolute inset-x-0 top-0 h-28" style="background:linear-gradient(to bottom,#0c0d0f,rgba(12,13,15,0))"></div>
@@ -564,7 +613,7 @@
             <span class="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-txt/55">In partnership with</span>
             <span class="h-5 w-px bg-white/25"></span>
             <a href="https://motorcarlease.com" target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-70">
-              <img src="public/motorcarlease.svg" alt="MotorCar Lease" class="h-5 w-auto md:h-6" style="filter:invert(1)" />
+              <img loading="lazy" decoding="async" src="public/motorcarlease.svg" alt="MotorCar Lease" class="h-5 w-auto md:h-6" style="filter:invert(1)" />
             </a>
           </div>
         </div>
@@ -574,7 +623,7 @@
       <!-- right — full-height lease photo: pins to the top, bleeds off the right edge -->
       <div class="relative">
         <div class="sticky top-0 h-screen w-full overflow-hidden" style="border-radius:0">
-          <img class="img-cover" src="public/showcase/f50-laferrari/newlease.jpg" alt="Ferrari LaFerrari and F50 on an open road" style="object-position:50% 52%" />
+          <img class="img-cover" src="public/showcase/f50-laferrari/newlease.webp" alt="Ferrari LaFerrari and F50 on an open road" loading="lazy" decoding="async" style="object-position:50% 52%" />
         </div>
       </div>
     </div>
@@ -602,7 +651,7 @@
   <div id="sold-rail" class="edge-rail flex gap-6 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none]" data-cards>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img class="img-cover lift" src="public/inventory/2024-porsche-911-st-heritage-sold.webp" alt="911 S/T">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-porsche-911-st-heritage-sold.webp" alt="911 S/T">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-display text-lg text-txt">2024 Porsche 911 S/T</h4>
@@ -610,7 +659,7 @@
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img class="img-cover lift" src="public/inventory/2023-lamborghini-huracan-tecnica-sold.webp" alt="Huracán Tecnica">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-lamborghini-huracan-tecnica-sold.webp" alt="Huracán Tecnica">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-display text-lg text-txt">2023 Lamborghini Huracán</h4>
@@ -618,7 +667,7 @@
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img class="img-cover lift" src="public/inventory/2021-mclaren-600lt-spider-sold.webp" alt="600LT Spider">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2021-mclaren-600lt-spider-sold.webp" alt="600LT Spider">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-display text-lg text-txt">2021 McLaren 600LT</h4>
@@ -626,7 +675,7 @@
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img class="img-cover lift" src="public/inventory/2022-porsche-911-gt3-touring-paint-to-sample.webp" alt="911 GT3 Touring">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-gt3-touring-paint-to-sample.webp" alt="911 GT3 Touring">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-display text-lg text-txt">2022 Porsche 911 GT3</h4>
@@ -634,7 +683,7 @@
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="Huracán STO">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="Huracán STO">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-display text-lg text-txt">2022 Lamborghini Huracán</h4>
@@ -642,7 +691,7 @@
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="Ferrari 296 GTB">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="Ferrari 296 GTB">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-display text-lg text-txt">2023 Ferrari 296 GTB</h4>
@@ -653,7 +702,7 @@
 
 <!-- ============================ 06 · SELL / CONSIGN — full-width image break, centered ============================ -->
 <section class="blend relative flex min-h-[72vh] w-full items-center justify-center overflow-hidden bg-ink md:min-h-[82vh]">
-  <img class="parallax" data-parallax="1" src="public/showcase/porsche-carrera-gt/04.webp" alt="Silver Porsche Carrera GT" />
+  <img loading="lazy" decoding="async" class="parallax" data-parallax="1" src="public/showcase/porsche-carrera-gt/04.webp" alt="Silver Porsche Carrera GT" />
   <!-- overall tint + centered scrim so the centered copy stays legible over the car -->
   <div class="absolute inset-0 bg-black/35"></div>
   <div class="absolute inset-0" style="background:radial-gradient(60% 80% at 50% 50%, rgba(12,13,15,.72) 0%, rgba(12,13,15,.3) 52%, rgba(12,13,15,0) 82%)"></div>
@@ -686,20 +735,20 @@
     <div class="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-start md:gap-8" data-cards>
       <!-- lead: the F50 + LaFerrari nose-to-nose (restored from the original set) -->
       <figure class="group md:col-span-7">
-        <div class="aspect-[16/10] overflow-hidden"><img class="img-cover lift" src="public/showcase/f50-laferrari/02.webp" alt="Ferrari F50 and LaFerrari"></div>
+        <div class="aspect-[16/10] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/f50-laferrari/02.webp" alt="Ferrari F50 and LaFerrari"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">01 / Ferrari F50 &amp; LaFerrari</figcaption>
       </figure>
       <figure class="group md:col-span-5 md:mt-16">
-        <div class="aspect-[4/3] overflow-hidden"><img class="img-cover lift" src="public/showcase/ferrari-f50/05.webp" alt="Ferrari F50"></div>
+        <div class="aspect-[4/3] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/ferrari-f50/05.webp" alt="Ferrari F50"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">02 / Ferrari F50</figcaption>
       </figure>
       <!-- bottom pair — centred and set close together -->
       <figure class="group md:col-span-5 md:col-start-2">
-        <div class="aspect-[4/5] overflow-hidden"><img class="img-cover lift" src="public/showcase/porsche-carrera-gt/01.webp" alt="Carrera GT"></div>
+        <div class="aspect-[4/5] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/porsche-carrera-gt/01.webp" alt="Carrera GT"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">03 / Porsche Carrera GT</figcaption>
       </figure>
       <figure class="group md:col-span-5 md:col-start-7 md:mt-8">
-        <div class="aspect-[16/10] overflow-hidden"><img class="img-cover lift object-[68%_center]" src="public/showcase/mclaren-senna/05.webp" alt="McLaren Senna"></div>
+        <div class="aspect-[16/10] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift object-[68%_center]" src="public/showcase/mclaren-senna/05.webp" alt="McLaren Senna"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">04 / McLaren Senna</figcaption>
       </figure>
     </div>
@@ -761,15 +810,15 @@
     <!-- group brand marks — the identity row lifted from the original layout -->
     <div class="grid grid-cols-1 items-center gap-12 sm:grid-cols-3 sm:gap-8">
       <a href="#" class="group flex flex-col items-center gap-5 text-center">
-        <div class="flex h-12 items-center md:h-14"><img src="public/logo-usa-trim.png" alt="GTA Motorcars USA" class="h-10 w-auto object-contain md:h-11" style="filter:invert(1)" /></div>
+        <div class="flex h-12 items-center md:h-14"><img loading="lazy" decoding="async" src="public/logo-usa-trim.png" alt="GTA Motorcars USA" class="h-10 w-auto object-contain md:h-11" style="filter:invert(1)" /></div>
         <span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-mut transition-colors group-hover:text-hg">Fort Lauderdale, USA</span>
       </a>
       <a href="https://www.gtamotorcars.com" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-5 text-center">
-        <div class="flex h-12 items-center md:h-14"><img src="public/gta-motorcars-inc-trim.png" alt="GTA Motorcars Inc." class="h-10 w-auto object-contain md:h-11" style="filter:invert(1)" /></div>
+        <div class="flex h-12 items-center md:h-14"><img loading="lazy" decoding="async" src="public/gta-motorcars-inc-trim.png" alt="GTA Motorcars Inc." class="h-10 w-auto object-contain md:h-11" style="filter:invert(1)" /></div>
         <span class="inline-flex items-center gap-1.5 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-mut transition-colors group-hover:text-hg">Toronto, Canada <span aria-hidden>&#8599;</span></span>
       </a>
       <a href="https://motorcarlease.com" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-5 text-center">
-        <div class="flex h-12 items-center md:h-14"><img src="public/motorcarlease.svg" alt="MotorCar Lease" class="h-6 w-auto object-contain md:h-7" style="filter:invert(1)" /></div>
+        <div class="flex h-12 items-center md:h-14"><img loading="lazy" decoding="async" src="public/motorcarlease.svg" alt="MotorCar Lease" class="h-6 w-auto object-contain md:h-7" style="filter:invert(1)" /></div>
         <span class="inline-flex items-center gap-1.5 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-mut transition-colors group-hover:text-hg">Financing &amp; leasing partner <span aria-hidden>&#8599;</span></span>
       </a>
     </div>
@@ -977,6 +1026,24 @@
     const frost = () => hdr.classList.toggle("frosted", window.scrollY > 48);
     window.addEventListener("scroll", frost, { passive: true });
     frost();
+  }
+
+  // Hamburger menu (used in the scrolled/mini header and on mobile).
+  const navToggle = document.getElementById("nav-toggle");
+  const navMenu = document.getElementById("nav-menu");
+  if (navToggle && navMenu) {
+    const icMenu = navToggle.querySelector(".ic-menu");
+    const icClose = navToggle.querySelector(".ic-close");
+    const setMenu = (open) => {
+      navMenu.classList.toggle("hidden", !open);
+      icMenu.classList.toggle("hidden", open);
+      icClose.classList.toggle("hidden", !open);
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.style.overflow = open ? "hidden" : "";
+    };
+    navToggle.addEventListener("click", () => setMenu(navMenu.classList.contains("hidden")));
+    navMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
   }
 </script>
 </body>
