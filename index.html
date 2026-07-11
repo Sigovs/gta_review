@@ -69,7 +69,7 @@
   .ct-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;
     transform-origin:center;backface-visibility:hidden;cursor:pointer;-webkit-user-drag:none;
     box-shadow:0 34px 70px -24px rgba(0,0,0,.75);
-    transition:transform .8s cubic-bezier(.4,2,.3,1), opacity .8s ease;}
+    transition:transform 1s cubic-bezier(.16,1,.3,1), opacity 1s cubic-bezier(.16,1,.3,1);}
   .ct-word{display:inline-block;margin-right:.26em;opacity:0;filter:blur(8px);transform:translateY(9px);
     transition:opacity .5s ease, filter .5s ease, transform .5s cubic-bezier(.16,1,.3,1);}
   .ct-word.ct-on{opacity:1;filter:blur(0);transform:none;}
@@ -1141,19 +1141,19 @@
     });
     const n = DATA.length;
     let active = 0, wordTimers = [];
-    // gap grows with the stack width (ported from the original component's calculateGap)
-    const gapFor = (w) => Math.min(Math.max(w * 0.15, 34), 88);
+    // neighbours sit just behind the active card — a quiet stack, not a fan
+    const gapFor = (w) => Math.min(Math.max(w * 0.085, 22), 52);
     const layout = () => {
       const gap = gapFor(ctStack.offsetWidth || 480);
-      const stick = gap * 0.8;
+      const stick = gap * 0.55;
       imgs.forEach((im, i) => {
         const isActive = i === active;
         const isLeft = (active - 1 + n) % n === i;
         const isRight = (active + 1) % n === i;
-        let z = 1, op = 0, tf = "translateX(0) translateY(0) scale(.8) rotateY(0deg)";
-        if (isActive)      { z = 3; op = 1; tf = "translateX(0px) translateY(0px) scale(1) rotateY(0deg)"; }
-        else if (isLeft)   { z = 2; op = 1; tf = `translateX(-${gap}px) translateY(-${stick}px) scale(.85) rotateY(15deg)`; }
-        else if (isRight)  { z = 2; op = 1; tf = `translateX(${gap}px) translateY(-${stick}px) scale(.85) rotateY(-15deg)`; }
+        let z = 1, op = 0, tf = "translateX(0) translateY(0) scale(.86) rotateY(0deg)";
+        if (isActive)      { z = 3; op = 1;  tf = "translateX(0px) translateY(0px) scale(1) rotateY(0deg)"; }
+        else if (isLeft)   { z = 2; op = .5; tf = `translateX(-${gap}px) translateY(-${stick}px) scale(.9) rotateY(8deg)`; }
+        else if (isRight)  { z = 2; op = .5; tf = `translateX(${gap}px) translateY(-${stick}px) scale(.9) rotateY(-8deg)`; }
         im.style.zIndex = z; im.style.opacity = op; im.style.transform = tf;
       });
     };
