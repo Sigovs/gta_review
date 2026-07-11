@@ -64,12 +64,7 @@
   }
   .vlabel{writing-mode:vertical-rl;text-orientation:mixed;}
 
-  /* ---- Circular testimonials (rotating image stack + word-reveal quote) ---- */
-  .ct-stack{perspective:1200px;}
-  .ct-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;
-    transform-origin:center;backface-visibility:hidden;cursor:pointer;-webkit-user-drag:none;
-    box-shadow:0 34px 70px -24px rgba(0,0,0,.75);
-    transition:transform 1s cubic-bezier(.16,1,.3,1), opacity 1s cubic-bezier(.16,1,.3,1);}
+  /* ---- Testimonials (word-by-word blur-in quote) ---- */
   .ct-word{display:inline-block;margin-right:.26em;opacity:0;filter:blur(8px);transform:translateY(9px);
     transition:opacity .5s ease, filter .5s ease, transform .5s cubic-bezier(.16,1,.3,1);}
   .ct-word.ct-on{opacity:1;filter:blur(0);transform:none;}
@@ -715,49 +710,41 @@
   </div>
 </section>
 
-<!-- ============================ 06 · TESTIMONIALS — circular image stack ============================ -->
+<!-- ============================ 06 · TESTIMONIALS — centered text carousel ============================ -->
 <section id="testimonials" class="relative overflow-hidden bg-panel/20 py-24 md:py-32">
-  <span class="ghost-num pointer-events-none absolute -top-8 right-2 text-[14rem] md:right-10 md:text-[22rem]">06</span>
-  <div class="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-14 px-6 md:px-10 lg:grid-cols-12 lg:gap-14">
+  <span class="ghost-num pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2 text-[14rem] md:text-[22rem]">06</span>
+  <div class="relative z-10 mx-auto max-w-[64rem] px-6 text-center md:px-10">
 
-    <!-- left — story lifted from the original showroom copy -->
-    <div class="lg:col-span-5" data-step>
+    <!-- header + paragraph, centred -->
+    <div data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">06 / In Their Words</span>
-      <span class="mt-6 block h-px w-12 bg-hg/70"></span>
+      <span class="mx-auto mt-6 block h-px w-12 bg-hg/70"></span>
       <h2 class="mt-7 font-display text-4xl font-500 leading-[1.08] text-txt md:text-6xl">A Second Showroom.<br><span class="italic text-hg">Same Standard</span></h2>
-      <p class="mt-7 max-w-[44ch] text-[1.05rem] leading-relaxed text-mut">
+      <p class="mx-auto mt-7 max-w-[52ch] text-[1.05rem] leading-relaxed text-mut">
         GTA Motorcars began in the Greater Toronto Area, built on referrals,
         repeat clients, and cars worth keeping. Fort Lauderdale is the second
         showroom — same people, same standard, warmer weather.
       </p>
-      <a href="#" class="group mt-9 inline-flex items-center gap-2 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt transition-colors hover:text-hg">
-        Our story <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
-      </a>
     </div>
 
-    <!-- right — circular testimonials: dramatic fanned stack (their layout, our style) -->
-    <div class="lg:col-span-7" data-rise>
-      <!-- rotating image stack: active centre, neighbours fan up-and-out -->
-      <div id="ct-stack" class="ct-stack relative mx-auto h-[18rem] w-full max-w-[36rem] sm:h-[22rem] md:h-[25rem]"></div>
-      <!-- quote / attribution / controls -->
-      <div class="mt-14 md:mt-16">
-        <span aria-hidden class="block font-display text-6xl leading-[0.6] text-hg/35">&ldquo;</span>
-        <blockquote id="ct-quote" class="mt-3 min-h-[7.5rem] font-display text-xl leading-[1.55] text-txt sm:min-h-[8rem] md:min-h-[8.5rem] md:text-[1.7rem]"></blockquote>
-        <div class="mt-9 flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <div id="ct-name" class="font-display text-xl text-hg"></div>
-            <div id="ct-desig" class="mt-1.5 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-mut"></div>
-          </div>
-          <div class="flex items-center gap-3">
-            <button id="ct-prev" type="button" aria-label="Previous testimonial" class="flex h-12 w-12 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:bg-hg hover:text-ink">
-              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
-            </button>
-            <button id="ct-next" type="button" aria-label="Next testimonial" class="flex h-12 w-12 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:bg-hg hover:text-ink">
-              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
-            </button>
-          </div>
+    <!-- one review, centred; arrows flank it left & right -->
+    <div class="mt-16 flex items-center justify-center gap-4 sm:gap-8 md:mt-20 md:gap-12" data-rise>
+      <button id="ct-prev" type="button" aria-label="Previous testimonial" class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:bg-hg hover:text-ink">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+
+      <div class="min-w-0 flex-1">
+        <span aria-hidden class="block font-display text-6xl leading-[0.5] text-hg/35">&ldquo;</span>
+        <blockquote id="ct-quote" class="mx-auto mt-5 min-h-[8.5rem] max-w-[44ch] font-display text-xl leading-[1.55] text-txt sm:min-h-[8rem] md:text-[1.9rem]"></blockquote>
+        <div class="mt-8">
+          <div id="ct-name" class="font-display text-xl text-hg"></div>
+          <div id="ct-desig" class="mt-1.5 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-mut"></div>
         </div>
       </div>
+
+      <button id="ct-next" type="button" aria-label="Next testimonial" class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:bg-hg hover:text-ink">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
     </div>
 
   </div>
@@ -1112,52 +1099,23 @@
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
   }
 
-  // Circular testimonials — rotating image stack (active centre, neighbours peel
-  // back with a slight rotateY) + a word-by-word blur-in quote.
-  const ctStack = document.getElementById("ct-stack");
-  if (ctStack) {
+  // Testimonials — centred text carousel with a word-by-word blur-in quote.
+  const qEl = document.getElementById("ct-quote");
+  if (qEl) {
     const DATA = [
-      { img: "public/inventory/2023-porsche-911-gt3-rs-weissach.webp",
-        quote: "Found the exact Weissach-spec GT3 RS I'd been chasing for two years. No games on the price, paperwork done in a day, delivered to my door.",
+      { quote: "Found the exact Weissach-spec GT3 RS I'd been chasing for two years. No games on the price, paperwork done in a day, delivered to my door.",
         name: "Michael Reyes", desig: "2023 Porsche 911 GT3 RS · Miami, FL" },
-      { img: "public/inventory/2022-ferrari-488-pista-rosso-corsa.webp",
-        quote: "They knew the car's history better than the last owner did. That kind of honesty is exactly why I came back for a second.",
+      { quote: "They knew the car's history better than the last owner did. That kind of honesty is exactly why I came back for a second.",
         name: "David Laurent", desig: "2022 Ferrari 488 Pista · Palm Beach, FL" },
-      { img: "public/inventory/2024-lamborghini-revuelto.webp",
-        quote: "First Revuelto in the state and they held it for me while I flew in. Treated a stranger like a long-standing client.",
+      { quote: "First Revuelto in the state and they held it for me while I flew in. Treated a stranger like a long-standing client.",
         name: "Anton Volkov", desig: "2024 Lamborghini Revuelto · Naples, FL" },
-      { img: "public/inventory/2023-mclaren-765lt-spider.webp",
-        quote: "Sold them my 720S and drove home in the 765LT the same afternoon. One conversation, one fair number, done.",
+      { quote: "Sold them my 720S and drove home in the 765LT the same afternoon. One conversation, one fair number, done.",
         name: "James Whitfield", desig: "2023 McLaren 765LT Spider · Fort Lauderdale, FL" },
     ];
-    const qEl = document.getElementById("ct-quote");
     const nEl = document.getElementById("ct-name");
     const dEl = document.getElementById("ct-desig");
-    const imgs = DATA.map((d) => {
-      const im = document.createElement("img");
-      im.className = "ct-img"; im.src = d.img; im.alt = d.name;
-      im.loading = "lazy"; im.decoding = "async"; im.draggable = false;
-      ctStack.appendChild(im); return im;
-    });
     const n = DATA.length;
     let active = 0, wordTimers = [];
-    // neighbours sit just behind the active card — a quiet stack, not a fan
-    const gapFor = (w) => Math.min(Math.max(w * 0.085, 22), 52);
-    const layout = () => {
-      const gap = gapFor(ctStack.offsetWidth || 480);
-      const stick = gap * 0.55;
-      imgs.forEach((im, i) => {
-        const isActive = i === active;
-        const isLeft = (active - 1 + n) % n === i;
-        const isRight = (active + 1) % n === i;
-        let z = 1, op = 0, tf = "translateX(0) translateY(0) scale(.86) rotateY(0deg)";
-        if (isActive)      { z = 3; op = 1;  tf = "translateX(0px) translateY(0px) scale(1) rotateY(0deg)"; }
-        else if (isLeft)   { z = 2; op = .5; tf = `translateX(-${gap}px) translateY(-${stick}px) scale(.9) rotateY(8deg)`; }
-        else if (isRight)  { z = 2; op = .5; tf = `translateX(${gap}px) translateY(-${stick}px) scale(.9) rotateY(-8deg)`; }
-        im.style.zIndex = z; im.style.opacity = op; im.style.transform = tf;
-      });
-    };
-    window.addEventListener("resize", layout, { passive: true });
     const renderText = () => {
       const d = DATA[active];
       nEl.textContent = d.name; dEl.textContent = d.desig;
@@ -1172,12 +1130,11 @@
     };
     let timer;
     const auto = () => { clearInterval(timer); timer = setInterval(() => go(1), 6500); };
-    const set = (i) => { active = (i + n) % n; layout(); renderText(); auto(); };
+    const set = (i) => { active = (i + n) % n; renderText(); auto(); };
     const go = (dir) => set(active + dir);
-    imgs.forEach((im, i) => im.addEventListener("click", () => { if (i !== active) set(i); }));
     document.getElementById("ct-next").addEventListener("click", () => go(1));
     document.getElementById("ct-prev").addEventListener("click", () => go(-1));
-    layout(); renderText(); auto();
+    renderText(); auto();
   }
 </script>
 </body>
