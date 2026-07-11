@@ -792,22 +792,23 @@
 
     <!-- offset magazine spread: big landscape left, two stacked frames right,
          nudged down for the deliberate off-grid magazine rhythm -->
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-start md:gap-8" data-cards>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-start md:gap-8">
+      <!-- each frame rises on its own as it scrolls into view (independent, not a group) -->
       <!-- lead: the F50 + LaFerrari nose-to-nose (restored from the original set) -->
-      <figure class="group md:col-span-7">
+      <figure class="group md:col-span-7" data-rise>
         <div class="aspect-[16/10] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/f50-laferrari/02.webp" alt="Ferrari F50 and LaFerrari"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">01 / Ferrari F50 &amp; LaFerrari</figcaption>
       </figure>
-      <figure class="group md:col-span-5 md:mt-16">
+      <figure class="group md:col-span-5 md:mt-16" data-rise>
         <div class="aspect-[4/3] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/ferrari-f50/05.webp" alt="Ferrari F50"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">02 / Ferrari F50</figcaption>
       </figure>
       <!-- bottom pair — centred and set close together -->
-      <figure class="group md:col-span-5 md:col-start-2">
+      <figure class="group md:col-span-5 md:col-start-2" data-rise>
         <div class="aspect-[4/5] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/porsche-carrera-gt/01.webp" alt="Carrera GT"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">03 / Porsche Carrera GT</figcaption>
       </figure>
-      <figure class="group md:col-span-5 md:col-start-7 md:mt-8">
+      <figure class="group md:col-span-5 md:col-start-7 md:mt-8" data-rise>
         <div class="aspect-[16/10] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift object-[68%_center]" src="public/showcase/mclaren-senna/05.webp" alt="McLaren Senna"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">04 / McLaren Senna</figcaption>
       </figure>
@@ -1001,7 +1002,7 @@
       const total = cgtSec.offsetHeight - window.innerHeight;
       const scrolled = Math.min(total, Math.max(0, -cgtSec.getBoundingClientRect().top));
       const prog = total > 0 ? scrolled / total : 0;
-      const fade = Math.min(1, Math.max(0, (prog - 0.08) / 0.16)); // darkens just before the Lookbook covers it
+      const fade = Math.min(1, Math.max(0, (prog - 0.06) / 0.34)); // darkens slowly as the Lookbook climbs in
       cgtFade.style.opacity = fade.toFixed(3);
       cTick = false;
     };
