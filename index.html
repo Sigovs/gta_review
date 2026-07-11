@@ -290,7 +290,7 @@
   <div class="absolute inset-0 z-10 flex items-center">
     <div class="mx-auto w-full max-w-[1400px] px-6 md:px-10" data-step>
       <span class="mb-6 block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">GTA / Collection 01</span>
-      <h1 class="max-w-[16ch] font-display text-[2.4rem] font-500 italic leading-[1.02] text-txt md:text-[3.6rem]">
+      <h1 class="max-w-[15ch] font-display text-[2.9rem] font-500 italic leading-[1.0] text-txt md:text-[5.2rem] lg:text-[6rem]">
         A private floor of cars worth&nbsp;keeping.
       </h1>
       <a href="#collection" class="group mt-9 inline-flex w-fit items-center gap-3 bg-hg px-8 py-4 font-mono text-[0.72rem] font-700 uppercase tracking-[0.2em] text-ink shadow-lg shadow-black/30 transition-colors duration-300 hover:bg-hg2">
@@ -750,32 +750,42 @@
   </div>
 </section>
 
-<!-- ============================ 07 · SELL / CONSIGN — full-width image break, centered ============================ -->
-<section class="blend relative flex min-h-[72vh] w-full items-center justify-center overflow-hidden bg-ink md:min-h-[82vh]">
-  <img loading="lazy" decoding="async" class="parallax" data-parallax="1" src="public/showcase/porsche-carrera-gt/04.webp" alt="Silver Porsche Carrera GT" />
-  <!-- overall tint + centered scrim so the centered copy stays legible over the car -->
-  <div class="absolute inset-0 bg-black/35"></div>
-  <div class="absolute inset-0" style="background:radial-gradient(60% 80% at 50% 50%, rgba(12,13,15,.72) 0%, rgba(12,13,15,.3) 52%, rgba(12,13,15,0) 82%)"></div>
-
-  <div class="relative z-10 mx-auto flex max-w-[46rem] flex-col items-center px-6 text-center" data-step>
-    <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">07 / Acquisition</span>
-    <span class="mt-6 block h-px w-16 bg-hg/70"></span>
-    <h2 class="mt-7 font-display text-4xl font-500 italic leading-[1.04] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">Ready to part with&nbsp;yours?</h2>
-    <p class="mt-6 max-w-[44ch] text-[1.05rem] leading-relaxed text-txt/85 [text-shadow:0_1px_12px_rgba(0,0,0,.6)]">
-      We buy collector and exotic cars outright — one fair offer, a discreet
-      close, and payment direct to you.
-    </p>
-    <a href="#" class="group mt-9 inline-flex items-center gap-3 border border-hg/50 px-8 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink">
-      Get an offer <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
-    </a>
+<!-- ============================ 07 → 08 · Carrera GT pins & darkens; the Lookbook climbs up over it ============================ -->
+<section id="consign" class="relative bg-ink">
+  <!-- Carrera GT — pinned; JS dissolves it into the ground as you scroll on -->
+  <div class="sticky top-0 z-0 h-screen w-full overflow-hidden" style="border-radius:0">
+    <img loading="lazy" decoding="async" class="img-cover" src="public/showcase/porsche-carrera-gt/04.webp" alt="Silver Porsche Carrera GT" style="object-position:50% 46%" />
+    <div class="absolute inset-0 bg-black/35"></div>
+    <div class="absolute inset-0" style="background:radial-gradient(60% 80% at 50% 50%, rgba(12,13,15,.72) 0%, rgba(12,13,15,.3) 52%, rgba(12,13,15,0) 82%)"></div>
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-28" style="background:linear-gradient(to bottom,#0c0d0f,rgba(12,13,15,0))"></div>
+    <div id="cgt-fade" class="pointer-events-none absolute inset-0 bg-ink" style="opacity:0"></div>
   </div>
-</section>
 
-<!-- ============================ 08 · EDITORIAL LOOKBOOK (magazine spread) ============================ -->
-<section id="lookbook" class="relative overflow-hidden bg-panel/30 py-24 md:py-32">
-  <span class="ghost-num pointer-events-none absolute -top-8 left-2 text-[14rem] md:left-10 md:text-[22rem]">08</span>
-  <div class="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10">
-    <div class="mb-14" data-step>
+  <!-- 07 · Acquisition copy over the Carrera GT -->
+  <div class="relative z-10 -mt-[100vh]">
+    <div class="mx-auto flex min-h-screen max-w-[1400px] items-center justify-center px-6 md:px-10">
+      <div class="mx-auto flex max-w-[46rem] flex-col items-center text-center" data-step>
+        <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">07 / Acquisition</span>
+        <span class="mt-6 block h-px w-16 bg-hg/70"></span>
+        <h2 class="mt-7 font-display text-4xl font-500 italic leading-[1.04] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">Ready to part with&nbsp;yours?</h2>
+        <p class="mt-6 max-w-[44ch] text-[1.05rem] leading-relaxed text-txt/85 [text-shadow:0_1px_12px_rgba(0,0,0,.6)]">
+          We buy collector and exotic cars outright — one fair offer, a discreet
+          close, and payment direct to you.
+        </p>
+        <a href="#" class="group mt-9 inline-flex items-center gap-3 border border-hg/50 px-8 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink">
+          Get an offer <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+        </a>
+      </div>
+    </div>
+    <div class="h-[35vh]"></div>
+  </div>
+
+  <!-- 08 · Lookbook — climbs up over the darkened Carrera GT, keeping its magazine layout (ghost 08 rises with it) -->
+  <div class="relative z-20">
+    <section id="lookbook" class="relative overflow-hidden bg-ink py-24 md:py-32">
+      <span class="ghost-num pointer-events-none absolute -top-8 left-2 text-[14rem] md:left-10 md:text-[22rem]">08</span>
+      <div class="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10">
+        <div class="mb-14" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">08 / Selected Work</span>
       <h2 class="mt-5 font-display text-4xl font-500 italic text-txt md:text-6xl">Lookbook</h2>
     </div>
@@ -801,7 +811,9 @@
         <div class="aspect-[16/10] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift object-[68%_center]" src="public/showcase/mclaren-senna/05.webp" alt="McLaren Senna"></div>
         <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">04 / McLaren Senna</figcaption>
       </figure>
-    </div>
+        </div>
+      </div>
+    </section>
   </div>
 </section>
 
@@ -977,6 +989,26 @@
     window.addEventListener("scroll", sOn, { passive: true });
     window.addEventListener("resize", sOn, { passive: true });
     sUpd();
+  }
+
+  // Acquisition → Lookbook — same focus as The Standard: the pinned Carrera GT
+  // darkens as the Lookbook climbs up over it.
+  const cgtSec = document.getElementById("consign");
+  const cgtFade = document.getElementById("cgt-fade");
+  if (cgtSec && cgtFade && !reduce) {
+    let cTick = false;
+    const cUpd = () => {
+      const total = cgtSec.offsetHeight - window.innerHeight;
+      const scrolled = Math.min(total, Math.max(0, -cgtSec.getBoundingClientRect().top));
+      const prog = total > 0 ? scrolled / total : 0;
+      const fade = Math.min(1, Math.max(0, (prog - 0.08) / 0.16)); // darkens just before the Lookbook covers it
+      cgtFade.style.opacity = fade.toFixed(3);
+      cTick = false;
+    };
+    const cOn = () => { if (!cTick) { cTick = true; requestAnimationFrame(cUpd); } };
+    window.addEventListener("scroll", cOn, { passive: true });
+    window.addEventListener("resize", cOn, { passive: true });
+    cUpd();
   }
 
   // Featured: right arrow scrolls through cars; in-photo arrows page that car's
