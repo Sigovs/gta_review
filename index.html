@@ -64,6 +64,16 @@
   }
   .vlabel{writing-mode:vertical-rl;text-orientation:mixed;}
 
+  /* ---- Circular testimonials (rotating image stack + word-reveal quote) ---- */
+  .ct-stack{perspective:1200px;}
+  .ct-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;
+    transform-origin:center;backface-visibility:hidden;cursor:pointer;-webkit-user-drag:none;
+    box-shadow:0 34px 70px -24px rgba(0,0,0,.75);
+    transition:transform .85s cubic-bezier(.16,1,.3,1), opacity .85s cubic-bezier(.16,1,.3,1);}
+  .ct-word{display:inline-block;margin-right:.26em;opacity:0;filter:blur(8px);transform:translateY(9px);
+    transition:opacity .5s ease, filter .5s ease, transform .5s cubic-bezier(.16,1,.3,1);}
+  .ct-word.ct-on{opacity:1;filter:blur(0);transform:none;}
+
   /* ---- Reveal animations (IntersectionObserver adds .in) ---- */
   [data-rise]{opacity:0;transform:translateY(80px) scale(1.03);filter:blur(14px);
     transition:opacity 1.25s cubic-bezier(.16,1,.3,1), transform 1.25s cubic-bezier(.16,1,.3,1), filter 1.25s cubic-bezier(.16,1,.3,1);}
@@ -705,7 +715,55 @@
   </div>
 </section>
 
-<!-- ============================ 06 · SELL / CONSIGN — full-width image break, centered ============================ -->
+<!-- ============================ 06 · TESTIMONIALS — circular image stack ============================ -->
+<section id="testimonials" class="relative overflow-hidden bg-panel/20 py-24 md:py-32">
+  <span class="ghost-num pointer-events-none absolute -top-8 right-2 text-[14rem] md:right-10 md:text-[22rem]">06</span>
+  <div class="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-14 px-6 md:px-10 lg:grid-cols-12 lg:gap-14">
+
+    <!-- left — story lifted from the original showroom copy -->
+    <div class="lg:col-span-5" data-step>
+      <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">06 / In Their Words</span>
+      <span class="mt-6 block h-px w-12 bg-hg/70"></span>
+      <h2 class="mt-7 font-display text-4xl font-500 leading-[1.08] text-txt md:text-6xl">A Second Showroom.<br><span class="italic text-hg">Same Standard</span></h2>
+      <p class="mt-7 max-w-[44ch] text-[1.05rem] leading-relaxed text-mut">
+        GTA Motorcars began in the Greater Toronto Area, built on referrals,
+        repeat clients, and cars worth keeping. Fort Lauderdale is the second
+        showroom — same people, same standard, warmer weather.
+      </p>
+      <a href="#" class="group mt-9 inline-flex items-center gap-2 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt transition-colors hover:text-hg">
+        Our story <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+      </a>
+    </div>
+
+    <!-- right — circular testimonials widget -->
+    <div class="lg:col-span-7" data-rise>
+      <div class="flex flex-col items-stretch gap-10 sm:flex-row sm:items-center sm:gap-12">
+        <!-- rotating image stack -->
+        <div id="ct-stack" class="ct-stack relative aspect-[4/3] w-full shrink-0 sm:w-[46%]"></div>
+        <!-- quote / attribution / controls -->
+        <div class="flex min-w-0 flex-1 flex-col">
+          <span aria-hidden class="font-display text-5xl leading-none text-hg/40">&ldquo;</span>
+          <blockquote id="ct-quote" class="mt-1 font-display text-xl leading-[1.5] text-txt md:text-[1.55rem]"></blockquote>
+          <div class="mt-7">
+            <div id="ct-name" class="font-display text-lg text-hg"></div>
+            <div id="ct-desig" class="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-mut"></div>
+          </div>
+          <div class="mt-9 flex items-center gap-3">
+            <button id="ct-prev" type="button" aria-label="Previous testimonial" class="flex h-11 w-11 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:text-hg">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button id="ct-next" type="button" aria-label="Next testimonial" class="flex h-11 w-11 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:text-hg">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ 07 · SELL / CONSIGN — full-width image break, centered ============================ -->
 <section class="blend relative flex min-h-[72vh] w-full items-center justify-center overflow-hidden bg-ink md:min-h-[82vh]">
   <img loading="lazy" decoding="async" class="parallax" data-parallax="1" src="public/showcase/porsche-carrera-gt/04.webp" alt="Silver Porsche Carrera GT" />
   <!-- overall tint + centered scrim so the centered copy stays legible over the car -->
@@ -713,7 +771,7 @@
   <div class="absolute inset-0" style="background:radial-gradient(60% 80% at 50% 50%, rgba(12,13,15,.72) 0%, rgba(12,13,15,.3) 52%, rgba(12,13,15,0) 82%)"></div>
 
   <div class="relative z-10 mx-auto flex max-w-[46rem] flex-col items-center px-6 text-center" data-step>
-    <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">06 / Acquisition</span>
+    <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">07 / Acquisition</span>
     <span class="mt-6 block h-px w-16 bg-hg/70"></span>
     <h2 class="mt-7 font-display text-4xl font-500 italic leading-[1.04] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">Ready to part with&nbsp;yours?</h2>
     <p class="mt-6 max-w-[44ch] text-[1.05rem] leading-relaxed text-txt/85 [text-shadow:0_1px_12px_rgba(0,0,0,.6)]">
@@ -726,12 +784,12 @@
   </div>
 </section>
 
-<!-- ============================ 07 · EDITORIAL LOOKBOOK (magazine spread) ============================ -->
+<!-- ============================ 08 · EDITORIAL LOOKBOOK (magazine spread) ============================ -->
 <section id="lookbook" class="relative overflow-hidden bg-panel/30 py-24 md:py-32">
-  <span class="ghost-num pointer-events-none absolute -top-8 left-2 text-[14rem] md:left-10 md:text-[22rem]">07</span>
+  <span class="ghost-num pointer-events-none absolute -top-8 left-2 text-[14rem] md:left-10 md:text-[22rem]">08</span>
   <div class="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10">
     <div class="mb-14" data-step>
-      <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">07 / Selected Work</span>
+      <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">08 / Selected Work</span>
       <h2 class="mt-5 font-display text-4xl font-500 italic text-txt md:text-6xl">Lookbook</h2>
     </div>
 
@@ -764,7 +822,7 @@
 <section id="visit" class="relative py-24 md:py-32">
   <div class="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 px-6 md:px-10 lg:grid-cols-12">
     <div class="lg:col-span-6" data-step>
-      <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">08 / The Showroom</span>
+      <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">09 / The Showroom</span>
       <span class="mt-6 block h-px w-16 bg-hg/70"></span>
       <h2 class="mt-7 font-display text-5xl font-500 leading-none text-txt md:text-7xl">Fort&nbsp;Lauderdale</h2>
       <p class="mt-6 max-w-[40ch] text-[1.02rem] leading-relaxed text-mut">
@@ -1052,6 +1110,69 @@
     navToggle.addEventListener("click", () => setMenu(navMenu.classList.contains("hidden")));
     navMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+  }
+
+  // Circular testimonials — rotating image stack (active centre, neighbours peel
+  // back with a slight rotateY) + a word-by-word blur-in quote.
+  const ctStack = document.getElementById("ct-stack");
+  if (ctStack) {
+    const DATA = [
+      { img: "public/inventory/2023-porsche-911-gt3-rs-weissach.webp",
+        quote: "Found the exact Weissach-spec GT3 RS I'd been chasing for two years. No games on the price, paperwork done in a day, delivered to my door.",
+        name: "Michael Reyes", desig: "2023 Porsche 911 GT3 RS · Miami, FL" },
+      { img: "public/inventory/2022-ferrari-488-pista-rosso-corsa.webp",
+        quote: "They knew the car's history better than the last owner did. That kind of honesty is exactly why I came back for a second.",
+        name: "David Laurent", desig: "2022 Ferrari 488 Pista · Palm Beach, FL" },
+      { img: "public/inventory/2024-lamborghini-revuelto.webp",
+        quote: "First Revuelto in the state and they held it for me while I flew in. Treated a stranger like a long-standing client.",
+        name: "Anton Volkov", desig: "2024 Lamborghini Revuelto · Naples, FL" },
+      { img: "public/inventory/2023-mclaren-765lt-spider.webp",
+        quote: "Sold them my 720S and drove home in the 765LT the same afternoon. One conversation, one fair number, done.",
+        name: "James Whitfield", desig: "2023 McLaren 765LT Spider · Fort Lauderdale, FL" },
+    ];
+    const qEl = document.getElementById("ct-quote");
+    const nEl = document.getElementById("ct-name");
+    const dEl = document.getElementById("ct-desig");
+    const imgs = DATA.map((d) => {
+      const im = document.createElement("img");
+      im.className = "ct-img"; im.src = d.img; im.alt = d.name;
+      im.loading = "lazy"; im.decoding = "async"; im.draggable = false;
+      ctStack.appendChild(im); return im;
+    });
+    const n = DATA.length;
+    let active = 0, wordTimers = [];
+    const layout = () => {
+      imgs.forEach((im, i) => {
+        const isActive = i === active;
+        const isLeft = (active - 1 + n) % n === i;
+        const isRight = (active + 1) % n === i;
+        let z = 1, op = 0, tf = "translateX(0) scale(.78) rotateY(0deg)";
+        if (isActive)      { z = 4; op = 1;   tf = "translateX(0) translateY(0) scale(1) rotateY(0deg)"; }
+        else if (isLeft)   { z = 3; op = .55; tf = "translateX(-15%) translateY(-6%) scale(.86) rotateY(13deg)"; }
+        else if (isRight)  { z = 3; op = .55; tf = "translateX(15%) translateY(-6%) scale(.86) rotateY(-13deg)"; }
+        im.style.zIndex = z; im.style.opacity = op; im.style.transform = tf;
+      });
+    };
+    const renderText = () => {
+      const d = DATA[active];
+      nEl.textContent = d.name; dEl.textContent = d.desig;
+      wordTimers.forEach(clearTimeout); wordTimers = [];
+      qEl.innerHTML = "";
+      d.quote.split(" ").forEach((w, i) => {
+        const s = document.createElement("span");
+        s.className = "ct-word"; s.textContent = w;
+        qEl.appendChild(s);
+        wordTimers.push(setTimeout(() => s.classList.add("ct-on"), 28 * i));
+      });
+    };
+    let timer;
+    const auto = () => { clearInterval(timer); timer = setInterval(() => go(1), 6500); };
+    const set = (i) => { active = (i + n) % n; layout(); renderText(); auto(); };
+    const go = (dir) => set(active + dir);
+    imgs.forEach((im, i) => im.addEventListener("click", () => { if (i !== active) set(i); }));
+    document.getElementById("ct-next").addEventListener("click", () => go(1));
+    document.getElementById("ct-prev").addEventListener("click", () => go(-1));
+    layout(); renderText(); auto();
   }
 </script>
 </body>
