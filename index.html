@@ -215,12 +215,12 @@
   #nav-menu.open nav:hover a:hover{opacity:1;}
   /* Main header nav — red chevron on hover, like the drop-down */
   .hnav a{position:relative;transition:color .3s ease, transform .35s cubic-bezier(.16,1,.3,1);}
-  .hnav a::before{content:"\203A";position:absolute;right:100%;top:calc(50% + 1px);margin-right:.18em;
-    font-size:1.7em;line-height:0;color:#96252d;font-weight:600;opacity:0;
-    transform:translateY(-50%) translateX(-.3em);
+  .hnav a::before{content:"\203A";position:absolute;right:100%;top:0;bottom:0;
+    display:flex;align-items:center;margin-right:.28em;line-height:1;
+    font-size:1.5em;color:#96252d;font-weight:600;opacity:0;transform:translateX(-.3em);
     transition:opacity .3s ease, transform .35s cubic-bezier(.16,1,.3,1);}
   .hnav a:hover{color:#c6ccd2;transform:translateX(.5em);}
-  .hnav a:hover::before{opacity:1;transform:translateY(-50%) translateX(0);}
+  .hnav a:hover::before{opacity:1;transform:translateX(0);}
   /* Smooth open/close for the full-screen menu */
   #nav-menu{opacity:0;visibility:hidden;transition:opacity .5s cubic-bezier(.16,1,.3,1), visibility .5s;}
   #nav-menu.open{opacity:1;visibility:visible;}
@@ -387,7 +387,7 @@
       <!-- big photo, 8 cols, with in-photo gallery -->
       <figure class="group relative lg:col-span-8" data-rise>
         <div class="relative aspect-[16/10] overflow-hidden">
-          <img loading="lazy" decoding="async" id="feat-img" class="img-cover transition-opacity duration-300" src="public/inventory/2023-porsche-911-gt3-rs-weissach.webp" alt="Featured car" />
+          <img loading="lazy" decoding="async" id="feat-img" class="img-cover transition-opacity duration-300" src="public/ilusso/porsche-gt3-5933.jpg" alt="Featured car" />
           <!-- gallery arrows inside the photo -->
           <button id="feat-gprev" type="button" aria-label="Previous photo" class="gnav left-3">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg>
@@ -399,7 +399,7 @@
         </div>
         <!-- model name overlaps the image edge -->
         <figcaption class="pointer-events-none absolute -bottom-5 left-4 md:-bottom-7 md:left-8">
-          <span id="feat-cap" class="inline-block rounded-[4px] bg-ink px-4 py-1.5 font-deck text-[1.5rem] font-600 leading-none tracking-[-0.01em] text-txt shadow-[0_10px_30px_rgba(0,0,0,.45)] md:px-6 md:py-2.5 md:text-[2.4rem]">911 GT3&nbsp;RS</span>
+          <span id="feat-cap" class="inline-block rounded-[4px] bg-ink px-4 py-1.5 font-deck text-[1.5rem] font-600 leading-none tracking-[-0.01em] text-txt shadow-[0_10px_30px_rgba(0,0,0,.45)] md:px-6 md:py-2.5 md:text-[2.4rem]">911 GT3</span>
         </figcaption>
       </figure>
 
@@ -407,8 +407,8 @@
       <div class="flex flex-col lg:col-span-4 lg:h-full lg:self-stretch lg:pl-12" data-step>
         <span id="feat-idx" class="inline-block w-fit rounded-[3px] bg-accent px-2 py-0.5 font-mono text-[0.68rem] tracking-[0.12em] text-white">01 / 03</span>
         <div class="mt-5">
-        <h2 id="feat-name" class="font-deck text-[1.7rem] font-600 leading-tight tracking-[-0.015em] text-txt md:text-3xl">2023 Porsche 911&nbsp;GT3&nbsp;RS</h2>
-        <p id="feat-trim" class="mt-2 font-helv text-sm text-mut">Weissach Package</p>
+        <h2 id="feat-name" class="font-deck text-[1.7rem] font-600 leading-tight tracking-[-0.015em] text-txt md:text-3xl">2026 Porsche 911&nbsp;GT3</h2>
+        <p id="feat-trim" class="mt-2 font-helv text-sm text-mut">6-Speed Manual</p>
 
         <dl class="mt-8 divide-y divide-line border-y border-line font-mono text-[0.8rem] uppercase tracking-[0.04em]">
           <div class="flex justify-between py-3"><dt class="text-faint uppercase tracking-[0.12em]">Year</dt><dd id="feat-year" class="text-txt">2023</dd></div>
@@ -456,118 +456,118 @@
       <article class="group" data-rise>
         <a href="#" class="block">
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="2022 Ferrari 488 Pista" />
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/ferrari-488-gtb.jpg" alt="2016 Ferrari 488 GTB" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
             <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
-          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Ferrari 488 Pista</h3>
-            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$549,000</span><span class="text-faint">·</span><span>3,812 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2016 Ferrari 488 GTB</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$279,000</span><span class="text-faint">·</span><span>8,900 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
         <a href="#" class="block">
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="2023 McLaren 765LT Spider" />
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/sf90-spider.jpg" alt="2024 Ferrari SF90 Spider" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
             <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
-          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2023 McLaren 765LT Spider</h3>
-            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$489,000</span><span class="text-faint">·</span><span>2,104 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Ferrari SF90 Spider</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$649,000</span><span class="text-faint">·</span><span>1,150 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
         <a href="#" class="block">
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-lamborghini-revuelto.webp" alt="2024 Lamborghini Revuelto" />
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/db12.jpg" alt="2024 Aston Martin DB12" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
             <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
-          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Lamborghini Revuelto</h3>
-            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$879,000</span><span class="text-faint">·</span><span>612 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Aston Martin DB12</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$289,000</span><span class="text-faint">·</span><span>2,400 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
         <a href="#" class="block">
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="2024 Ferrari SF90 Stradale" />
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/aventador-s.jpg" alt="2018 Lamborghini Aventador S" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
             <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
-          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Ferrari SF90 Stradale</h3>
-            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$729,000</span><span class="text-faint">·</span><span>980 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2018 Lamborghini Aventador S</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$389,000</span><span class="text-faint">·</span><span>6,200 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
         <a href="#" class="block">
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="2022 Lamborghini Huracán STO" />
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/ferrari-296-gts.jpg" alt="2025 Ferrari 296 GTS" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
             <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
-          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Lamborghini Huracán STO</h3>
-            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$429,000</span><span class="text-faint">·</span><span>4,501 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2025 Ferrari 296 GTS</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$459,000</span><span class="text-faint">·</span><span>900 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
         <a href="#" class="block">
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="2023 Ferrari 296 GTB" />
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/vantage-green.jpg" alt="2024 Aston Martin Vantage" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
             <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
-          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2023 Ferrari 296 GTB</h3>
-            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$449,000</span><span class="text-faint">·</span><span>3,300 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Aston Martin Vantage</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$189,000</span><span class="text-faint">·</span><span>3,100 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
         <a href="#" class="block">
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-mclaren-750s-spider.webp" alt="2024 McLaren 750S Spider" />
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/ferrari-f8.jpg" alt="2021 Ferrari F8 Tributo" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
             <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
-          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 McLaren 750S Spider</h3>
-            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$379,000</span><span class="text-faint">·</span><span>1,875 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2021 Ferrari F8 Tributo</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$329,000</span><span class="text-faint">·</span><span>4,700 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
         <a href="#" class="block">
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-turbo-s-cabriolet.webp" alt="2022 Porsche 911 Turbo S" />
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/cullinan.jpg" alt="2026 Rolls-Royce Cullinan" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
             <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
-          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Porsche 911 Turbo S</h3>
-            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$249,000</span><span class="text-faint">·</span><span>8,245 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2026 Rolls-Royce Cullinan</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$459,000</span><span class="text-faint">·</span><span>500 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
         <a href="#" class="block">
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-gt3-touring-paint-to-sample.webp" alt="2022 Porsche 911 GT3 Touring" />
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/urus-performante.jpg" alt="2023 Lamborghini Urus Performante" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
             <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
-          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Porsche 911 GT3 Touring</h3>
-            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$329,000</span><span class="text-faint">·</span><span>5,120 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2023 Lamborghini Urus Performante</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$279,000</span><span class="text-faint">·</span><span>5,400 mi</span></div></div>
         </a>
       </article>
     </div>
@@ -761,51 +761,51 @@
   <div id="sold-rail" class="edge-rail flex gap-6 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none]" data-cards>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-porsche-911-st-heritage-sold.webp" alt="911 S/T">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/porsche-gt2-rs.jpg" alt="Porsche 911 GT2 RS">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2024 Porsche 911 S/T</h4>
-        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Heritage Design</p>
+        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2018 Porsche 911 GT2 RS</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Weissach Package</p>
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-lamborghini-huracan-tecnica-sold.webp" alt="Huracán Tecnica">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/porsche-gt3-rs.jpg" alt="Porsche 911 GT3 RS">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2023 Lamborghini Huracán</h4>
-        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Tecnica</p>
+        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2025 Porsche 911 GT3 RS</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Weissach</p>
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2021-mclaren-600lt-spider-sold.webp" alt="600LT Spider">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/california.jpg" alt="Ferrari California T">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2021 McLaren 600LT</h4>
-        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Spider · Napier Green</p>
+        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2016 Ferrari California T</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Handling Speciale</p>
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-gt3-touring-paint-to-sample.webp" alt="911 GT3 Touring">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/458-italia.jpg" alt="Ferrari 458 Italia">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2022 Porsche 911 GT3</h4>
-        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Touring · Paint-to-Sample</p>
+        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2014 Ferrari 458 Italia</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Rosso Corsa</p>
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="Huracán STO">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/vantage-v8.jpg" alt="Aston Martin Vantage">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2022 Lamborghini Huracán</h4>
-        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">STO · Blu Laufey</p>
+        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2023 Aston Martin Vantage</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">V8</p>
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-          <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="Ferrari 296 GTB">
+          <img loading="lazy" decoding="async" class="img-cover lift" src="public/ilusso/portofino.jpg" alt="Ferrari Portofino">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2023 Ferrari 296 GTB</h4>
-        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Assetto Fiorano</p>
+        <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2019 Ferrari Portofino</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Rosso</p>
       </a>
   </div>
 </section>
@@ -1296,15 +1296,15 @@
   // Featured: right arrow scrolls through cars; in-photo arrows page that car's
   // gallery. (Gallery frames are stand-ins — swap for each car's real set.)
   const FEATURED = [
-    { name:"2023 Porsche 911&nbsp;GT3&nbsp;RS", trim:"Weissach Package", year:"2023", miles:"1,240 mi", finish:"GT Silver", loc:"Fort Lauderdale",
-      desc:"The most focused naturally-aspirated 911 Porsche has built — acquired at delivery mileage, Weissach in full.", cap:"911 GT3&nbsp;RS",
-      gallery:["public/inventory/2023-porsche-911-gt3-rs-weissach.webp","public/inventory/2022-porsche-911-gt3-touring-paint-to-sample.webp","public/inventory/2022-porsche-911-turbo-s-cabriolet.webp"] },
-    { name:"2024 Ferrari SF90&nbsp;Stradale", trim:"Assetto Fiorano", year:"2024", miles:"980 mi", finish:"Giallo Modena", loc:"Fort Lauderdale",
-      desc:"Ferrari's 1,000-horsepower plug-in hybrid flagship, in its most track-focused Assetto Fiorano specification.", cap:"SF90",
-      gallery:["public/inventory/2024-ferrari-sf90-stradale.webp","public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp","public/inventory/2022-ferrari-488-pista-rosso-corsa.webp"] },
-    { name:"2024 Lamborghini&nbsp;Revuelto", trim:"6.5L V12 Hybrid", year:"2024", miles:"612 mi", finish:"Arancio Apodis", loc:"Fort Lauderdale",
-      desc:"The V12 reborn — a 1,001-horsepower hybrid successor to the Aventador, in launch-spec Arancio.", cap:"Revuelto",
-      gallery:["public/inventory/2024-lamborghini-revuelto.webp","public/inventory/2022-lamborghini-huracan-sto.webp","public/inventory/2023-lamborghini-huracan-tecnica-sold.webp"] },
+    { name:"2026 Porsche 911&nbsp;GT3", trim:"6-Speed Manual", year:"2026", miles:"180 mi", finish:"Shark Blue", loc:"Fort Lauderdale",
+      desc:"The purest 911 — 4.0-litre naturally-aspirated flat-six, row-your-own manual, acquired at delivery mileage.", cap:"911 GT3",
+      gallery:["public/ilusso/porsche-gt3-5933.jpg"] },
+    { name:"2024 Rolls-Royce&nbsp;Spectre", trim:"Bespoke Two-Tone", year:"2024", miles:"1,900 mi", finish:"Amethyst / Silver", loc:"Fort Lauderdale",
+      desc:"Rolls-Royce's first all-electric coachbuilt grand tourer, finished in a bespoke two-tone commission.", cap:"Spectre",
+      gallery:["public/ilusso/spectre.jpg"] },
+    { name:"2020 Ferrari&nbsp;F8&nbsp;Tributo", trim:"3.9L Twin-Turbo V8", year:"2020", miles:"4,700 mi", finish:"Azzurro Dino", loc:"Fort Lauderdale",
+      desc:"The last of the twin-turbo V8 Berlinettas — 710 horsepower, in a striking Azzurro Dino over tan.", cap:"F8 Tributo",
+      gallery:["public/ilusso/ferrari-f8.jpg"] },
   ];
   const $id = (id) => document.getElementById(id);
   const feImg = $id("feat-img");
