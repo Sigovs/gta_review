@@ -8,7 +8,7 @@
 <!-- Fonts: Inter Tight only — clean slate. Add other families back as needed. -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -31,9 +31,9 @@
           display: ['"Inter Tight"', "system-ui", "sans-serif"],
           sans: ['"Inter Tight"', "system-ui", "sans-serif"],
           deck: ['"Inter Tight"', "system-ui", "sans-serif"],
-          mono: ['"Inter Tight"', "system-ui", "sans-serif"],
+          mono: ['Oswald', "system-ui", "sans-serif"],
           helv: ['"Inter Tight"', "system-ui", "sans-serif"],
-          cond: ['"Inter Tight"', "system-ui", "sans-serif"],
+          cond: ['Oswald', "system-ui", "sans-serif"],
         },
       },
     },
@@ -43,8 +43,10 @@
 <style>
   :root { --ink: #0c0d0f; }
   html { scroll-behavior: smooth; }
-  /* Body copy: Helvetica Neue LT Pro 55 Roman (weight 400) */
-  body { background: var(--ink); font-weight: 400; }
+  /* Body copy: Inter Tight, weight 400, with a touch of tracking for readability */
+  body { background: var(--ink); font-weight: 400; letter-spacing: 0.012em; }
+  /* Display headings: Inter Tight, all caps */
+  .font-display { text-transform: uppercase; }
 
   /* Film grain — faint static tooth over the whole page (printed-lookbook feel). */
   body::after{
@@ -266,15 +268,15 @@
 </header>
 
 <!-- slide-down nav menu (hamburger — scroll / mobile) -->
-<div id="nav-menu" class="fixed inset-x-0 top-0 z-40 hidden bg-ink/95 backdrop-blur-md">
-  <div class="mx-auto max-w-[1400px] px-6 pb-14 pt-32 md:px-10">
-    <nav class="flex flex-col text-center">
-      <a href="#collection" class="border-b border-line py-4 font-display text-3xl italic text-txt transition-colors hover:text-hg md:text-4xl">Collection</a>
-      <a href="#featured" class="border-b border-line py-4 font-display text-3xl italic text-txt transition-colors hover:text-hg md:text-4xl">Featured</a>
-      <a href="#finance" class="border-b border-line py-4 font-display text-3xl italic text-txt transition-colors hover:text-hg md:text-4xl">Private Finance</a>
-      <a href="#lookbook" class="py-4 font-display text-3xl italic text-txt transition-colors hover:text-hg md:text-4xl">Lookbook</a>
+<div id="nav-menu" class="fixed inset-0 z-40 hidden bg-ink/95 backdrop-blur-lg">
+  <div class="flex h-full flex-col items-center justify-center px-6">
+    <nav class="flex flex-col items-center gap-3 text-center md:gap-5">
+      <a href="#collection" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Collection</a>
+      <a href="#featured" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Featured</a>
+      <a href="#finance" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Private Finance</a>
+      <a href="#lookbook" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Lookbook</a>
     </nav>
-    <div class="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 font-mono text-[0.78rem] tracking-[0.04em] text-txt/85">
+    <div class="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 font-mono text-[0.78rem] tracking-[0.04em] text-txt/85">
       <span class="flex items-center gap-2">
         <svg class="h-5 w-5 text-hg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
         Fort Lauderdale, FL
@@ -301,16 +303,16 @@
     </div>
   </div>
 
-  <!-- content: vertically centered, left-aligned (asymmetry) -->
-  <div class="absolute inset-0 z-10 flex items-center">
-    <div class="mx-auto w-full max-w-[1400px] px-6 md:px-10" data-step>
+  <!-- content: fully centered -->
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <div class="mx-auto flex w-full max-w-[1100px] flex-col items-center px-6 text-center md:px-10" data-step>
       <span class="mb-6 block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">GTA / Collection 01</span>
-      <h1 class="max-w-[15ch] font-display text-[2.9rem] font-500 italic leading-[1.0] text-txt md:text-[5.2rem] lg:text-[6rem]">
+      <h1 class="mx-auto max-w-[18ch] font-display text-[2.9rem] font-500 leading-[1.02] text-txt md:text-[5.2rem] lg:text-[6rem]">
         A private floor of cars worth&nbsp;keeping.
       </h1>
       <a href="#collection" class="group mt-9 inline-flex w-fit items-center gap-3 bg-hg px-8 py-4 font-mono text-[0.72rem] font-700 uppercase tracking-[0.2em] text-ink shadow-lg shadow-black/30 transition-colors duration-300 hover:bg-hg2">
         Enter the collection
-        <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform group-hover:translate-x-1"><path d="M9 6l6 6-6 6"/></svg>
       </a>
     </div>
   </div>
@@ -395,7 +397,7 @@
 
         <a href="#" class="group mt-8 inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-txt transition-colors hover:text-hg">
           View this car
-          <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform group-hover:translate-x-1"><path d="M9 6l6 6-6 6"/></svg>
         </a>
         </div>
       </div>
@@ -418,7 +420,7 @@
       <h2 class="font-display text-4xl font-500 leading-none text-txt md:text-6xl">Available&nbsp;Now</h2>
       <a href="#" class="group inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-mut transition-colors hover:text-hg">
         Full inventory
-        <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform group-hover:translate-x-1"><path d="M9 6l6 6-6 6"/></svg>
       </a>
     </div>
 
@@ -429,7 +431,7 @@
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
             <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="2022 Ferrari 488 Pista" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Ferrari 488 Pista</h3>
@@ -441,7 +443,7 @@
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
             <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="2023 McLaren 765LT Spider" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2023 McLaren 765LT Spider</h3>
@@ -453,7 +455,7 @@
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
             <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-lamborghini-revuelto.webp" alt="2024 Lamborghini Revuelto" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Lamborghini Revuelto</h3>
@@ -465,7 +467,7 @@
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
             <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="2024 Ferrari SF90 Stradale" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Ferrari SF90 Stradale</h3>
@@ -477,7 +479,7 @@
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
             <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="2022 Lamborghini Huracán STO" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Lamborghini Huracán STO</h3>
@@ -489,7 +491,7 @@
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
             <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="2023 Ferrari 296 GTB" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2023 Ferrari 296 GTB</h3>
@@ -501,7 +503,7 @@
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
             <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-mclaren-750s-spider.webp" alt="2024 McLaren 750S Spider" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 McLaren 750S Spider</h3>
@@ -513,7 +515,7 @@
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
             <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-turbo-s-cabriolet.webp" alt="2022 Porsche 911 Turbo S" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Porsche 911 Turbo S</h3>
@@ -525,7 +527,7 @@
           <div class="relative aspect-[16/10] overflow-hidden bg-panel">
             <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-gt3-touring-paint-to-sample.webp" alt="2022 Porsche 911 GT3 Touring" />
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Porsche 911 GT3 Touring</h3>
@@ -537,10 +539,10 @@
     <!-- financing / sell CTAs under the carousel -->
     <div class="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row md:mt-16">
       <a href="#finance" class="group inline-flex w-full items-center justify-center gap-3 bg-hg px-8 py-4 font-mono text-[0.72rem] font-700 uppercase tracking-[0.2em] text-ink shadow-lg shadow-black/30 transition-colors duration-300 hover:bg-hg2 sm:w-auto">
-        Apply for Financing <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+        Apply for Financing <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform group-hover:translate-x-1"><path d="M9 6l6 6-6 6"/></svg>
       </a>
       <a href="#" class="group inline-flex w-full items-center justify-center gap-3 border border-hg/40 px-8 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt transition-colors duration-300 hover:border-hg hover:bg-hg hover:text-ink sm:w-auto">
-        Sell Your Car <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+        Sell Your Car <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform group-hover:translate-x-1"><path d="M9 6l6 6-6 6"/></svg>
       </a>
     </div>
 
@@ -643,7 +645,7 @@
       <div class="mx-auto flex max-w-[42rem] flex-col items-center text-center" data-step>
         <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">03 / The Standard</span>
         <span class="mt-6 block h-px w-16 bg-hg/70"></span>
-        <h2 class="mt-7 font-display text-4xl font-500 italic leading-[1.05] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">The cars worth owning, in one&nbsp;showroom.</h2>
+        <h2 class="mt-7 font-display text-4xl font-500 leading-[1.05] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">The cars worth owning, in one&nbsp;showroom.</h2>
         <p class="mt-6 max-w-[46ch] text-[1.05rem] leading-relaxed text-txt/85 [text-shadow:0_1px_12px_rgba(0,0,0,.6)]">
           Sourced through our collector network and the wider market, then vetted
           before a car ever earns a place on the floor.
@@ -661,7 +663,7 @@
       <div class="pad-left pr-6 md:pr-10 lg:pr-16">
         <div class="flex min-h-screen flex-col justify-center lg:translate-y-[25vh]" data-stair>
           <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">04 / Private Finance</span>
-          <h2 class="mt-6 font-display text-4xl font-500 italic leading-[1.02] text-txt drop-shadow-[0_2px_20px_rgba(0,0,0,.6)] md:text-5xl">Lease or Finance,<br>In-House.</h2>
+          <h2 class="mt-6 font-display text-4xl font-500 leading-[1.02] text-txt drop-shadow-[0_2px_20px_rgba(0,0,0,.6)] md:text-5xl">Lease or Finance,<br>In-House.</h2>
           <p class="mt-6 max-w-[48ch] text-[1.05rem] leading-relaxed text-txt/80 [text-shadow:0_1px_10px_rgba(0,0,0,.5)]">
             Every car in the showroom can be driven home your way. Through our
             partner MotorCar Lease, we structure seamless lease and finance terms
@@ -669,7 +671,7 @@
             what you need.
           </p>
           <a href="#" class="group mt-10 inline-flex w-fit self-start items-center gap-3 border border-hg/40 bg-black/20 px-8 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink">
-            Explore financing <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+            Explore financing <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform group-hover:translate-x-1"><path d="M9 6l6 6-6 6"/></svg>
           </a>
           <div class="mt-10 flex items-center gap-4">
             <span class="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-txt/55">In partnership with</span>
@@ -773,7 +775,7 @@
     <div data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">06 / In Their Words</span>
       <span class="mx-auto mt-6 block h-px w-12 bg-hg/70"></span>
-      <h2 class="mt-7 font-display text-4xl font-500 leading-[1.08] text-txt md:text-6xl">A Second Showroom.<br><span class="italic text-hg">Same Standard</span></h2>
+      <h2 class="mt-7 font-display text-4xl font-500 leading-[1.08] text-txt md:text-6xl">A Second Showroom.<br><span class="text-hg">Same Standard</span></h2>
       <p class="mx-auto mt-7 max-w-[52ch] text-[1.05rem] leading-relaxed text-mut">
         GTA Motorcars began in the Greater Toronto Area, built on referrals,
         repeat clients, and cars worth keeping. Fort Lauderdale is the second
@@ -787,14 +789,14 @@
         <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
       </button>
 
-      <div class="min-w-0 flex-1">
-        <span aria-hidden class="block font-display text-6xl leading-[0.5] text-hg/35">&ldquo;</span>
-        <blockquote id="ct-quote" class="mx-auto mt-5 min-h-[8.5rem] max-w-[44ch] font-display text-xl leading-[1.55] text-txt sm:min-h-[8rem] md:text-[1.9rem]"></blockquote>
-        <div class="mt-8">
-          <div id="ct-name" class="font-display text-xl text-hg"></div>
-          <div id="ct-desig" class="mt-1.5 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-mut"></div>
-        </div>
-      </div>
+      <figure class="mx-auto min-w-0 max-w-[44rem] flex-1 rounded-md border border-line bg-panel/40 px-8 py-10 md:px-12 md:py-12">
+        <span aria-hidden class="block font-sans text-5xl font-600 leading-[0.6] text-hg/40">&ldquo;</span>
+        <blockquote id="ct-quote" class="mx-auto mt-3 min-h-[6.5rem] max-w-[42ch] font-sans text-base leading-[1.55] text-txt sm:min-h-[6rem] md:text-[1.3rem]"></blockquote>
+        <figcaption class="mt-7">
+          <div id="ct-name" class="font-sans text-lg font-600 text-hg"></div>
+          <div id="ct-desig" class="mt-1.5 font-mono text-[0.66rem] uppercase tracking-[0.2em] text-mut"></div>
+        </figcaption>
+      </figure>
 
       <button id="ct-next" type="button" aria-label="Next testimonial" class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-line text-txt transition-colors hover:border-hg hover:bg-hg hover:text-ink">
         <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
@@ -821,13 +823,13 @@
       <div class="mx-auto flex max-w-[46rem] flex-col items-center text-center" data-step>
         <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">07 / Acquisition</span>
         <span class="mt-6 block h-px w-16 bg-hg/70"></span>
-        <h2 class="mt-7 font-display text-4xl font-500 italic leading-[1.04] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">Ready to part with&nbsp;yours?</h2>
+        <h2 class="mt-7 font-display text-4xl font-500 leading-[1.04] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">Ready to part with&nbsp;yours?</h2>
         <p class="mt-6 max-w-[44ch] text-[1.05rem] leading-relaxed text-txt/85 [text-shadow:0_1px_12px_rgba(0,0,0,.6)]">
           We buy collector and exotic cars outright — one fair offer, a discreet
           close, and payment direct to you.
         </p>
         <a href="#" class="group mt-9 inline-flex items-center gap-3 border border-hg/50 px-8 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink">
-          Get an offer <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+          Get an offer <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform group-hover:translate-x-1"><path d="M9 6l6 6-6 6"/></svg>
         </a>
       </div>
     </div>
@@ -841,7 +843,7 @@
       <div class="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10">
         <div class="mb-14" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">08 / Selected Work</span>
-      <h2 class="mt-5 font-display text-4xl font-500 italic text-txt md:text-6xl">Lookbook</h2>
+      <h2 class="mt-5 font-display text-4xl font-500 text-txt md:text-6xl">Lookbook</h2>
     </div>
 
     <!-- offset magazine spread: big landscape left, two stacked frames right,
@@ -878,13 +880,13 @@
     <div class="lg:col-span-6" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">09 / The Showroom</span>
       <span class="mt-6 block h-px w-16 bg-hg/70"></span>
-      <h2 class="mt-7 font-display text-5xl font-500 leading-none text-txt md:text-7xl">Fort&nbsp;Lauderdale</h2>
+      <h2 class="mt-7 font-display text-5xl font-500 leading-[0.95] text-txt md:text-7xl">Fort<br>Lauderdale</h2>
       <p class="mt-6 max-w-[40ch] text-[1.02rem] leading-relaxed text-mut">
         Private viewings by appointment. Stop by the showroom, or call ahead and
         we&rsquo;ll have the car waiting.
       </p>
       <a href="#" class="group mt-9 inline-flex items-center gap-3 border border-hg/40 px-8 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt transition-colors hover:border-hg hover:bg-hg hover:text-ink">
-        Book a viewing <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+        Book a viewing <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform group-hover:translate-x-1"><path d="M9 6l6 6-6 6"/></svg>
       </a>
     </div>
 
@@ -921,25 +923,25 @@
   </div>
 </section>
 
-<!-- ============================ INSTAGRAM — follow band ============================ -->
-<section aria-label="Instagram" class="border-y border-line bg-panel/50 py-14 md:py-16">
-  <div class="mx-auto flex max-w-[1400px] flex-col items-center gap-10 px-6 md:flex-row md:justify-between md:px-10">
-    <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-5">
-      <span class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-hg/50 text-hg transition-colors duration-300 group-hover:bg-hg group-hover:text-ink">
-        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+<!-- ============================ INSTAGRAM — centred: title on top, 3x2 photo grid below ============================ -->
+<section aria-label="Instagram" class="border-y border-line bg-panel/50 py-16 md:py-20">
+  <div class="mx-auto max-w-[760px] px-6 text-center">
+    <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group inline-flex flex-col items-center gap-4">
+      <span class="flex h-16 w-16 items-center justify-center rounded-full border border-hg/50 text-hg transition-colors duration-300 group-hover:bg-hg group-hover:text-ink">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </span>
-      <span class="flex flex-col leading-tight">
+      <span class="flex flex-col items-center leading-tight">
         <span class="font-mono text-[0.66rem] uppercase tracking-[0.26em] text-hg">Follow the collection</span>
-        <span class="mt-1 font-display text-2xl italic text-txt transition-colors group-hover:text-hg md:text-3xl">@gtamotorcars</span>
+        <span class="mt-1.5 font-sans text-3xl font-500 text-txt transition-colors group-hover:text-hg md:text-4xl">@gtamotorcars</span>
       </span>
     </a>
-    <div class="flex gap-3">
-      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative block h-[74px] w-[74px] overflow-hidden bg-panel md:h-[88px] md:w-[88px]"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2023-porsche-911-gt3-rs-weissach.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
-      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative block h-[74px] w-[74px] overflow-hidden bg-panel md:h-[88px] md:w-[88px]"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
-      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative block h-[74px] w-[74px] overflow-hidden bg-panel md:h-[88px] md:w-[88px]"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2024-lamborghini-revuelto.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
-      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative hidden h-[74px] w-[74px] overflow-hidden bg-panel sm:block md:h-[88px] md:w-[88px]"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
-      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative hidden h-[74px] w-[74px] overflow-hidden bg-panel sm:block md:h-[88px] md:w-[88px]"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
-      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative hidden h-[74px] w-[74px] overflow-hidden bg-panel md:block md:h-[88px] md:w-[88px]"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
+    <div class="mt-12 grid grid-cols-3 gap-3 md:mt-14 md:gap-4">
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative block aspect-square overflow-hidden bg-panel"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2023-porsche-911-gt3-rs-weissach.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative block aspect-square overflow-hidden bg-panel"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative block aspect-square overflow-hidden bg-panel"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2024-lamborghini-revuelto.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative block aspect-square overflow-hidden bg-panel"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative block aspect-square overflow-hidden bg-panel"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group relative block aspect-square overflow-hidden bg-panel"><img loading="lazy" decoding="async" class="img-cover transition-transform duration-500 group-hover:scale-110" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="Instagram" /><span class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c6ccd2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span></a>
     </div>
   </div>
 </section>
@@ -948,7 +950,7 @@
 <section id="closing" class="relative bg-ink">
   <!-- car — pinned; JS dissolves it into the ground as you scroll on -->
   <div class="sticky top-0 z-0 h-screen w-full overflow-hidden" style="border-radius:0">
-    <img loading="lazy" decoding="async" class="img-cover" src="public/showcase/porsche-carrera-gt/12.webp" alt="Porsche Carrera GT" style="object-position:50% 50%" />
+    <video class="img-cover absolute inset-0" src="public/brands_video.mp4" poster="public/showcase/porsche-carrera-gt/12.webp" autoplay muted loop playsinline></video>
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="absolute inset-0" style="background:radial-gradient(60% 82% at 50% 48%, rgba(12,13,15,.7) 0%, rgba(12,13,15,.3) 52%, rgba(12,13,15,0) 82%)"></div>
     <div class="pointer-events-none absolute inset-x-0 top-0 h-28" style="background:linear-gradient(to bottom,#0c0d0f,rgba(12,13,15,0))"></div>
@@ -960,9 +962,9 @@
     <div class="mx-auto flex min-h-screen max-w-[46rem] flex-col items-center justify-center px-6 text-center" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">The Collection</span>
       <span class="mt-6 block h-px w-16 bg-hg/70"></span>
-      <h2 class="mt-7 font-display text-5xl font-500 italic leading-[1.0] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-7xl">Find&nbsp;yours.</h2>
+      <h2 class="mt-7 font-display text-5xl font-500 leading-[1.0] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-7xl">Find&nbsp;yours.</h2>
       <a href="#collection" class="group mt-10 inline-flex items-center gap-3 border border-hg/50 px-9 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink">
-        View the inventory <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+        View the inventory <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform group-hover:translate-x-1"><path d="M9 6l6 6-6 6"/></svg>
       </a>
     </div>
     <div class="h-[20vh]"></div>
@@ -971,24 +973,25 @@
   <!-- brands climb on top of the darkened car (3–4 per row, scattered scroll-driven slide-in) -->
   <div class="relative z-20 pb-24 md:pb-28">
     <div class="mx-auto max-w-[1200px] px-6 md:px-10">
-      <div class="mb-16 text-center md:mb-20" data-step>
+      <div class="mb-24 text-center md:mb-36" data-step>
         <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">What We Carry</span>
         <span class="mx-auto mt-6 block h-px w-12 bg-hg/70"></span>
-        <h2 class="mt-7 font-display text-3xl font-500 italic text-txt drop-shadow-[0_2px_20px_rgba(0,0,0,.6)] md:text-5xl">The marques on the floor</h2>
+        <h2 class="mt-7 font-display text-3xl font-500 text-txt drop-shadow-[0_2px_20px_rgba(0,0,0,.6)] md:text-5xl">The marques on the floor</h2>
       </div>
-      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-16 md:gap-x-14 md:gap-y-20">
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="40"><img loading="lazy" decoding="async" src="public/brands/ferrari.svg" alt="Ferrari" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="240"><img loading="lazy" decoding="async" src="public/brands/porsche.svg" alt="Porsche" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="120"><img loading="lazy" decoding="async" src="public/brands/lamborghini.svg" alt="Lamborghini" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="300"><img loading="lazy" decoding="async" src="public/brands/mclaren.svg" alt="McLaren" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="20"><img loading="lazy" decoding="async" src="public/brands/rollsroyce.svg" alt="Rolls-Royce" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="200"><img loading="lazy" decoding="async" src="public/brands/mercedes.svg" alt="Mercedes-AMG" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="100"><img loading="lazy" decoding="async" src="public/brands/astonmartin.svg" alt="Aston Martin" class="max-h-full w-auto max-w-full scale-[1.6] object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="280"><img loading="lazy" decoding="async" src="public/brands/bentley.svg" alt="Bentley" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="60"><img loading="lazy" decoding="async" src="public/brands/bugatti.svg" alt="Bugatti" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="160"><img loading="lazy" decoding="async" src="public/brands/maserati.svg" alt="Maserati" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="120"><img loading="lazy" decoding="async" src="public/brands/alfaromeo.svg" alt="Alfa Romeo" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
-        <div class="group flex h-14 basis-[40%] items-center justify-center sm:basis-[26%] md:h-[4.5rem] md:basis-[20%]" data-wcrise data-stag="180"><img loading="lazy" decoding="async" src="public/brands/pagani.svg" alt="Pagani" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+      <!-- balanced: compact crests hold the outer columns, wide wordmarks sit centre (crest·wide·wide·crest per row) -->
+      <div class="mx-auto grid max-w-[1040px] grid-cols-2 items-center justify-items-center gap-x-10 gap-y-16 sm:grid-cols-3 md:grid-cols-4 md:gap-x-8 md:gap-y-24">
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="40"><img loading="lazy" decoding="async" src="public/brands/ferrari.svg" alt="Ferrari" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="260"><img loading="lazy" decoding="async" src="public/brands/mclaren.svg" alt="McLaren" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="120"><img loading="lazy" decoding="async" src="public/brands/astonmartin.svg" alt="Aston Martin" class="max-h-full w-auto max-w-full scale-[1.6] object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="300"><img loading="lazy" decoding="async" src="public/brands/porsche.svg" alt="Porsche" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="30"><img loading="lazy" decoding="async" src="public/brands/rollsroyce.svg" alt="Rolls-Royce" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="200"><img loading="lazy" decoding="async" src="public/brands/pagani.svg" alt="Pagani" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="90"><img loading="lazy" decoding="async" src="public/brands/maserati.svg" alt="Maserati" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="280"><img loading="lazy" decoding="async" src="public/brands/mercedes.svg" alt="Mercedes-AMG" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="150"><img loading="lazy" decoding="async" src="public/brands/lamborghini.svg" alt="Lamborghini" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="60"><img loading="lazy" decoding="async" src="public/brands/bentley.svg" alt="Bentley" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="240"><img loading="lazy" decoding="async" src="public/brands/alfaromeo.svg" alt="Alfa Romeo" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
+        <div class="group flex h-14 w-full items-center justify-center md:h-[4.5rem]" data-wcrise data-stag="110"><img loading="lazy" decoding="async" src="public/brands/bugatti.svg" alt="Bugatti" class="max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-100" /></div>
       </div>
       <!-- hold: after the logos settle there's a beat before the footer starts climbing -->
       <div class="h-[34vh] md:h-[42vh]"></div>
