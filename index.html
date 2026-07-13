@@ -5,14 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GTA Motorcars — Private Collection (AAN prototype)</title>
 
-<!-- Fonts: playfair-display (display/accent) + forma-djr-deck (titles) from Adobe Typekit;
-     Inter Tight (body, labels, specs) from Google. -->
-<link rel="preconnect" href="https://use.typekit.net" crossorigin />
-<link rel="preconnect" href="https://p.typekit.net" crossorigin />
-<link rel="stylesheet" href="https://use.typekit.net/qik8lxe.css" />
+<!-- Fonts: Inter Tight only — clean slate. Add other families back as needed. -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -32,12 +28,12 @@
           hg2:   "#eef2f5",
         },
         fontFamily: {
-          display: ['"playfair-display"', "serif"],
+          display: ['"Inter Tight"', "system-ui", "sans-serif"],
           sans: ['"Inter Tight"', "system-ui", "sans-serif"],
-          deck: ['"forma-djr-deck"', '"Inter Tight"', "system-ui", "sans-serif"],
+          deck: ['"Inter Tight"', "system-ui", "sans-serif"],
           mono: ['"Inter Tight"', "system-ui", "sans-serif"],
           helv: ['"Inter Tight"', "system-ui", "sans-serif"],
-          cond: ['"helvetica-neue-lt-pro-cond"', '"Inter Tight"', "sans-serif"],
+          cond: ['"Inter Tight"', "system-ui", "sans-serif"],
         },
       },
     },
@@ -66,7 +62,7 @@
 
   /* Oversized signature numeral behind content */
   .ghost-num{
-    font-family:"playfair-display",serif;font-weight:500;line-height:.8;
+    font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;line-height:.8;
     color:transparent;-webkit-text-stroke:1px rgba(198,204,210,.14);
     letter-spacing:-.02em;user-select:none;
   }
