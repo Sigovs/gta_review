@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GTA Motorcars — Private Collection (AAN prototype)</title>
 
-<!-- Fonts: Playfair Display (accent/display) · Forma DJR Deck / Inter (UI) · Space Mono (data).
-     Adobe Typekit kit for the licensed faces, plus Google's Playfair Display as a guaranteed
-     fallback (Typekit is domain-locked, so this ensures the accent renders everywhere). -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- Fonts: Adobe Typekit kit only — playfair-display (display/accent), forma-djr-deck (body/UI),
+     helvetica-neue-lt-pro (labels + car cards). No other type families. -->
+<link rel="preconnect" href="https://use.typekit.net" crossorigin />
+<link rel="preconnect" href="https://p.typekit.net" crossorigin />
 <link rel="stylesheet" href="https://use.typekit.net/qik8lxe.css" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -31,9 +29,11 @@
           hg2:   "#eef2f5",
         },
         fontFamily: {
-          display: ['"playfair-display"', '"Playfair Display"', '"Bodoni Moda"', "Georgia", "serif"],
-          sans: ['"forma-djr-deck"', "Inter", "system-ui", "sans-serif"],
-          mono: ['"Space Mono"', "ui-monospace", "monospace"],
+          display: ['"playfair-display"', "serif"],
+          sans: ['"forma-djr-deck"', "sans-serif"],
+          mono: ['"helvetica-neue-lt-pro"', "Helvetica", "Arial", "sans-serif"],
+          helv: ['"helvetica-neue-lt-pro"', "Helvetica", "Arial", "sans-serif"],
+          cond: ['"helvetica-neue-lt-pro-cond"', '"helvetica-neue-lt-pro"', "Helvetica", "Arial", "sans-serif"],
         },
       },
     },
@@ -61,7 +61,7 @@
 
   /* Oversized signature numeral behind content */
   .ghost-num{
-    font-family:"playfair-display","Playfair Display","Bodoni Moda",serif;font-weight:500;line-height:.8;
+    font-family:"playfair-display",serif;font-weight:500;line-height:.8;
     color:transparent;-webkit-text-stroke:1px rgba(198,204,210,.14);
     letter-spacing:-.02em;user-select:none;
   }
@@ -208,7 +208,7 @@
   #drag-hint{position:fixed;left:0;top:0;z-index:70;pointer-events:none;display:flex;align-items:center;
     justify-content:center;height:78px;width:78px;border-radius:9999px;background:rgba(198,204,210,.12);
     border:1px solid rgba(198,204,210,.45);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
-    color:#eef2f5;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+    color:#eef2f5;font-family:"helvetica-neue-lt-pro",Helvetica,Arial,sans-serif;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
     opacity:0;transform:translate(-50%,-50%) scale(.4);transition:opacity .25s ease, transform .25s cubic-bezier(.16,1,.3,1);}
   #drag-hint.on{opacity:1;transform:translate(-50%,-50%) scale(1);}
   .collection-marquee:hover{cursor:none;}
@@ -431,8 +431,8 @@
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
           </div>
-          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2022 Ferrari 488 Pista</h3>
-            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$549,000</span><span class="text-faint">·</span><span>3,812 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-helv font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Ferrari 488 Pista</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$549,000</span><span class="text-faint">·</span><span>3,812 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
@@ -443,8 +443,8 @@
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
           </div>
-          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2023 McLaren 765LT Spider</h3>
-            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$489,000</span><span class="text-faint">·</span><span>2,104 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-helv font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2023 McLaren 765LT Spider</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$489,000</span><span class="text-faint">·</span><span>2,104 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
@@ -455,8 +455,8 @@
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
           </div>
-          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2024 Lamborghini Revuelto</h3>
-            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$879,000</span><span class="text-faint">·</span><span>612 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-helv font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Lamborghini Revuelto</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$879,000</span><span class="text-faint">·</span><span>612 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
@@ -467,8 +467,8 @@
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
           </div>
-          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2024 Ferrari SF90 Stradale</h3>
-            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$729,000</span><span class="text-faint">·</span><span>980 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-helv font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Ferrari SF90 Stradale</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$729,000</span><span class="text-faint">·</span><span>980 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
@@ -479,8 +479,8 @@
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
           </div>
-          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2022 Lamborghini Huracán STO</h3>
-            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$429,000</span><span class="text-faint">·</span><span>4,501 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-helv font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Lamborghini Huracán STO</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$429,000</span><span class="text-faint">·</span><span>4,501 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
@@ -491,8 +491,8 @@
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
           </div>
-          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2023 Ferrari 296 GTB</h3>
-            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$449,000</span><span class="text-faint">·</span><span>3,300 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-helv font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2023 Ferrari 296 GTB</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$449,000</span><span class="text-faint">·</span><span>3,300 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
@@ -503,8 +503,8 @@
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
           </div>
-          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2024 McLaren 750S Spider</h3>
-            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$379,000</span><span class="text-faint">·</span><span>1,875 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-helv font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 McLaren 750S Spider</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$379,000</span><span class="text-faint">·</span><span>1,875 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
@@ -515,8 +515,8 @@
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
           </div>
-          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2022 Porsche 911 Turbo S</h3>
-            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$249,000</span><span class="text-faint">·</span><span>8,245 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-helv font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Porsche 911 Turbo S</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$249,000</span><span class="text-faint">·</span><span>8,245 mi</span></div></div>
         </a>
       </article>
       <article class="group" data-rise>
@@ -527,8 +527,8 @@
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
           </div>
-          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2022 Porsche 911 GT3 Touring</h3>
-            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$329,000</span><span class="text-faint">·</span><span>5,120 mi</span></div></div>
+          <div class="pt-4"><h3 class="font-helv font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Porsche 911 GT3 Touring</h3>
+            <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$329,000</span><span class="text-faint">·</span><span>5,120 mi</span></div></div>
         </a>
       </article>
     </div>
@@ -717,48 +717,48 @@
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-porsche-911-st-heritage-sold.webp" alt="911 S/T">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-display text-lg text-txt">2024 Porsche 911 S/T</h4>
-        <p class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-mut">Heritage Design</p>
+        <h4 class="pt-4 font-helv font-500 text-base tracking-[-0.01em] text-txt">2024 Porsche 911 S/T</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Heritage Design</p>
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-lamborghini-huracan-tecnica-sold.webp" alt="Huracán Tecnica">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-display text-lg text-txt">2023 Lamborghini Huracán</h4>
-        <p class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-mut">Tecnica</p>
+        <h4 class="pt-4 font-helv font-500 text-base tracking-[-0.01em] text-txt">2023 Lamborghini Huracán</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Tecnica</p>
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2021-mclaren-600lt-spider-sold.webp" alt="600LT Spider">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-display text-lg text-txt">2021 McLaren 600LT</h4>
-        <p class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-mut">Spider · Napier Green</p>
+        <h4 class="pt-4 font-helv font-500 text-base tracking-[-0.01em] text-txt">2021 McLaren 600LT</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Spider · Napier Green</p>
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-gt3-touring-paint-to-sample.webp" alt="911 GT3 Touring">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-display text-lg text-txt">2022 Porsche 911 GT3</h4>
-        <p class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-mut">Touring · Paint-to-Sample</p>
+        <h4 class="pt-4 font-helv font-500 text-base tracking-[-0.01em] text-txt">2022 Porsche 911 GT3</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Touring · Paint-to-Sample</p>
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="Huracán STO">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-display text-lg text-txt">2022 Lamborghini Huracán</h4>
-        <p class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-mut">STO · Blu Laufey</p>
+        <h4 class="pt-4 font-helv font-500 text-base tracking-[-0.01em] text-txt">2022 Lamborghini Huracán</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">STO · Blu Laufey</p>
       </a>
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="Ferrari 296 GTB">
           <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
         </div>
-        <h4 class="pt-4 font-display text-lg text-txt">2023 Ferrari 296 GTB</h4>
-        <p class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-mut">Assetto Fiorano</p>
+        <h4 class="pt-4 font-helv font-500 text-base tracking-[-0.01em] text-txt">2023 Ferrari 296 GTB</h4>
+        <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Assetto Fiorano</p>
       </a>
   </div>
 </section>
