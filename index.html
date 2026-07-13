@@ -19,13 +19,15 @@
           ink:   "#0c0d0f",   // cool near-black ground (replaces warm graphite)
           panel: "#131417",   // lifted plate
           panel2:"#181a1e",
-          line:  "#26282d",   // hairline
+          line:  "#2a333b",   // hairline — slate-blue (was neutral #26282d)
           txt:   "#eceef0",
           mut:   "#9a9ea4",
           faint: "#5c6067",
-          // Mercury platinum — the new signature accent. Cool metal, never gold.
+          // Platinum stays the quiet metal (text, hairlines-of-light, calm hover).
           hg:    "#c6ccd2",
           hg2:   "#eef2f5",
+          accent:"#96252d",   // oxblood signal — used ~5% (numbers, badge, SOLD, focus)
+          slate: "#2a333b",   // cool slate surface / edge
         },
         fontFamily: {
           display: ['"Inter Tight"', "system-ui", "sans-serif"],
@@ -284,14 +286,15 @@
 
 <!-- slide-down nav menu (hamburger — scroll / mobile) -->
 <div id="nav-menu" class="fixed inset-0 z-40 bg-ink/95 backdrop-blur-lg">
-  <div class="menu-inner flex h-full flex-col items-center justify-center px-6">
-    <nav class="flex flex-col items-center gap-6 text-center md:gap-10">
+  <div class="menu-inner flex h-full flex-col justify-center">
+    <div class="mx-auto w-full max-w-[1400px] px-6 md:px-10">
+    <nav class="flex flex-col items-start gap-5 text-left md:gap-7">
       <a href="#collection" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Collection</a>
       <a href="#featured" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Featured</a>
       <a href="#finance" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Private Finance</a>
       <a href="#lookbook" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Lookbook</a>
     </nav>
-    <div class="mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 font-mono text-[0.95rem] uppercase tracking-[0.08em] text-txt/85">
+    <div class="mt-14 flex flex-wrap items-center gap-x-12 gap-y-4 font-mono text-[0.95rem] uppercase tracking-[0.08em] text-txt/85">
       <span class="flex items-center gap-2.5">
         <svg class="h-6 w-6 text-hg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
         Fort Lauderdale, FL
@@ -300,6 +303,7 @@
         <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
         +1 (954) 000-0000
       </a>
+    </div>
     </div>
   </div>
 </div>
@@ -393,7 +397,7 @@
 
       <!-- vertical spec column, 4 cols, stepped in from side -->
       <div class="flex flex-col lg:col-span-4 lg:h-full lg:self-stretch lg:pl-12" data-step>
-        <span id="feat-idx" class="inline-block w-fit rounded-[3px] bg-[#bb3b44] px-2 py-0.5 font-mono text-[0.68rem] tracking-[0.12em] text-white">01 / 03</span>
+        <span id="feat-idx" class="inline-block w-fit rounded-[3px] bg-accent px-2 py-0.5 font-mono text-[0.68rem] tracking-[0.12em] text-white">01 / 03</span>
         <div class="mt-10 lg:mt-auto">
         <h2 id="feat-name" class="font-deck text-[1.7rem] font-600 leading-tight tracking-[-0.015em] text-txt md:text-3xl">2023 Porsche 911&nbsp;GT3&nbsp;RS</h2>
         <p id="feat-trim" class="mt-2 font-helv text-sm text-mut">Weissach Package</p>
@@ -668,7 +672,7 @@
     <div class="mx-auto flex min-h-screen max-w-[1400px] items-center justify-center px-6 md:px-10">
       <div class="mx-auto flex max-w-[42rem] flex-col items-center text-center" data-step>
         <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">03 / The Standard</span>
-        <span class="mt-6 block h-px w-16 bg-hg/70"></span>
+        <span class="mt-6 block h-px w-16 bg-accent"></span>
         <h2 class="mt-7 font-display text-4xl font-500 leading-[1.05] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">The cars worth owning, in one&nbsp;showroom.</h2>
         <p class="mt-6 max-w-[46ch] text-[1.05rem] leading-relaxed text-txt/85 [text-shadow:0_1px_12px_rgba(0,0,0,.6)]">
           Sourced through our collector network and the wider market, then vetted
@@ -742,7 +746,7 @@
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-porsche-911-st-heritage-sold.webp" alt="911 S/T">
-          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
+          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2024 Porsche 911 S/T</h4>
         <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Heritage Design</p>
@@ -750,7 +754,7 @@
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-lamborghini-huracan-tecnica-sold.webp" alt="Huracán Tecnica">
-          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
+          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2023 Lamborghini Huracán</h4>
         <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Tecnica</p>
@@ -758,7 +762,7 @@
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2021-mclaren-600lt-spider-sold.webp" alt="600LT Spider">
-          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
+          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2021 McLaren 600LT</h4>
         <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Spider · Napier Green</p>
@@ -766,7 +770,7 @@
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-gt3-touring-paint-to-sample.webp" alt="911 GT3 Touring">
-          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
+          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2022 Porsche 911 GT3</h4>
         <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Touring · Paint-to-Sample</p>
@@ -774,7 +778,7 @@
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="Huracán STO">
-          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
+          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2022 Lamborghini Huracán</h4>
         <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">STO · Blu Laufey</p>
@@ -782,7 +786,7 @@
       <a href="#" class="group w-[300px] shrink-0 md:w-[360px]">
         <div class="relative aspect-[16/10] overflow-hidden bg-panel">
           <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="Ferrari 296 GTB">
-          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-ink bg-hg px-2 py-1">Sold</span>
+          <span class="absolute left-3 top-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white bg-accent px-2 py-1">Sold</span>
         </div>
         <h4 class="pt-4 font-deck font-500 text-base tracking-[-0.01em] text-txt">2023 Ferrari 296 GTB</h4>
         <p class="mt-0.5 font-helv text-[0.8rem] tracking-[0.01em] text-mut">Assetto Fiorano</p>
@@ -798,7 +802,7 @@
     <!-- header + paragraph, centred -->
     <div data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">06 / In Their Words</span>
-      <span class="mx-auto mt-6 block h-px w-12 bg-hg/70"></span>
+      <span class="mx-auto mt-6 block h-px w-12 bg-accent"></span>
       <h2 class="mt-7 font-display text-4xl font-500 leading-[1.08] text-txt md:text-6xl">A Second Showroom.<br><span class="text-hg">Same Standard</span></h2>
       <p class="mx-auto mt-7 max-w-[52ch] text-[1.05rem] leading-relaxed text-mut">
         GTA Motorcars began in the Greater Toronto Area, built on referrals,
@@ -846,7 +850,7 @@
     <div class="mx-auto flex min-h-screen max-w-[1400px] items-center justify-center px-6 md:px-10">
       <div class="mx-auto flex max-w-[46rem] flex-col items-center text-center" data-step>
         <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">07 / Acquisition</span>
-        <span class="mt-6 block h-px w-16 bg-hg/70"></span>
+        <span class="mt-6 block h-px w-16 bg-accent"></span>
         <h2 class="mt-7 font-display text-4xl font-500 leading-[1.04] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">Ready to part with&nbsp;yours?</h2>
         <p class="mt-6 max-w-[44ch] text-[1.05rem] leading-relaxed text-txt/85 [text-shadow:0_1px_12px_rgba(0,0,0,.6)]">
           We buy collector and exotic cars outright — one fair offer, a discreet
@@ -903,7 +907,7 @@
   <div class="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 px-6 md:px-10 lg:grid-cols-12">
     <div class="lg:col-span-6" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">09 / The Showroom</span>
-      <span class="mt-6 block h-px w-16 bg-hg/70"></span>
+      <span class="mt-6 block h-px w-16 bg-accent"></span>
       <h2 class="mt-7 font-display text-5xl font-500 leading-[0.95] text-txt md:text-7xl">Fort<br>Lauderdale</h2>
       <p class="mt-6 max-w-[40ch] text-[1.02rem] leading-relaxed text-mut">
         Private viewings by appointment. Stop by the showroom, or call ahead and
@@ -985,7 +989,7 @@
   <div class="relative z-10 -mt-[100vh]">
     <div class="mx-auto flex min-h-screen max-w-[46rem] flex-col items-center justify-center px-6 text-center" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">The Collection</span>
-      <span class="mt-6 block h-px w-16 bg-hg/70"></span>
+      <span class="mt-6 block h-px w-16 bg-accent"></span>
       <h2 class="mt-7 font-display text-5xl font-500 leading-[1.0] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-7xl">Find&nbsp;yours.</h2>
       <a href="#collection" class="group mt-10 inline-flex items-center gap-3 border border-hg/50 px-9 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink">
         View the inventory <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform group-hover:translate-x-1"><path d="M9 6l6 6-6 6"/></svg>
@@ -999,7 +1003,7 @@
     <div class="mx-auto max-w-[1200px] px-6 md:px-10">
       <div class="mb-24 text-center md:mb-36" data-step>
         <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">What We Carry</span>
-        <span class="mx-auto mt-6 block h-px w-12 bg-hg/70"></span>
+        <span class="mx-auto mt-6 block h-px w-12 bg-accent"></span>
         <h2 class="mt-7 font-display text-3xl font-500 text-txt drop-shadow-[0_2px_20px_rgba(0,0,0,.6)] md:text-5xl">The marques on the floor</h2>
       </div>
       <!-- balanced: compact crests hold the outer columns, wide wordmarks sit centre (crest·wide·wide·crest per row) -->
@@ -1025,8 +1029,10 @@
   <!-- footer climbs up over the darkened car -->
   <div class="relative z-20">
 <!-- ============================ MINIMAL FOOTER ============================ -->
-<footer class="bg-panel pt-16 md:pt-24">
-  <div class="mx-auto max-w-[1400px] px-6 md:px-10">
+<footer class="relative overflow-hidden bg-panel pt-16 md:pt-24">
+  <!-- radial glow at the top — a whisper of the oxblood signal -->
+  <div aria-hidden class="pointer-events-none absolute inset-x-0 top-0 h-72" style="background:radial-gradient(58% 100% at 50% 0%, rgba(150,37,45,.20) 0%, rgba(150,37,45,.06) 42%, rgba(150,37,45,0) 72%)"></div>
+  <div class="relative mx-auto max-w-[1400px] px-6 md:px-10">
     <!-- group brand marks — the identity row lifted from the original layout -->
     <div class="grid grid-cols-1 items-center gap-12 sm:grid-cols-3 sm:gap-8">
       <a href="#" class="group flex flex-col items-center gap-5 text-center">
