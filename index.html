@@ -201,11 +201,26 @@
     #site-header:not(.frosted) .hburger{display:none;}
   }
   /* Menu link hover — platinum, a touch of tracking, and a rule that grows from centre */
-  #nav-menu nav a{position:relative;transition:color .3s ease, letter-spacing .45s cubic-bezier(.16,1,.3,1);}
-  #nav-menu nav a::after{content:"";position:absolute;left:50%;bottom:.55rem;height:1px;width:0;
-    background:#c6ccd2;transform:translateX(-50%);transition:width .45s cubic-bezier(.16,1,.3,1);}
-  #nav-menu nav a:hover{color:#c6ccd2;letter-spacing:.03em;}
-  #nav-menu nav a:hover::after{width:2.75rem;}
+  #nav-menu nav a{position:relative;transition:color .3s ease, transform .45s cubic-bezier(.16,1,.3,1), opacity .35s ease;}
+  /* chevron appears at the left, text slides right */
+  #nav-menu nav a::before{content:"\203A";position:absolute;right:100%;top:50%;margin-right:.35em;
+    color:#c6ccd2;font-weight:400;opacity:0;transform:translateY(-50%) translateX(-.55em);
+    transition:opacity .35s ease, transform .45s cubic-bezier(.16,1,.3,1);}
+  #nav-menu nav a:hover{color:#c6ccd2;transform:translateX(.7em);}
+  #nav-menu nav a:hover::before{opacity:1;transform:translateY(-50%) translateX(0);}
+  /* the other items dim while one is hovered */
+  #nav-menu.open nav:hover a{opacity:.4;}
+  #nav-menu.open nav:hover a:hover{opacity:1;}
+  /* Smooth open/close for the full-screen menu */
+  #nav-menu{opacity:0;visibility:hidden;transition:opacity .5s cubic-bezier(.16,1,.3,1), visibility .5s;}
+  #nav-menu.open{opacity:1;visibility:visible;}
+  #nav-menu .menu-inner{transform:translateY(22px);transition:transform .6s cubic-bezier(.16,1,.3,1);}
+  #nav-menu.open .menu-inner{transform:none;}
+  /* Hamburger ↔ close crossfade */
+  #nav-toggle .ic-menu,#nav-toggle .ic-close{transition:opacity .3s ease, transform .35s cubic-bezier(.16,1,.3,1);}
+  #nav-toggle .ic-close{opacity:0;transform:rotate(-90deg) scale(.8);}
+  #nav-toggle.open .ic-menu{opacity:0;transform:rotate(90deg) scale(.8);}
+  #nav-toggle.open .ic-close{opacity:1;transform:none;}
 
   /* Drag hint — a cursor-following bubble over the collection carousel */
   #drag-hint{position:fixed;left:0;top:0;z-index:70;pointer-events:none;display:flex;align-items:center;
@@ -259,30 +274,30 @@
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
         <span class="phone-num hidden md:inline">+1 (954) 000&#8288;-&#8288;0000</span>
       </a>
-      <button id="nav-toggle" type="button" class="hburger h-10 w-10 items-center justify-center text-txt transition-colors hover:text-hg" aria-label="Open menu" aria-expanded="false">
-        <svg class="ic-menu h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-        <svg class="ic-close hidden h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      <button id="nav-toggle" type="button" class="hburger relative h-10 w-10 items-center justify-center text-txt transition-colors hover:text-hg" aria-label="Open menu" aria-expanded="false">
+        <svg class="ic-menu absolute inset-0 m-auto h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="ic-close absolute inset-0 m-auto h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
   </div>
 </header>
 
 <!-- slide-down nav menu (hamburger — scroll / mobile) -->
-<div id="nav-menu" class="fixed inset-0 z-40 hidden bg-ink/95 backdrop-blur-lg">
-  <div class="flex h-full flex-col items-center justify-center px-6">
-    <nav class="flex flex-col items-center gap-3 text-center md:gap-5">
+<div id="nav-menu" class="fixed inset-0 z-40 bg-ink/95 backdrop-blur-lg">
+  <div class="menu-inner flex h-full flex-col items-center justify-center px-6">
+    <nav class="flex flex-col items-center gap-6 text-center md:gap-10">
       <a href="#collection" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Collection</a>
       <a href="#featured" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Featured</a>
       <a href="#finance" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Private Finance</a>
       <a href="#lookbook" class="font-display text-4xl text-txt transition-colors hover:text-hg md:text-6xl">Lookbook</a>
     </nav>
-    <div class="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 font-mono text-[0.78rem] tracking-[0.04em] text-txt/85">
-      <span class="flex items-center gap-2">
-        <svg class="h-5 w-5 text-hg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+    <div class="mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 font-mono text-[0.95rem] uppercase tracking-[0.08em] text-txt/85">
+      <span class="flex items-center gap-2.5">
+        <svg class="h-6 w-6 text-hg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
         Fort Lauderdale, FL
       </span>
-      <a href="tel:+19540000000" class="flex items-center gap-2 transition-colors hover:text-hg">
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+      <a href="tel:+19540000000" class="flex items-center gap-2.5 transition-colors hover:text-hg">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
         +1 (954) 000-0000
       </a>
     </div>
@@ -307,7 +322,7 @@
   <div class="absolute inset-0 z-10 flex items-center justify-center">
     <div class="mx-auto flex w-full max-w-[1100px] flex-col items-center px-6 text-center md:px-10" data-step>
       <span class="mb-6 block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">GTA / Collection 01</span>
-      <h1 class="mx-auto max-w-[18ch] font-display text-[2.9rem] font-500 leading-[1.02] text-txt md:text-[5.2rem] lg:text-[6rem]">
+      <h1 class="mx-auto max-w-[18ch] font-display text-[2.9rem] font-700 leading-[1.02] text-txt md:text-[5.2rem] lg:text-[6rem]" style="text-transform:none">
         A private floor of cars worth&nbsp;keeping.
       </h1>
       <a href="#collection" class="group mt-9 inline-flex w-fit items-center gap-3 bg-hg px-8 py-4 font-mono text-[0.72rem] font-700 uppercase tracking-[0.2em] text-ink shadow-lg shadow-black/30 transition-colors duration-300 hover:bg-hg2">
@@ -383,7 +398,7 @@
         <h2 id="feat-name" class="font-deck text-[1.7rem] font-600 leading-tight tracking-[-0.015em] text-txt md:text-3xl">2023 Porsche 911&nbsp;GT3&nbsp;RS</h2>
         <p id="feat-trim" class="mt-2 font-helv text-sm text-mut">Weissach Package</p>
 
-        <dl class="mt-8 divide-y divide-line border-y border-line font-mono text-[0.8rem]">
+        <dl class="mt-8 divide-y divide-line border-y border-line font-mono text-[0.8rem] uppercase tracking-[0.04em]">
           <div class="flex justify-between py-3"><dt class="text-faint uppercase tracking-[0.12em]">Year</dt><dd id="feat-year" class="text-txt">2023</dd></div>
           <div class="flex justify-between py-3"><dt class="text-faint uppercase tracking-[0.12em]">Mileage</dt><dd id="feat-miles" class="text-txt">1,240 mi</dd></div>
           <div class="flex justify-between py-3"><dt class="text-faint uppercase tracking-[0.12em]">Finish</dt><dd id="feat-finish" class="text-txt">GT Silver</dd></div>
@@ -433,6 +448,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Ferrari 488 Pista</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$549,000</span><span class="text-faint">·</span><span>3,812 mi</span></div></div>
@@ -445,6 +461,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2023 McLaren 765LT Spider</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$489,000</span><span class="text-faint">·</span><span>2,104 mi</span></div></div>
@@ -457,6 +474,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Lamborghini Revuelto</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$879,000</span><span class="text-faint">·</span><span>612 mi</span></div></div>
@@ -469,6 +487,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Ferrari SF90 Stradale</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$729,000</span><span class="text-faint">·</span><span>980 mi</span></div></div>
@@ -481,6 +500,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Lamborghini Huracán STO</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$429,000</span><span class="text-faint">·</span><span>4,501 mi</span></div></div>
@@ -493,6 +513,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2023 Ferrari 296 GTB</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$449,000</span><span class="text-faint">·</span><span>3,300 mi</span></div></div>
@@ -505,6 +526,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 McLaren 750S Spider</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$379,000</span><span class="text-faint">·</span><span>1,875 mi</span></div></div>
@@ -517,6 +539,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Porsche 911 Turbo S</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$249,000</span><span class="text-faint">·</span><span>8,245 mi</span></div></div>
@@ -529,6 +552,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Porsche 911 GT3 Touring</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$329,000</span><span class="text-faint">·</span><span>5,120 mi</span></div></div>
@@ -635,7 +659,7 @@
     <img loading="lazy" decoding="async" class="img-cover" src="public/showcase/mclaren-senna/14.webp" alt="Matte-black McLaren Senna" />
     <div class="absolute inset-0 bg-black/30"></div>
     <div class="absolute inset-0" style="background:radial-gradient(64% 84% at 50% 42%, rgba(12,13,15,.72) 0%, rgba(12,13,15,.32) 52%, rgba(12,13,15,0) 82%)"></div>
-    <div class="pointer-events-none absolute inset-x-0 top-0 h-28" style="background:linear-gradient(to bottom,#0c0d0f,rgba(12,13,15,0))"></div>
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-[46vh]" style="background:linear-gradient(to bottom,#0c0d0f 0%,#0c0d0f 26%,rgba(12,13,15,0) 100%)"></div>
     <div id="senna-fade" class="pointer-events-none absolute inset-0 bg-ink" style="opacity:0"></div>
   </div>
 
@@ -767,7 +791,7 @@
 </section>
 
 <!-- ============================ 06 · TESTIMONIALS — centered text carousel ============================ -->
-<section id="testimonials" class="relative overflow-hidden bg-panel/20 py-24 md:py-32">
+<section id="testimonials" class="relative overflow-hidden bg-ink py-24 md:py-32">
   <span class="ghost-num pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2 text-[14rem] md:text-[22rem]">06</span>
   <div class="relative z-10 mx-auto max-w-[64rem] px-6 text-center md:px-10">
 
@@ -813,7 +837,7 @@
     <img loading="lazy" decoding="async" class="img-cover" src="public/showcase/porsche-carrera-gt/04.webp" alt="Silver Porsche Carrera GT" style="object-position:50% 46%" />
     <div class="absolute inset-0 bg-black/35"></div>
     <div class="absolute inset-0" style="background:radial-gradient(60% 80% at 50% 50%, rgba(12,13,15,.72) 0%, rgba(12,13,15,.3) 52%, rgba(12,13,15,0) 82%)"></div>
-    <div class="pointer-events-none absolute inset-x-0 top-0 h-28" style="background:linear-gradient(to bottom,#0c0d0f,rgba(12,13,15,0))"></div>
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-[46vh]" style="background:linear-gradient(to bottom,#0c0d0f 0%,#0c0d0f 26%,rgba(12,13,15,0) 100%)"></div>
     <div id="cgt-fade" class="pointer-events-none absolute inset-0 bg-ink" style="opacity:0"></div>
   </div>
 
@@ -891,7 +915,7 @@
     </div>
 
     <div class="lg:col-span-6" data-step>
-      <div class="grid grid-cols-2 gap-x-10 gap-y-10 font-mono text-[0.82rem]">
+      <div class="grid grid-cols-2 gap-x-10 gap-y-10 font-mono text-[0.82rem] uppercase tracking-[0.04em]">
         <div>
           <p class="mb-3 text-[0.64rem] uppercase tracking-[0.24em] text-faint">Showroom</p>
           <p class="leading-relaxed text-txt">2050 North University Dr<br>Sunrise, FL 33322</p>
@@ -924,7 +948,7 @@
 </section>
 
 <!-- ============================ INSTAGRAM — centred: title on top, 3x2 photo grid below ============================ -->
-<section aria-label="Instagram" class="border-y border-line bg-panel/50 py-16 md:py-20">
+<section aria-label="Instagram" class="border-t border-line bg-[#101113] py-16 md:py-20">
   <div class="mx-auto max-w-[760px] px-6 text-center">
     <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group inline-flex flex-col items-center gap-4">
       <span class="flex h-16 w-16 items-center justify-center rounded-full border border-hg/50 text-hg transition-colors duration-300 group-hover:bg-hg group-hover:text-ink">
@@ -953,7 +977,7 @@
     <video class="img-cover absolute inset-0" src="public/brands/video_brands.mp4" poster="public/showcase/porsche-carrera-gt/12.webp" autoplay muted loop playsinline></video>
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="absolute inset-0" style="background:radial-gradient(60% 82% at 50% 48%, rgba(12,13,15,.7) 0%, rgba(12,13,15,.3) 52%, rgba(12,13,15,0) 82%)"></div>
-    <div class="pointer-events-none absolute inset-x-0 top-0 h-28" style="background:linear-gradient(to bottom,#0c0d0f,rgba(12,13,15,0))"></div>
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-[52vh]" style="background:linear-gradient(to bottom,#101113 0%,#101113 28%,rgba(16,17,19,0) 100%)"></div>
     <div id="closing-fade" class="pointer-events-none absolute inset-0 bg-ink" style="opacity:0"></div>
   </div>
 
@@ -1353,16 +1377,13 @@
   const navToggle = document.getElementById("nav-toggle");
   const navMenu = document.getElementById("nav-menu");
   if (navToggle && navMenu) {
-    const icMenu = navToggle.querySelector(".ic-menu");
-    const icClose = navToggle.querySelector(".ic-close");
     const setMenu = (open) => {
-      navMenu.classList.toggle("hidden", !open);
-      icMenu.classList.toggle("hidden", open);
-      icClose.classList.toggle("hidden", !open);
+      navMenu.classList.toggle("open", open);
+      navToggle.classList.toggle("open", open);
       navToggle.setAttribute("aria-expanded", open ? "true" : "false");
       document.body.style.overflow = open ? "hidden" : "";
     };
-    navToggle.addEventListener("click", () => setMenu(navMenu.classList.contains("hidden")));
+    navToggle.addEventListener("click", () => setMenu(!navMenu.classList.contains("open")));
     navMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
   }
