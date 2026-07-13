@@ -206,13 +206,20 @@
   #nav-menu nav a{position:relative;transition:color .3s ease, transform .45s cubic-bezier(.16,1,.3,1), opacity .35s ease;}
   /* chevron appears at the left, text slides right */
   #nav-menu nav a::before{content:"\203A";position:absolute;right:100%;top:50%;margin-right:.35em;
-    color:#c6ccd2;font-weight:400;opacity:0;transform:translateY(-50%) translateX(-.55em);
+    color:#96252d;font-weight:600;opacity:0;transform:translateY(-50%) translateX(-.55em);
     transition:opacity .35s ease, transform .45s cubic-bezier(.16,1,.3,1);}
   #nav-menu nav a:hover{color:#c6ccd2;transform:translateX(.7em);}
   #nav-menu nav a:hover::before{opacity:1;transform:translateY(-50%) translateX(0);}
   /* the other items dim while one is hovered */
   #nav-menu.open nav:hover a{opacity:.4;}
   #nav-menu.open nav:hover a:hover{opacity:1;}
+  /* Main header nav — red chevron on hover, like the drop-down */
+  .hnav a{position:relative;transition:color .3s ease, transform .35s cubic-bezier(.16,1,.3,1);}
+  .hnav a::before{content:"\203A";position:absolute;right:100%;top:50%;margin-right:.28em;
+    color:#96252d;font-weight:600;opacity:0;transform:translateY(-50%) translateX(-.35em);
+    transition:opacity .3s ease, transform .35s cubic-bezier(.16,1,.3,1);}
+  .hnav a:hover{color:#c6ccd2;transform:translateX(.5em);}
+  .hnav a:hover::before{opacity:1;transform:translateY(-50%) translateX(0);}
   /* Smooth open/close for the full-screen menu */
   #nav-menu{opacity:0;visibility:hidden;transition:opacity .5s cubic-bezier(.16,1,.3,1), visibility .5s;}
   #nav-menu.open{opacity:1;visibility:visible;}
@@ -398,7 +405,7 @@
       <!-- vertical spec column, 4 cols, stepped in from side -->
       <div class="flex flex-col lg:col-span-4 lg:h-full lg:self-stretch lg:pl-12" data-step>
         <span id="feat-idx" class="inline-block w-fit rounded-[3px] bg-accent px-2 py-0.5 font-mono text-[0.68rem] tracking-[0.12em] text-white">01 / 03</span>
-        <div class="mt-10 lg:mt-auto">
+        <div class="mt-5">
         <h2 id="feat-name" class="font-deck text-[1.7rem] font-600 leading-tight tracking-[-0.015em] text-txt md:text-3xl">2023 Porsche 911&nbsp;GT3&nbsp;RS</h2>
         <p id="feat-trim" class="mt-2 font-helv text-sm text-mut">Weissach Package</p>
 
@@ -452,7 +459,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
-            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Ferrari 488 Pista</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$549,000</span><span class="text-faint">·</span><span>3,812 mi</span></div></div>
@@ -465,7 +472,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
-            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2023 McLaren 765LT Spider</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$489,000</span><span class="text-faint">·</span><span>2,104 mi</span></div></div>
@@ -478,7 +485,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
-            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Lamborghini Revuelto</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$879,000</span><span class="text-faint">·</span><span>612 mi</span></div></div>
@@ -491,7 +498,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
-            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 Ferrari SF90 Stradale</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$729,000</span><span class="text-faint">·</span><span>980 mi</span></div></div>
@@ -504,7 +511,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
-            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Lamborghini Huracán STO</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$429,000</span><span class="text-faint">·</span><span>4,501 mi</span></div></div>
@@ -517,7 +524,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
-            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2023 Ferrari 296 GTB</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$449,000</span><span class="text-faint">·</span><span>3,300 mi</span></div></div>
@@ -530,7 +537,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
-            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2024 McLaren 750S Spider</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$379,000</span><span class="text-faint">·</span><span>1,875 mi</span></div></div>
@@ -543,7 +550,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
-            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Porsche 911 Turbo S</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$249,000</span><span class="text-faint">·</span><span>8,245 mi</span></div></div>
@@ -556,7 +563,7 @@
             <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M9 6l6 6-6 6"/></svg></span>
             </div>
-            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-hg transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+            <span aria-hidden class="absolute inset-x-0 bottom-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
           </div>
           <div class="pt-4"><h3 class="font-deck font-500 text-lg tracking-[-0.01em] text-txt md:text-xl">2022 Porsche 911 GT3 Touring</h3>
             <div class="mt-2 flex items-center gap-3 font-helv text-[0.82rem] tracking-[0.01em] text-mut"><span>$329,000</span><span class="text-faint">·</span><span>5,120 mi</span></div></div>
@@ -672,7 +679,7 @@
     <div class="mx-auto flex min-h-screen max-w-[1400px] items-center justify-center px-6 md:px-10">
       <div class="mx-auto flex max-w-[42rem] flex-col items-center text-center" data-step>
         <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">03 / The Standard</span>
-        <span class="mt-6 block h-px w-16 bg-accent"></span>
+        <span class="mt-6 block h-[2px] w-16 bg-accent"></span>
         <h2 class="mt-7 font-display text-4xl font-500 leading-[1.05] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">The cars worth owning, in one&nbsp;showroom.</h2>
         <p class="mt-6 max-w-[46ch] text-[1.05rem] leading-relaxed text-txt/85 [text-shadow:0_1px_12px_rgba(0,0,0,.6)]">
           Sourced through our collector network and the wider market, then vetted
@@ -802,7 +809,7 @@
     <!-- header + paragraph, centred -->
     <div data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">06 / In Their Words</span>
-      <span class="mx-auto mt-6 block h-px w-12 bg-accent"></span>
+      <span class="mx-auto mt-6 block h-[2px] w-12 bg-accent"></span>
       <h2 class="mt-7 font-display text-4xl font-500 leading-[1.08] text-txt md:text-6xl">A Second Showroom.<br><span class="text-hg">Same Standard</span></h2>
       <p class="mx-auto mt-7 max-w-[52ch] text-[1.05rem] leading-relaxed text-mut">
         GTA Motorcars began in the Greater Toronto Area, built on referrals,
@@ -850,7 +857,7 @@
     <div class="mx-auto flex min-h-screen max-w-[1400px] items-center justify-center px-6 md:px-10">
       <div class="mx-auto flex max-w-[46rem] flex-col items-center text-center" data-step>
         <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">07 / Acquisition</span>
-        <span class="mt-6 block h-px w-16 bg-accent"></span>
+        <span class="mt-6 block h-[2px] w-16 bg-accent"></span>
         <h2 class="mt-7 font-display text-4xl font-500 leading-[1.04] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-6xl">Ready to part with&nbsp;yours?</h2>
         <p class="mt-6 max-w-[44ch] text-[1.05rem] leading-relaxed text-txt/85 [text-shadow:0_1px_12px_rgba(0,0,0,.6)]">
           We buy collector and exotic cars outright — one fair offer, a discreet
@@ -881,20 +888,20 @@
       <!-- lead: the F50 + LaFerrari nose-to-nose (restored from the original set) -->
       <figure class="group md:col-span-7" data-lbrise>
         <div class="aspect-[16/10] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/f50-laferrari/02.webp" alt="Ferrari F50 and LaFerrari"></div>
-        <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">01 / Ferrari F50 &amp; LaFerrari</figcaption>
+        <figcaption class="mt-3.5 font-mono text-[0.82rem] uppercase tracking-[0.16em] text-mut">01 / Ferrari F50 &amp; LaFerrari</figcaption>
       </figure>
       <figure class="group md:col-span-5 md:mt-16" data-lbrise>
         <div class="aspect-[4/3] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/ferrari-f50/05.webp" alt="Ferrari F50"></div>
-        <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">02 / Ferrari F50</figcaption>
+        <figcaption class="mt-3.5 font-mono text-[0.82rem] uppercase tracking-[0.16em] text-mut">02 / Ferrari F50</figcaption>
       </figure>
       <!-- bottom pair — centred and set close together -->
       <figure class="group md:col-span-5 md:col-start-2" data-lbrise>
         <div class="aspect-[4/5] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift" src="public/showcase/porsche-carrera-gt/01.webp" alt="Carrera GT"></div>
-        <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">03 / Porsche Carrera GT</figcaption>
+        <figcaption class="mt-3.5 font-mono text-[0.82rem] uppercase tracking-[0.16em] text-mut">03 / Porsche Carrera GT</figcaption>
       </figure>
       <figure class="group md:col-span-5 md:col-start-7 md:mt-8" data-lbrise>
         <div class="aspect-[16/10] overflow-hidden"><img loading="lazy" decoding="async" class="img-cover lift object-[68%_center]" src="public/showcase/mclaren-senna/05.webp" alt="McLaren Senna"></div>
-        <figcaption class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-mut">04 / McLaren Senna</figcaption>
+        <figcaption class="mt-3.5 font-mono text-[0.82rem] uppercase tracking-[0.16em] text-mut">04 / McLaren Senna</figcaption>
       </figure>
         </div>
       </div>
@@ -907,7 +914,7 @@
   <div class="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 px-6 md:px-10 lg:grid-cols-12">
     <div class="lg:col-span-6" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">09 / The Showroom</span>
-      <span class="mt-6 block h-px w-16 bg-accent"></span>
+      <span class="mt-6 block h-[2px] w-16 bg-accent"></span>
       <h2 class="mt-7 font-display text-5xl font-500 leading-[0.95] text-txt md:text-7xl">Fort<br>Lauderdale</h2>
       <p class="mt-6 max-w-[40ch] text-[1.02rem] leading-relaxed text-mut">
         Private viewings by appointment. Stop by the showroom, or call ahead and
@@ -989,7 +996,7 @@
   <div class="relative z-10 -mt-[100vh]">
     <div class="mx-auto flex min-h-screen max-w-[46rem] flex-col items-center justify-center px-6 text-center" data-step>
       <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">The Collection</span>
-      <span class="mt-6 block h-px w-16 bg-accent"></span>
+      <span class="mt-6 block h-[2px] w-16 bg-accent"></span>
       <h2 class="mt-7 font-display text-5xl font-500 leading-[1.0] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-7xl">Find&nbsp;yours.</h2>
       <a href="#collection" class="group mt-10 inline-flex items-center gap-3 border border-hg/50 px-9 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink">
         View the inventory <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform group-hover:translate-x-1"><path d="M9 6l6 6-6 6"/></svg>
@@ -1003,7 +1010,7 @@
     <div class="mx-auto max-w-[1200px] px-6 md:px-10">
       <div class="mb-24 text-center md:mb-36" data-step>
         <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">What We Carry</span>
-        <span class="mx-auto mt-6 block h-px w-12 bg-accent"></span>
+        <span class="mx-auto mt-6 block h-[2px] w-12 bg-accent"></span>
         <h2 class="mt-7 font-display text-3xl font-500 text-txt drop-shadow-[0_2px_20px_rgba(0,0,0,.6)] md:text-5xl">The marques on the floor</h2>
       </div>
       <!-- balanced: compact crests hold the outer columns, wide wordmarks sit centre (crest·wide·wide·crest per row) -->
