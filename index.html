@@ -310,6 +310,33 @@
 
 </section>
 
+<!-- ============================ PRIMARY ACTIONS — three-cell strip under the hero ============================ -->
+<section aria-label="Primary actions" class="border-y border-line bg-ink">
+  <ul class="mx-auto grid max-w-[1500px] grid-cols-1 md:grid-cols-3">
+    <li class="border-b border-line md:border-b-0 md:border-r">
+      <a href="#" class="group relative flex items-center justify-center gap-3 px-6 py-8 transition-colors duration-300 hover:bg-panel/60 md:py-10">
+        <span class="font-mono text-[0.74rem] uppercase tracking-[0.22em] text-txt transition-colors group-hover:text-hg">Sell Your Car</span>
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" class="text-mut transition-all duration-300 group-hover:text-hg group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        <span aria-hidden class="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-hg transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+      </a>
+    </li>
+    <li class="border-b border-line md:border-b-0 md:border-r">
+      <a href="#finance" class="group relative flex items-center justify-center gap-3 px-6 py-8 transition-colors duration-300 hover:bg-panel/60 md:py-10">
+        <span class="font-mono text-[0.74rem] uppercase tracking-[0.22em] text-txt transition-colors group-hover:text-hg">Get Financing</span>
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" class="text-mut transition-all duration-300 group-hover:text-hg group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        <span aria-hidden class="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-hg transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+      </a>
+    </li>
+    <li>
+      <a href="#visit" class="group relative flex items-center justify-center gap-3 px-6 py-8 transition-colors duration-300 hover:bg-panel/60 md:py-10">
+        <span class="font-mono text-[0.74rem] uppercase tracking-[0.22em] text-txt transition-colors group-hover:text-hg">Book a Viewing</span>
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" class="text-mut transition-all duration-300 group-hover:text-hg group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        <span aria-hidden class="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-hg transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+      </a>
+    </li>
+  </ul>
+</section>
+
 <!-- ============================ 02 · FEATURED ACQUISITION ============================ -->
 <section id="featured" class="relative overflow-hidden py-24 md:py-36">
   <span class="ghost-num pointer-events-none absolute -top-6 right-4 z-0 text-[16rem] md:right-16 md:text-[26rem]">01</span>
@@ -388,106 +415,116 @@
       </a>
     </div>
 
-    <!-- 02 · auto-scrolling collection carousel — edge to edge, cards lift on hover -->
-    <div class="collection-marquee relative left-1/2 mt-14 w-screen -translate-x-1/2 select-none overflow-x-auto md:mt-16" style="touch-action:pan-y">
-      <div id="collection-track" class="collection-track flex w-max gap-8 px-6 md:px-10">
-        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
-          <a href="#" class="group block">
-            <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="2022 Ferrari 488 Pista" />
-              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
-              </div>
+    <!-- 02 · Available Now — a nine-car grid; each card rises on scroll and lifts on hover -->
+    <div class="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 md:mt-16 md:gap-x-10 md:gap-y-16 lg:grid-cols-3">
+      <article class="group" data-rise>
+        <a href="#" class="block">
+          <div class="relative aspect-[16/10] overflow-hidden bg-panel">
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="2022 Ferrari 488 Pista" />
+            <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
-            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2022 Ferrari 488 Pista</h3>
-              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$549,000</span><span class="text-faint">·</span><span>3,812 mi</span></div></div>
-          </a>
-        </article>
-        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
-          <a href="#" class="group block">
-            <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="2023 McLaren 765LT Spider" />
-              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
-              </div>
+          </div>
+          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2022 Ferrari 488 Pista</h3>
+            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$549,000</span><span class="text-faint">·</span><span>3,812 mi</span></div></div>
+        </a>
+      </article>
+      <article class="group" data-rise>
+        <a href="#" class="block">
+          <div class="relative aspect-[16/10] overflow-hidden bg-panel">
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="2023 McLaren 765LT Spider" />
+            <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
-            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2023 McLaren 765LT Spider</h3>
-              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$489,000</span><span class="text-faint">·</span><span>2,104 mi</span></div></div>
-          </a>
-        </article>
-        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
-          <a href="#" class="group block">
-            <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-lamborghini-revuelto.webp" alt="2024 Lamborghini Revuelto" />
-              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
-              </div>
+          </div>
+          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2023 McLaren 765LT Spider</h3>
+            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$489,000</span><span class="text-faint">·</span><span>2,104 mi</span></div></div>
+        </a>
+      </article>
+      <article class="group" data-rise>
+        <a href="#" class="block">
+          <div class="relative aspect-[16/10] overflow-hidden bg-panel">
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-lamborghini-revuelto.webp" alt="2024 Lamborghini Revuelto" />
+            <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
-            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2024 Lamborghini Revuelto</h3>
-              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$879,000</span><span class="text-faint">·</span><span>612 mi</span></div></div>
-          </a>
-        </article>
-        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
-          <a href="#" class="group block">
-            <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="2024 Ferrari SF90 Stradale" />
-              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
-              </div>
+          </div>
+          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2024 Lamborghini Revuelto</h3>
+            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$879,000</span><span class="text-faint">·</span><span>612 mi</span></div></div>
+        </a>
+      </article>
+      <article class="group" data-rise>
+        <a href="#" class="block">
+          <div class="relative aspect-[16/10] overflow-hidden bg-panel">
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="2024 Ferrari SF90 Stradale" />
+            <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
-            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2024 Ferrari SF90 Stradale</h3>
-              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$729,000</span><span class="text-faint">·</span><span>980 mi</span></div></div>
-          </a>
-        </article>
-        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
-          <a href="#" class="group block">
-            <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="2022 Lamborghini Huracán STO" />
-              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
-              </div>
+          </div>
+          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2024 Ferrari SF90 Stradale</h3>
+            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$729,000</span><span class="text-faint">·</span><span>980 mi</span></div></div>
+        </a>
+      </article>
+      <article class="group" data-rise>
+        <a href="#" class="block">
+          <div class="relative aspect-[16/10] overflow-hidden bg-panel">
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="2022 Lamborghini Huracán STO" />
+            <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
-            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2022 Lamborghini Huracán STO</h3>
-              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$429,000</span><span class="text-faint">·</span><span>4,501 mi</span></div></div>
-          </a>
-        </article>
-        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
-          <a href="#" class="group block">
-            <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="2023 Ferrari 296 GTB" />
-              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
-              </div>
+          </div>
+          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2022 Lamborghini Huracán STO</h3>
+            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$429,000</span><span class="text-faint">·</span><span>4,501 mi</span></div></div>
+        </a>
+      </article>
+      <article class="group" data-rise>
+        <a href="#" class="block">
+          <div class="relative aspect-[16/10] overflow-hidden bg-panel">
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2023-ferrari-296-gtb-assetto-fiorano.webp" alt="2023 Ferrari 296 GTB" />
+            <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
-            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2023 Ferrari 296 GTB</h3>
-              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$449,000</span><span class="text-faint">·</span><span>3,300 mi</span></div></div>
-          </a>
-        </article>
-        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
-          <a href="#" class="group block">
-            <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-mclaren-750s-spider.webp" alt="2024 McLaren 750S Spider" />
-              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
-              </div>
+          </div>
+          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2023 Ferrari 296 GTB</h3>
+            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$449,000</span><span class="text-faint">·</span><span>3,300 mi</span></div></div>
+        </a>
+      </article>
+      <article class="group" data-rise>
+        <a href="#" class="block">
+          <div class="relative aspect-[16/10] overflow-hidden bg-panel">
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2024-mclaren-750s-spider.webp" alt="2024 McLaren 750S Spider" />
+            <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
-            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2024 McLaren 750S Spider</h3>
-              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$379,000</span><span class="text-faint">·</span><span>1,875 mi</span></div></div>
-          </a>
-        </article>
-        <article class="collection-card w-[340px] shrink-0 md:w-[460px]">
-          <a href="#" class="group block">
-            <div class="relative aspect-[16/10] overflow-hidden bg-panel">
-              <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-turbo-s-cabriolet.webp" alt="2022 Porsche 911 Turbo S" />
-              <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
-              </div>
+          </div>
+          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2024 McLaren 750S Spider</h3>
+            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$379,000</span><span class="text-faint">·</span><span>1,875 mi</span></div></div>
+        </a>
+      </article>
+      <article class="group" data-rise>
+        <a href="#" class="block">
+          <div class="relative aspect-[16/10] overflow-hidden bg-panel">
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-turbo-s-cabriolet.webp" alt="2022 Porsche 911 Turbo S" />
+            <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
             </div>
-            <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.6rem]">2022 Porsche 911 Turbo S</h3>
-              <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$249,000</span><span class="text-faint">·</span><span>8,245 mi</span></div></div>
-          </a>
-        </article>
-      </div>
+          </div>
+          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2022 Porsche 911 Turbo S</h3>
+            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$249,000</span><span class="text-faint">·</span><span>8,245 mi</span></div></div>
+        </a>
+      </article>
+      <article class="group" data-rise>
+        <a href="#" class="block">
+          <div class="relative aspect-[16/10] overflow-hidden bg-panel">
+            <img loading="lazy" decoding="async" class="img-cover lift" src="public/inventory/2022-porsche-911-gt3-touring-paint-to-sample.webp" alt="2022 Porsche 911 GT3 Touring" />
+            <div class="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-2 border border-hg/60 bg-ink/20 px-6 py-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm">See details <span aria-hidden>&rarr;</span></span>
+            </div>
+          </div>
+          <div class="pt-4"><h3 class="font-display text-xl text-txt md:text-[1.5rem]">2022 Porsche 911 GT3 Touring</h3>
+            <div class="mt-2 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-mut"><span>$329,000</span><span class="text-faint">·</span><span>5,120 mi</span></div></div>
+        </a>
+      </article>
     </div>
 
     <!-- financing / sell CTAs under the carousel -->
@@ -874,6 +911,47 @@
           src="https://www.google.com/maps?q=2050%20North%20University%20Dr%2C%20Sunrise%2C%20FL%2033322&output=embed"></iframe>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============================ INSTAGRAM — slim follow strip ============================ -->
+<section aria-label="Instagram" class="border-t border-line py-10 md:py-12">
+  <div class="mx-auto flex max-w-[1400px] flex-col items-center gap-7 px-6 md:flex-row md:justify-between md:px-10">
+    <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4">
+      <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line text-txt transition-colors group-hover:border-hg group-hover:text-hg">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </span>
+      <span class="flex flex-col leading-tight">
+        <span class="font-mono text-[0.62rem] uppercase tracking-[0.24em] text-mut">Follow the collection</span>
+        <span class="font-display text-lg italic text-hg transition-colors group-hover:text-hg2">@gtamotorcars</span>
+      </span>
+    </a>
+    <div class="flex gap-2 md:gap-3">
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="block h-14 w-14 overflow-hidden bg-panel md:h-16 md:w-16"><img loading="lazy" decoding="async" class="img-cover opacity-80 transition-opacity hover:opacity-100" src="public/inventory/2023-porsche-911-gt3-rs-weissach.webp" alt="Instagram" /></a>
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="block h-14 w-14 overflow-hidden bg-panel md:h-16 md:w-16"><img loading="lazy" decoding="async" class="img-cover opacity-80 transition-opacity hover:opacity-100" src="public/inventory/2022-ferrari-488-pista-rosso-corsa.webp" alt="Instagram" /></a>
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="block h-14 w-14 overflow-hidden bg-panel md:h-16 md:w-16"><img loading="lazy" decoding="async" class="img-cover opacity-80 transition-opacity hover:opacity-100" src="public/inventory/2024-lamborghini-revuelto.webp" alt="Instagram" /></a>
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="hidden h-14 w-14 overflow-hidden bg-panel sm:block md:h-16 md:w-16"><img loading="lazy" decoding="async" class="img-cover opacity-80 transition-opacity hover:opacity-100" src="public/inventory/2023-mclaren-765lt-spider.webp" alt="Instagram" /></a>
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="hidden h-14 w-14 overflow-hidden bg-panel sm:block md:h-16 md:w-16"><img loading="lazy" decoding="async" class="img-cover opacity-80 transition-opacity hover:opacity-100" src="public/inventory/2024-ferrari-sf90-stradale.webp" alt="Instagram" /></a>
+      <a href="https://instagram.com/gtamotorcars" target="_blank" rel="noopener noreferrer" class="hidden h-14 w-14 overflow-hidden bg-panel md:block md:h-16 md:w-16"><img loading="lazy" decoding="async" class="img-cover opacity-80 transition-opacity hover:opacity-100" src="public/inventory/2022-lamborghini-huracan-sto.webp" alt="Instagram" /></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CLOSING CTA — final beat over a marble field ============================ -->
+<section class="relative overflow-hidden border-t border-line bg-ink">
+  <img loading="lazy" decoding="async" class="img-cover absolute inset-0" src="public/closing-bg.webp" alt="" style="object-position:50% 50%" />
+  <div class="absolute inset-0 bg-black/45"></div>
+  <div class="absolute inset-0" style="background:radial-gradient(58% 78% at 50% 52%, rgba(12,13,15,.72) 0%, rgba(12,13,15,.3) 48%, rgba(12,13,15,0) 80%)"></div>
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-24" style="background:linear-gradient(to bottom,#0c0d0f,rgba(12,13,15,0))"></div>
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to top,#0c0d0f,rgba(12,13,15,0))"></div>
+
+  <div class="relative z-10 mx-auto flex max-w-[46rem] flex-col items-center px-6 py-32 text-center md:py-44" data-step>
+    <span class="block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-hg">The Collection</span>
+    <span class="mt-6 block h-px w-16 bg-hg/70"></span>
+    <h2 class="mt-7 font-display text-5xl font-500 italic leading-[1.0] text-txt drop-shadow-[0_2px_24px_rgba(0,0,0,.7)] md:text-7xl">Find&nbsp;yours.</h2>
+    <a href="#collection" class="group mt-10 inline-flex items-center gap-3 border border-hg/50 px-9 py-4 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-txt backdrop-blur-sm transition-colors hover:border-hg hover:bg-hg hover:text-ink">
+      View the inventory <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+    </a>
   </div>
 </section>
 
