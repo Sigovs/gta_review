@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GTA Motorcars — Private Collection (AAN prototype)</title>
 
-<!-- Fonts: Bodoni Moda (couture display) · Inter (UI) · Space Mono (data) -->
+<!-- Fonts: Playfair Display (accent/display) · Forma DJR Deck / Inter (UI) · Space Mono (data).
+     Adobe Typekit kit for the licensed faces, plus Google's Playfair Display as a guaranteed
+     fallback (Typekit is domain-locked, so this ensures the accent renders everywhere). -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.typekit.net/qik8lxe.css" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -28,8 +31,8 @@
           hg2:   "#eef2f5",
         },
         fontFamily: {
-          display: ['"Bodoni Moda"', "Georgia", "serif"],
-          sans: ['Inter', "system-ui", "sans-serif"],
+          display: ['"playfair-display"', '"Playfair Display"', '"Bodoni Moda"', "Georgia", "serif"],
+          sans: ['"forma-djr-deck"', "Inter", "system-ui", "sans-serif"],
           mono: ['"Space Mono"', "ui-monospace", "monospace"],
         },
       },
@@ -58,7 +61,7 @@
 
   /* Oversized signature numeral behind content */
   .ghost-num{
-    font-family:'Bodoni Moda',serif;font-weight:500;line-height:.8;
+    font-family:"playfair-display","Playfair Display","Bodoni Moda",serif;font-weight:500;line-height:.8;
     color:transparent;-webkit-text-stroke:1px rgba(198,204,210,.14);
     letter-spacing:-.02em;user-select:none;
   }
